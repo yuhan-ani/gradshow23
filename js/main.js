@@ -109,7 +109,7 @@
       return pairWidth - prev.getBoundingClientRect().width - s.getBoundingClientRect().width;
     });
     // 폰트에 보정값이 없는 대각선 쌍은 눈으로 맞춘 값(em)을 직접 적용
-    const manualKern = { AW: -0.11, WA: -0.08, AV: -0.1, VA: -0.1, AT: -0.08, TA: -0.08, LT: -0.06, TL: -0.04 };
+    const manualKern = { AW: -0.17, WA: -0.08, AV: -0.1, VA: -0.1, AT: -0.08, TA: -0.08, LT: -0.06, TL: -0.04 };
     spans.forEach((s, i) => {
       if (!i) return;
       const pair = spans[i - 1].textContent + s.textContent;
