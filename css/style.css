@@ -281,13 +281,12 @@ a { color: inherit; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold-bright);
-  font-weight: 700;
   font-size: 0.9rem;
   margin: 0 0 18px;
   /* 포스터 위에 겹쳐도 읽히도록 어두운 외곽선 */
-  -webkit-text-stroke: 4px var(--c-bg-deep);
+  -webkit-text-stroke: 2px var(--c-bg-deep);
   paint-order: stroke fill;
-  text-shadow: 0 0 10px var(--c-bg-deep), 0 0 4px var(--c-bg-deep);
+  text-shadow: 0 0 6px var(--c-bg-deep);
 }
 
 .hero__title {
