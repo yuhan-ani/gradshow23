@@ -92,7 +92,31 @@
     const spans = Array.from(el.querySelectorAll(".hero__title-char"));
     if (!spans.length) return;
 
-    spans.forEach((s) => { s.style.transform = "none"; });
+    spans.forEach((s) => { s.style.transform = "none"; s.style.marginLeft = "0"; });
+
+    // 글자를 쪼개면 A-W 같은 쌍의 커닝이 사라지므로, 쌍을 붙였을 때의 폭과의 차이만큼 간격을 되돌린다
+    const kerns = spans.map((s, i) => {
+      const prev = spans[i - 1];
+      const skip = !prev || s.classList.contains("hero__title-char--space") || prev.classList.contains("hero__title-char--space") ||
+        s.classList.contains("hero__title-dropcap") || prev.classList.contains("hero__title-dropcap");
+      if (skip) return 0;
+      const probe = document.createElement("span");
+      probe.style.cssText = "position:absolute;visibility:hidden;white-space:nowrap";
+      probe.textContent = prev.textContent + s.textContent;
+      el.appendChild(probe);
+      const pairWidth = probe.getBoundingClientRect().width;
+      el.removeChild(probe);
+      return pairWidth - prev.getBoundingClientRect().width - s.getBoundingClientRect().width;
+    });
+    // 폰트에 보정값이 없는 대각선 쌍은 눈으로 맞춘 값(em)을 직접 적용
+    const manualKern = { AW: -0.11, WA: -0.08, AV: -0.1, VA: -0.1, AT: -0.08, TA: -0.08, LT: -0.06, TL: -0.04 };
+    spans.forEach((s, i) => {
+      if (!i) return;
+      const pair = spans[i - 1].textContent + s.textContent;
+      const manual = manualKern[pair] ? manualKern[pair] * parseFloat(getComputedStyle(s).fontSize) : 0;
+      const total = (kerns[i] || 0) + manual;
+      if (total) s.style.marginLeft = `${total.toFixed(2)}px`;
+    });
 
     // 글자 크기가 달라도(드롭캡) 같은 바닥선 위에서 돌도록, 회전 기준점을 박스 아래가 아니라 실제 baseline에 둔다
     const baselines = spans.map((s) => {
