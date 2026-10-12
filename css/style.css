@@ -872,7 +872,6 @@ a { color: inherit; }
   color: var(--c-ivory);
   opacity: 0.92;
   margin: 0;
-  max-width: 62ch;
   word-break: keep-all;
   overflow-wrap: break-word;
 }
