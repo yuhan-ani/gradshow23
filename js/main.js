@@ -53,7 +53,7 @@
     if (el && value != null) el.textContent = value;
   }
 
-  /* --- 타이틀을 글자 단위로 쪼개 완만한 아치형으로 배치하고, 첫 글자를 드롭캡처럼 키움 --- */
+  /* --- 타이틀을 글자 단위로 쪼개 완만한 원호 위에 올리고, 첫 글자를 드롭캡처럼 키움 --- */
   function setHeroTitleArc(id, text) {
     const el = document.getElementById(id);
     if (!el || text == null) return;
@@ -61,36 +61,54 @@
     el.setAttribute("aria-label", text);
     el.textContent = "";
 
-    const chars = Array.from(text);
-    const n = chars.length;
-    const maxAngle = 24;  // 전체 아치가 벌어지는 최대 각도(도), 양 끝 글자 기준
-    const maxLift = 30;   // 가운데 글자가 치솟는 최대 높이(px)
-
     let firstLetterDone = false;
-    chars.forEach((ch, i) => {
+    Array.from(text).forEach((ch) => {
       const span = document.createElement("span");
       span.className = "hero__title-char";
       span.setAttribute("aria-hidden", "true");
+      span.textContent = ch;
 
       if (ch === " ") {
         span.className += " hero__title-char--space";
-        span.textContent = " ";
-        el.appendChild(span);
-        return;
-      }
-
-      if (!firstLetterDone) {
+      } else if (!firstLetterDone) {
         span.className += " hero__title-dropcap";
         firstLetterDone = true;
       }
-
-      const t = n > 1 ? i / (n - 1) : 0.5;   // 0(왼쪽 끝) ~ 1(오른쪽 끝)
-      const normPos = t * 2 - 1;             // -1(왼쪽 끝) ~ 0(가운데) ~ 1(오른쪽 끝)
-      const angle = normPos * (maxAngle / 2);
-      const lift = -maxLift * (1 - normPos * normPos); // 가운데일수록 많이 위로(음수)
-      span.style.transform = `rotate(${angle.toFixed(2)}deg) translateY(${lift.toFixed(1)}px)`;
-      span.textContent = ch;
       el.appendChild(span);
+    });
+
+    layoutHeroTitleArc(el);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => layoutHeroTitleArc(el));
+
+    let raf = 0;
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => layoutHeroTitleArc(el));
+    });
+  }
+
+  /* 실제 글자 위치(x)를 재서 큰 원 위에 배치 — 글자 폭이 달라도 곡선이 매끈하고, 기울기는 그 지점의 접선과 일치 */
+  function layoutHeroTitleArc(el) {
+    const spans = Array.from(el.querySelectorAll(".hero__title-char"));
+    if (!spans.length) return;
+
+    spans.forEach((s) => { s.style.transform = "none"; });
+
+    const left = spans[0].getBoundingClientRect().left;
+    const right = spans[spans.length - 1].getBoundingClientRect().right;
+    const half = (right - left) / 2;
+    if (half <= 0) return;
+    const center = left + half;
+
+    const edgeDeg = 7;  // 양 끝 글자가 기우는 각도 — 작을수록 완만
+    const radius = half / Math.sin((edgeDeg * Math.PI) / 180);
+
+    spans.forEach((s) => {
+      const r = s.getBoundingClientRect();
+      const x = r.left + r.width / 2 - center;
+      const a = Math.asin(Math.max(-1, Math.min(1, x / radius)));
+      const drop = radius * (1 - Math.cos(a));  // 가운데는 0, 양 끝으로 갈수록 아래로
+      s.style.transform = `translateY(${drop.toFixed(1)}px) rotate(${((a * 180) / Math.PI).toFixed(2)}deg)`;
     });
   }
 
