@@ -524,15 +524,6 @@ a { color: inherit; }
   margin: 0 auto;
 }
 
-.faculty__greeting-heading {
-  font-family: var(--f-caption);
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.08em;
-  color: var(--c-gold);
-  margin: 0 0 28px;
-}
-
 .faculty__greeting p {
   font-size: 0.97rem;
   line-height: 1.85;

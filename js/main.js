@@ -620,12 +620,6 @@
     const f = data.faculty;
     if (!f) return;
 
-    const headingEl = document.getElementById("facultyGreetingHeading");
-    if (headingEl) {
-      if (f.greeting && f.greeting.heading) headingEl.textContent = f.greeting.heading;
-      else headingEl.remove();
-    }
-
     const bodyEl = document.getElementById("facultyGreetingBody");
     if (bodyEl && f.greeting) {
       (f.greeting.paragraphs || []).forEach((text) => {
