@@ -525,7 +525,7 @@ a { color: inherit; }
 }
 
 .faculty__greeting p {
-  font-size: 0.97rem;
+  font-size: 1.04rem;
   line-height: 1.85;
   color: var(--c-ivory);
   opacity: 0.9;
@@ -533,6 +533,7 @@ a { color: inherit; }
   word-break: keep-all;
   overflow-wrap: break-word;
   text-wrap: pretty;
+  font-family: 'Gowun Batang', var(--f-caption);
 }
 
 .faculty__greeting p:last-child {
