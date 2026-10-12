@@ -48,7 +48,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(7) },
     { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "작품 -8 설명", runtime: "04:41", mediaType: "video", videoUrl: "H7GsvnBKVKk", thumbnail: null,
       members: makeMembers(8) },
-    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:50", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
+    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:50", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: null,
       members: makeMembers(9) },
     { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
       members: makeMembers(10) },
