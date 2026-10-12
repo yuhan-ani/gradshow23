@@ -10,7 +10,7 @@ window.SHOWCASE_DATA = {
     title: "DRAWN TO THE SPOTLIGHT",
     subtitle: "2026 Animation & Webtoon Graduation Showcase",
     edition: "제23회 졸업작품 상영회",
-    period: "2026. 10. 12 (월) · 오후 6:30",
+    period: "2026. 10. 26 (월) · 오후 6:30",
     venue: "유한대학교 유재라관 6층 유한아트홀",
     posterImage: "assets/hero-poster.svg"
   },
