@@ -1098,11 +1098,16 @@ a { color: inherit; }
   font-family: var(--f-display);
   font-size: clamp(1.3rem, 2.6vw, 1.9rem);
   margin: 0 0 30px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .credits__sub {
   color: var(--c-silver);
   margin: 0 0 34px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .credits__contact {
