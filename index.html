@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>졸작상영회</title>
+<meta name="description" content="졸작상영회">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0B0D06;
+    --bg-main: #12150C;
+    --gold-primary: #CE8D49;
+    --gold-highlight: #D9A367;
+    --gold-line: #B97832;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 30%, var(--bg-main), var(--bg-deep) 75%);
+    font-family: 'Noto Serif KR', serif;
+  }
+  .wrap { text-align: center; padding: 0 24px; }
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(2rem, 9vw, 3.4rem);
+    letter-spacing: 0.18em;
+    padding-left: 0.18em;
+    background: linear-gradient(180deg, var(--gold-highlight), var(--gold-primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .orn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .orn i { display: block; width: clamp(36px, 10vw, 64px); height: 1px; background: var(--gold-line); }
+  .orn b {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--gold-primary);
+    clip-path: polygon(50% 0%, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0% 50%, 39% 38%);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>졸작상영회</h1>
+    <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
+  </div>
+</body>
+</html>
