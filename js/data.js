@@ -188,8 +188,21 @@ window.SHOWCASE_DATA = {
           bio: "3D 배경을 맡아 제작했습니다. 여러 사람과 함께 하나의 작품을 완성해가는 과정에서 많이 배우고 성장할 수 있었습니다. 다들 수고하셨습니다.",
           illustration: "assets/members/avatar-1.svg" }
       ] },
-    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:48", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
-      members: makeMembers(9) },
+    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "사소한 자극에도 생명을 잃는 개복치처럼, 사회적 고립 속에서 한 줄의 희망을 얻었지만, 결국엔 무너져 버리는 현대인의 유약한 심리를 그린 3D AI 애니메이션", runtime: "05:48", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
+      members: [
+        { name: "김혁진", role: "감독, Scenario, Storyboard, Animatic, Character, Prop, Environment Modeling, Rigging, Animating, AI Production, Post-Processing, Sound Design, Editing",
+          bio: "졸업작품을 만드는 내내 힘들어서 개복치가 될 뻔했지만, 좋은 팀원들이 있어 함께 힘을 합쳐 작품을 만들 수 있었다. 그리고 나온 작품을 보니 그간의 시련들이 보상으로 돌아온 것 같아 행복했다.",
+          illustration: "assets/members/avatar-5.svg" },
+        { name: "김지원", role: "Character Design, Title Design, Poster Design, 2D Graphic Art",
+          bio: "좋은 팀원들을 만난 덕분에 힘든 과정도 즐겁게 이겨낼 수 있었고, 서로 소통하며 끝까지 함께 완성해 낼 수 있어서 정말 뜻깊은 시간이었습니다.",
+          illustration: "assets/members/avatar-6.svg" },
+        { name: "이권준", role: "Prop Modeling, Environment Modeling",
+          bio: "재미있었고 졸업작품은 인생의 기억에 남는 활동이었으며 다음에 기회가 있다면 또 해보고 싶습니다.",
+          illustration: "assets/members/avatar-1.svg" },
+        { name: "조민교", role: "Prop Modeling, Environment Modeling",
+          bio: "함께 작업하며 막히는 점 없이 잘 해나갔고, 좋은 팀을 만나 소통도 활발하게 하며 완벽하게 마무리하여 굉장히 뿌듯합니당.",
+          illustration: "assets/members/avatar-2.svg" }
+      ] },
     { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
       members: makeMembers(10) },
     { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "작품 -11 설명", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
