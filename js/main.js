@@ -656,7 +656,14 @@
 
         const names = document.createElement("p");
         names.className = "faculty__group-names";
-        names.textContent = (group.names || []).join(" · ");
+        const list = group.names || [];
+        list.forEach((name, i) => {
+          const span = document.createElement("span");
+          span.className = "faculty__group-name";
+          span.textContent = i < list.length - 1 ? `${name} ·` : name;
+          names.appendChild(span);
+          if (i < list.length - 1) names.appendChild(document.createTextNode(" "));
+        });
 
         wrap.append(label, names);
         groupsEl.appendChild(wrap);

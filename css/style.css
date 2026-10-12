@@ -539,6 +539,9 @@ a { color: inherit; }
   color: var(--c-ivory);
   opacity: 0.9;
   margin: 0 0 18px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 .faculty__greeting p:last-child {
@@ -583,7 +586,11 @@ a { color: inherit; }
   color: var(--c-ivory);
   opacity: 0.9;
   margin: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
+
+.faculty__group-name { white-space: nowrap; }
 
 /* =========================================================
    TOC — marquee "now showing" board
