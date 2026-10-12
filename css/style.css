@@ -618,15 +618,6 @@ a { color: inherit; }
   font-weight: 700;
 }
 .toc__team {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--f-body);
-  font-weight: 400;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--c-silver);
-}
-.toc__genre {
   font-family: var(--f-caption);
   font-style: italic;
   color: var(--c-silver);

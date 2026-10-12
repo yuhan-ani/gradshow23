@@ -305,18 +305,11 @@
         label.className = "toc__label";
         label.textContent = team.title;
 
-        if (team.teamName) {
-          const teamName = document.createElement("span");
-          teamName.className = "toc__team";
-          teamName.textContent = team.teamName;
-          label.appendChild(teamName);
-        }
+        const teamName = document.createElement("span");
+        teamName.className = "toc__team";
+        teamName.textContent = team.teamName;
 
-        const genre = document.createElement("span");
-        genre.className = "toc__genre";
-        genre.textContent = team.genre;
-
-        a.append(num, label, genre);
+        a.append(num, label, teamName);
         li.appendChild(a);
         frag.appendChild(li);
       });
