@@ -502,7 +502,7 @@ a { color: inherit; }
    FACULTY — 지도 교수진 (학생 카드보다 담백하고 절제된 크레딧 톤)
    ========================================================= */
 .faculty {
-  padding: clamp(96px, 12vw, 140px) 28px clamp(88px, 11vw, 128px);
+  padding: clamp(120px, 14vw, 180px) 24px clamp(120px, 14vw, 180px);
   border-top: 1px solid var(--c-gold-soft);
   text-align: center;
   background:
@@ -516,20 +516,20 @@ a { color: inherit; }
   font-size: 0.75rem;
   color: var(--c-gold);
   text-transform: uppercase;
-  margin: 0 0 clamp(48px, 6vw, 72px);
+  margin: 0 0 40px;
 }
 
 .faculty__inner {
-  max-width: 780px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .faculty__greeting p {
   font-size: 1.04rem;
-  line-height: 2.05;
+  line-height: 1.85;
   color: var(--c-ivory);
   opacity: 0.9;
-  margin: 0 0 28px;
+  margin: 0 0 18px;
   word-break: keep-all;
   overflow-wrap: break-word;
   text-wrap: pretty;
@@ -545,21 +545,19 @@ a { color: inherit; }
   font-style: italic;
   color: var(--c-silver);
   font-size: 0.9rem;
-  margin: 44px 0 0;
+  margin: 24px 0 0;
 }
 
 .faculty__divider {
   max-width: 200px;
-  margin: clamp(64px, 8vw, 96px) auto;
+  margin: 48px auto;
 }
 
 .faculty__groups {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  max-width: 820px;
-  margin: 0 auto;
+  gap: 24px;
 }
 
 .faculty__group-label {
@@ -569,7 +567,7 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--c-gold);
   opacity: 0.85;
-  margin: 0 0 14px;
+  margin: 0 0 8px;
 }
 
 .faculty__group-names {
@@ -577,7 +575,6 @@ a { color: inherit; }
   font-style: italic;
   font-size: 0.98rem;
   letter-spacing: 0.02em;
-  line-height: 2;
   color: var(--c-ivory);
   opacity: 0.9;
   margin: 0;
@@ -591,7 +588,7 @@ a { color: inherit; }
    TOC — marquee "now showing" board
    ========================================================= */
 .toc {
-  padding: 72px 24px;
+  padding: clamp(104px, 12vw, 150px) 24px;
   border-top: 1px solid var(--c-gold-soft);
   border-bottom: 1px solid var(--c-gold-soft);
   background:
@@ -682,10 +679,10 @@ a { color: inherit; }
 .program {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 90px 24px 40px;
+  padding: clamp(120px, 13vw, 170px) 24px 40px;
 }
 
-.program__intro { text-align: center; margin-bottom: 56px; }
+.program__intro { text-align: center; margin-bottom: 72px; }
 
 .program__eyebrow {
   font-family: var(--f-caption);
@@ -1075,7 +1072,7 @@ a { color: inherit; }
    CREDITS / CONTACT
    ========================================================= */
 .credits {
-  margin-top: 60px;
+  margin-top: clamp(80px, 9vw, 120px);
   padding: 90px 24px 70px;
   text-align: center;
   border-top: 1px solid var(--c-gold-soft);
@@ -1146,11 +1143,11 @@ a { color: inherit; }
   .toc__list { grid-template-columns: 1fr; }
   .team-card__frame { padding: 14px; }
   .team-card__body { padding: 24px 4px 4px; }
-  .program { padding: 64px 16px 20px; }
-  .toc { padding: 56px 16px; }
-  .faculty { padding: 56px 16px 48px; }
+  .program { padding: 104px 16px 20px; }
+  .toc { padding: 88px 16px; }
+  .faculty { padding: 96px 16px 96px; }
   .faculty__groups { gap: 20px; }
-  .credits { padding: 64px 16px 50px; }
+  .credits { padding: 88px 16px 60px; }
   .member-gallery { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px; }
 }
 
