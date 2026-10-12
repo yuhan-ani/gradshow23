@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" width="1600" height="2400" role="img" aria-label="올드 할리우드 프리미어 스타일의 극장 무대와 스포트라이트 장식 배경">
   <defs>
     <radialGradient id="spotlight" cx="50%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#332710" stop-opacity="0.95"/>
-      <stop offset="35%" stop-color="#1c1609" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#0B0D06" stop-opacity="1"/>
+      <stop offset="0%" stop-color="#1a2029" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#10131a" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#06090D" stop-opacity="1"/>
     </radialGradient>
     <linearGradient id="curtainL" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0a0907"/>
-      <stop offset="55%" stop-color="#15120e"/>
-      <stop offset="100%" stop-color="#201a12"/>
+      <stop offset="0%" stop-color="#07080a"/>
+      <stop offset="55%" stop-color="#0f1216"/>
+      <stop offset="100%" stop-color="#191d23"/>
     </linearGradient>
     <linearGradient id="curtainR" x1="100%" y1="0%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#0a0907"/>
-      <stop offset="55%" stop-color="#15120e"/>
-      <stop offset="100%" stop-color="#201a12"/>
+      <stop offset="0%" stop-color="#07080a"/>
+      <stop offset="55%" stop-color="#0f1216"/>
+      <stop offset="100%" stop-color="#191d23"/>
     </linearGradient>
     <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#B97832" stop-opacity="0.15"/>
@@ -26,12 +26,12 @@
       <stop offset="100%" stop-color="#B97832" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0B0D06" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#0B0D06" stop-opacity="0.9"/>
+      <stop offset="0%" stop-color="#06090D" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#06090D" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
 
-  <rect x="0" y="0" width="1600" height="2400" fill="#0B0D06"/>
+  <rect x="0" y="0" width="1600" height="2400" fill="#06090D"/>
 
 
   <!-- marquee arch -->
@@ -59,7 +59,7 @@
     <rect x="0" y="0" width="230" height="2400" fill="url(#curtainL)"/>
     <rect x="1370" y="0" width="230" height="2400" fill="url(#curtainR)"/>
     <!-- pleat lines left -->
-    <g stroke="#0B0D06" stroke-opacity="0.45" stroke-width="4">
+    <g stroke="#06090D" stroke-opacity="0.45" stroke-width="4">
       <line x1="20" y1="0" x2="20" y2="2400"/>
       <line x1="55" y1="0" x2="55" y2="2400"/>
       <line x1="90" y1="0" x2="90" y2="2400"/>
@@ -75,7 +75,7 @@
       <line x1="177" y1="0" x2="177" y2="2400"/>
     </g>
     <!-- pleat lines right -->
-    <g stroke="#0B0D06" stroke-opacity="0.45" stroke-width="4">
+    <g stroke="#06090D" stroke-opacity="0.45" stroke-width="4">
       <line x1="1580" y1="0" x2="1580" y2="2400"/>
       <line x1="1545" y1="0" x2="1545" y2="2400"/>
       <line x1="1510" y1="0" x2="1510" y2="2400"/>
