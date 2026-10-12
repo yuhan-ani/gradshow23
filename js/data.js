@@ -31,7 +31,7 @@ window.SHOWCASE_DATA = {
     ]
   },
   teams: [
-    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "작품 -1 설명", runtime: "06:56", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
+    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "작품 -1 설명", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: null,
       members: makeMembers(1) },
     { order: 2, teamName: "blue bird", title: "appel pie", genre: "3D 애니메이션", synopsis: "작품 -2 설명", runtime: "07:27", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
       members: makeMembers(2) },
