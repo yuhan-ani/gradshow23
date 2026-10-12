@@ -94,6 +94,16 @@
 
     spans.forEach((s) => { s.style.transform = "none"; });
 
+    // 글자 크기가 달라도(드롭캡) 같은 바닥선 위에서 돌도록, 회전 기준점을 박스 아래가 아니라 실제 baseline에 둔다
+    const baselines = spans.map((s) => {
+      const probe = document.createElement("i");
+      probe.style.cssText = "display:inline-block;width:0;height:0;vertical-align:baseline";
+      s.appendChild(probe);
+      const b = probe.getBoundingClientRect().bottom - s.getBoundingClientRect().top;
+      s.removeChild(probe);
+      return b;
+    });
+
     const left = spans[0].getBoundingClientRect().left;
     const right = spans[spans.length - 1].getBoundingClientRect().right;
     const half = (right - left) / 2;
@@ -103,9 +113,10 @@
     const edgeDeg = 7;  // 양 끝 글자가 기우는 각도 — 작을수록 완만
     const radius = half / Math.sin((edgeDeg * Math.PI) / 180);
 
-    spans.forEach((s) => {
+    spans.forEach((s, i) => {
       const r = s.getBoundingClientRect();
       const x = r.left + r.width / 2 - center;
+      s.style.transformOrigin = `50% ${baselines[i].toFixed(1)}px`;
       const a = Math.asin(Math.max(-1, Math.min(1, x / radius)));
       const drop = radius * (1 - Math.cos(a));  // 가운데는 0, 양 끝으로 갈수록 아래로
       s.style.transform = `translateY(${drop.toFixed(1)}px) rotate(${((a * 180) / Math.PI).toFixed(2)}deg)`;
