@@ -149,16 +149,37 @@ a { color: inherit; }
   width: 150%;
   height: 118%;
   transform: translateX(-50%);
-  /* 빔 자체는 탁한 베이지(--c-spotlight), 바닥에 닿는 하단부만 --c-spotlight-core에 가깝게 — 너무 밝지 않게 */
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.hero__spotlight::before,
+.hero__spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* 바깥 빔: 탁한 베이지(--c-spotlight), 바닥에 닿는 하단부만 --c-spotlight-core에 가깝게 */
+.hero__spotlight::before {
   background: linear-gradient(180deg,
     rgba(200, 181, 150, 0.2) 0%,
     rgba(200, 181, 150, 0.13) 48%,
     rgba(232, 223, 196, 0.22) 82%,
     rgba(232, 223, 196, 0.06) 100%);
   clip-path: polygon(48.5% 0%, 51.5% 0%, 85% 100%, 15% 100%);
-  opacity: 0.28;
   filter: blur(3px);
-  pointer-events: none;
+}
+
+/* 안쪽 빔: 같은 사다리꼴의 더 좁고 밝은 한 층 — 가운데로 번지는 그라데이션이 아니라 경계가 분명한 층 */
+.hero__spotlight::after {
+  background: linear-gradient(180deg,
+    rgba(232, 223, 196, 0.12) 0%,
+    rgba(232, 223, 196, 0.1) 48%,
+    rgba(232, 223, 196, 0.16) 82%,
+    rgba(232, 223, 196, 0.04) 100%);
+  clip-path: polygon(49.3% 0%, 50.7% 0%, 69% 100%, 31% 100%);
+  filter: blur(1px);
 }
 
 .hero--spotlight-on .hero__spotlight {
