@@ -394,6 +394,8 @@
   /* ---------------------------------------------------------
      4. 영상 임베드 — 클릭 시 재생, 자동재생 금지
   --------------------------------------------------------- */
+  let activePlayer = null;
+
   function wireVideoEmbed(container, team) {
     const thumbBtn = container.querySelector(".video-embed__thumb");
     if (!thumbBtn) return;
@@ -419,6 +421,10 @@
         events: {
           onReady: (e) => e.target.playVideo(),
           onStateChange: (e) => {
+            if (e.data === YT.PlayerState.PLAYING) {
+              if (activePlayer && activePlayer !== e.target) activePlayer.pauseVideo();
+              activePlayer = e.target;
+            }
             if (team.mediaType === "video+webtoon" && e.data === YT.PlayerState.ENDED) {
               revealWebtoonPrompt(team.order);
             }
