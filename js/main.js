@@ -597,7 +597,16 @@
     const gallery = document.createElement("div");
     gallery.className = "member-gallery";
 
+    let lastGroup = null;
     members.forEach((member) => {
+      if (member.group && member.group !== lastGroup) {
+        const heading = document.createElement("p");
+        heading.className = "member-group";
+        heading.textContent = member.group;
+        gallery.appendChild(heading);
+      }
+      lastGroup = member.group || null;
+
       const item = document.createElement("div");
       item.className = "member";
 

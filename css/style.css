@@ -1208,3 +1208,25 @@ a { color: inherit; }
   color: var(--c-ivory);
   opacity: 0.85;
 }
+
+/* 팀원이 여러 조로 나뉠 때(예: 프로모션팀 / 웹툰팀)의 조 제목 */
+.member-group {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 0;
+  font-family: var(--f-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+}
+.member-group::before,
+.member-group::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-gold-line));
+}
+.member-group::after { background: linear-gradient(270deg, transparent, var(--c-gold-line)); }
