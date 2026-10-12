@@ -4,10 +4,10 @@
 
 :root {
   /* --- colors: final poster palette — muted orange/bronze antique gold, never pure black + bright gold --- */
-  --c-bg-deep: #06090D;         /* 가장 어두운 암전 영역 */
-  --c-bg: #0C1015;              /* 사이트 기본 배경 */
-  --c-bg-raised: #1E242C;       /* 카드 등 살짝 띄운 배경 (bg-theatre) */
-  --c-bg-raised-2: #394049;     /* 보조/구조 배경 (bg-structure) */
+  --c-bg-deep: #060B0D;         /* 가장 어두운 암전 영역 */
+  --c-bg: #0C1215;              /* 사이트 기본 배경 */
+  --c-bg-raised: #1E272C;       /* 카드 등 살짝 띄운 배경 (bg-theatre) */
+  --c-bg-raised-2: #394449;     /* 보조/구조 배경 (bg-structure) */
   --c-ivory: #D9A367;           /* 주요 작은 텍스트 (text-primary, 더 이상 ivory가 아닌 muted gold) */
   --c-ivory-bright: #D9A367;
   --c-gold: #CE8D49;            /* 메인 타이틀용 gold-primary */
@@ -110,6 +110,11 @@ a { color: inherit; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  /* 첫 화면은 푸른 톤 유지 — 아래 섹션(:root)은 아주 약간 더 초록을 섞은 톤 */
+  --c-bg-deep: #06090D;
+  --c-bg: #0C1015;
+  --c-bg-raised: #1E242C;
+  --c-bg-raised-2: #394049;
 }
 
 .hero__poster {
@@ -751,7 +756,7 @@ a { color: inherit; }
   justify-content: center;
   background:
     repeating-linear-gradient(135deg, rgba(206,141,73,0.05) 0 2px, transparent 2px 14px),
-    linear-gradient(160deg, #181b20, #06090D 70%);
+    linear-gradient(160deg, #171d1f, #060B0D 70%);
   cursor: pointer;
   border: none;
   padding: 0;
@@ -939,7 +944,7 @@ a { color: inherit; }
   justify-content: center;
   flex-direction: column;
   gap: 6px;
-  background: linear-gradient(160deg, #171a1f, #080a0d);
+  background: linear-gradient(160deg, #171c1e, #080b0d);
   border-bottom: 1px dashed rgba(206,141,73,0.25);
   color: var(--c-silver);
   font-family: var(--f-caption);
@@ -1028,7 +1033,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 38%, rgba(217,163,103,0.14), transparent 60%), linear-gradient(160deg, #1E242C, #06090D);
+  background: radial-gradient(circle at 50% 38%, rgba(217,163,103,0.14), transparent 60%), linear-gradient(160deg, #1E272C, #060B0D);
   box-shadow: 0 0 22px 4px rgba(206,141,73,0.14);
   font-family: var(--f-display);
   font-size: 1.6rem;
