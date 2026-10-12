@@ -177,9 +177,9 @@ a { color: inherit; }
 .hero__gallery {
   position: absolute;
   left: 50%;
-  top: 8%;
-  width: clamp(150px, 24vw, 230px);
-  height: clamp(260px, 44vh, 440px);
+  top: 36px;
+  width: 240px;
+  height: 500px;
   transform: translateX(-50%);
   z-index: 1;
   pointer-events: none;
@@ -187,7 +187,7 @@ a { color: inherit; }
 
 .hero__gallery-frame {
   position: absolute;
-  width: clamp(42px, 7vw, 66px);
+  width: 64px;
   aspect-ratio: 2 / 3;
   z-index: var(--z, 1);
   /* left/top은 각 액자의 "중심"이 놓일 지점 — translate(-50%,-50%)로 그 지점에 중심을 맞춘 뒤 날아오는 효과를 얹음 */

@@ -167,9 +167,13 @@
       { x: -1, y: 0 },
       { x: -0.8, y: -0.8 }
     ];
-    const isMobile = window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
-    const travel = isMobile ? 150 : 380;
+    const travel = 320;
     const n = teams.length;
+
+    // 화면 크기와 상관없이 항상 같은 모양이 되도록 고정 px 좌표 사용 (컨테이너 240x500, 포스터 64x96)
+    const firstY = 52;
+    const lastY = 452;
+    const pitch = (lastY - firstY) / Math.max(n - 1, 1);
 
     teams.forEach((team, i) => {
       const frame = document.createElement("div");
@@ -177,16 +181,14 @@
 
       // 최종 위치: 가운데를 중심으로 살짝 지그재그, 겹침, 크기 변화를 주어
       // "불규칙하지만 균형 있게 이어진 하나의 조형물"처럼 보이게 함
-      const t = n > 1 ? i / (n - 1) : 0.5;
-      const topPct = 3 + t * 92;
-      const zig = Math.sin(i * 2.4) * 11;
-      const leftPct = 50 + zig;
+      const topPx = firstY + i * pitch;
+      const zig = (i % 2 === 0 ? -1 : 1) * (32 + Math.sin(i * 2.1) * 8);  // 좌우로 번갈아, 이웃과 거의 닿을 만큼만 벌림
       const restRot = Math.sin(i * 1.7) * 4.2;
-      const scale = 0.68 + 0.32 * Math.abs(Math.sin(i * 1.1 + 0.4));
+      const scale = 0.86 + 0.2 * Math.abs(Math.sin(i * 1.1 + 0.4));
       const jitter = Math.sin(i * 3.3) * 0.5 + 0.5; // 0~1, 포스터마다 다른 느낌을 주는 지터
 
-      frame.style.top = `${topPct}%`;
-      frame.style.left = `${leftPct}%`;
+      frame.style.top = `${topPx.toFixed(0)}px`;
+      frame.style.left = `calc(50% + ${zig.toFixed(0)}px)`;
       frame.style.setProperty("--z", String(i + 1));
       frame.style.setProperty("--rot", `${restRot.toFixed(2)}deg`);
       frame.style.setProperty("--scale", scale.toFixed(2));
