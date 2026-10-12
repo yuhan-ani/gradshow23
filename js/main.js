@@ -182,7 +182,7 @@
       // 최종 위치: 가운데를 중심으로 살짝 지그재그, 겹침, 크기 변화를 주어
       // "불규칙하지만 균형 있게 이어진 하나의 조형물"처럼 보이게 함
       const topPx = firstY + i * pitch;
-      const zig = (i % 2 === 0 ? -1 : 1) * (32 + Math.sin(i * 2.1) * 8);  // 좌우로 번갈아, 이웃과 거의 닿을 만큼만 벌림
+      const zig = (i % 2 === 0 ? 1 : -1) * (32 + Math.sin(i * 2.1) * 8);  // 좌우로 번갈아, 이웃과 거의 닿을 만큼만 벌림
       const restRot = Math.sin(i * 1.7) * 4.2;
       const scale = 0.86 + 0.2 * Math.abs(Math.sin(i * 1.1 + 0.4));
       const jitter = Math.sin(i * 3.3) * 0.5 + 0.5; // 0~1, 포스터마다 다른 느낌을 주는 지터
