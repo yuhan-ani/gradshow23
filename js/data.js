@@ -50,7 +50,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(8) },
     { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:50", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: null,
       members: makeMembers(9) },
-    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
+    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: null,
       members: makeMembers(10) },
     { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "작품 -11 설명", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
       members: makeMembers(11) }
