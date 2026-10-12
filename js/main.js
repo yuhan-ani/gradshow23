@@ -363,7 +363,7 @@
 
         const teamName = document.createElement("span");
         teamName.className = "toc__team";
-        teamName.textContent = team.teamName;
+        teamName.textContent = `team. ${team.teamName}`;
 
         a.append(num, label, teamName);
         li.appendChild(a);
@@ -412,7 +412,7 @@
         <div class="team-card__body">
           <span class="team-card__order">Feature No. ${String(team.order).padStart(2, "0")}</span>
           <h2 class="team-card__title">${escapeHtml(team.title)}</h2>
-          ${team.teamName ? `<p class="team-card__team">팀명 · ${escapeHtml(team.teamName)}</p>` : ""}
+          ${team.teamName ? `<p class="team-card__team">team. ${escapeHtml(team.teamName)}</p>` : ""}
           <span class="team-card__genre">${escapeHtml(team.genre)}</span>
           <p class="team-card__synopsis">${escapeHtml(team.synopsis)}</p>
           <span class="team-card__runtime">Running Time — ${escapeHtml(team.runtime)}</span>
@@ -442,6 +442,17 @@
     const toggle = article.querySelector(".accordion-toggle");
     const panel = article.querySelector(".accordion-panel");
     panel.appendChild(buildMemberGallery(team.members || []));
+
+    const closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "accordion-close";
+    closeBtn.innerHTML = '<span class="accordion-toggle__icon" aria-hidden="true">▾</span><span>닫기</span>';
+    closeBtn.addEventListener("click", () => {
+      toggle.click();
+      toggle.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    panel.appendChild(closeBtn);
+
     wireAccordion(toggle, panel);
 
     return article;

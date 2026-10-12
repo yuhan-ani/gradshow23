@@ -1178,3 +1178,24 @@ a { color: inherit; }
   .hero__poster { transform: none; }
   * { transition-duration: 0.001ms !important; }
 }
+
+/* 팀원 명단 맨 아래의 닫기 버튼 — 위쪽 토글과 같은 톤 */
+.accordion-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px 4px;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--c-gold-soft);
+  color: var(--c-gold);
+  font-family: var(--f-caption);
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.accordion-close .accordion-toggle__icon { transform: rotate(180deg); }
+.accordion-close:hover { color: var(--c-gold-bright); }
