@@ -35,7 +35,7 @@ window.SHOWCASE_DATA = {
     ]
   },
   teams: [
-    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "〈구름을 좇는 아이〉는 ‘자신을 있는 그대로 받아들이고 사랑하자’를 주제로 제작한 2D 단편 애니메이션이다. 회색 곱슬머리 때문에 친구들에게 ‘먹구름’이라 놀림받으며 자신의 모습을 콤플렉스로 여기던 누리는 구름을 배달하는 요정 루아를 만나게 된다. 도망친 먹구름을 찾으면 머리를 바꿔주겠다는 루아의 제안을 받아들인 누리는 함께 먹구름을 찾아 나서고, 거울 속 세계에서 자신의 모습을 마주하게 된다. 그 과정에서 누리는 자신이 싫어했던 모습을 받아들이며 있는 그대로의 자신을 사랑하는 법을 깨닫는다.", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: "assets/posters/01.jpg",
+    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "「구름을 좇는 아이」는 ‘자신을 있는 그대로 받아들이고 사랑하자’를 주제로 제작한 2D 단편 애니메이션이다. 회색 곱슬머리 때문에 친구들에게 ‘먹구름’이라 놀림받으며 자신의 모습을 콤플렉스로 여기던 누리는 구름을 배달하는 요정 루아를 만나게 된다. 도망친 먹구름을 찾으면 머리를 바꿔주겠다는 루아의 제안을 받아들인 누리는 함께 먹구름을 찾아 나서고, 거울 속 세계에서 자신의 모습을 마주하게 된다. 그 과정에서 누리는 자신이 싫어했던 모습을 받아들이며 있는 그대로의 자신을 사랑하는 법을 깨닫는다.", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: "assets/posters/01.jpg",
       members: [
         { name: "홍가영", role: "원동화 러프(기본도형, 디테일, 흐름), 3D 배경 렌더, 3D 배경 보정, 컬러 가이드",
           bio: "졸업작품을 진행하며 제 스스로 욕심이 생기며 아쉬움이 남기도 했지만 동시에 작업에 재미를 느끼기도 했던 것 같습니다. 팀원분들 모두가 열심히 해주셔서 감사합니다!",
@@ -56,7 +56,7 @@ window.SHOWCASE_DATA = {
           bio: "복학하면서 프로젝트 중간에 합류하게 되어 처음에는 적응하는 데 어려움도 있었습니다. 하지만 팀원들과 함께 작업하면서 금방 익숙해졌고, 하나의 작품을 완성하기까지 여러 가지를 배우고 경험할 수 있었습니다. 쉽지만은 않았지만 끝까지 함께해서 더 뿌듯한 작업이었습니다.",
           illustration: "assets/members/avatar-6.svg" }
       ] },
-    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "〈Apple Pie〉는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg",
+    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "「Apple Pie」는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg",
       members: [
         { name: "이희진", role: "감독, 3D모델링 및 리깅, 애니메이팅",
           bio: "A l'approche de la projection de mon film de fin d'études, j'ai l'impression que c'est vraiment la fin... Toute l'équipe, vous avez vraiment bien travaillé. Et je remercie le professeur, l'assistant et le comité exécutif qui m'ont aidé à organiser la projection. Enfin, les gars, merci d'avoir suivi le mauvais chef, je vous aime. ＼(^○^)／",
@@ -203,7 +203,7 @@ window.SHOWCASE_DATA = {
           bio: "함께 작업하며 막히는 점 없이 잘 해나갔고, 좋은 팀을 만나 소통도 활발하게 하며 완벽하게 마무리하여 굉장히 뿌듯합니당.",
           illustration: "assets/members/avatar-2.svg" }
       ] },
-    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "단편 애니메이션 〈심해의 거성〉은 신의 분노로 수몰된 성에서 유일하게 살아남은 주인공 ‘라피스’를 통해, 짙은 죄책감과 과거의 상처를 딛고 다시 한번 현실을 향해 나아가려는 여정을 담아낸 판타지 작품이다. 동족을 지키지 못했다는 죄책감에 라피스는 스스로 만들어 낸 환상 속으로 도피한다. 하지만 안온했던 환상은 서서히 균열을 일으키며 붕괴하고, 그의 두려움이 형상화된 괴물이 나타나 라피스를 추격하기 시작한다. 무너지는 환상 속에서 절체절명의 위기를 맞은 순간, 의문의 조력자 ‘아줄’이 등장해 그를 현실로 이끈다. 작품은 괴물로부터 아줄과 함께 성을 탈출하려는 라피스의 여정을 통해, 과거의 트라우마에서 벗어나고자 하는 인물의 치열한 감정선을 섬세하게 묘사한다.", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
+    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "단편 애니메이션 「심해의 거성」은 신의 분노로 수몰된 성에서 유일하게 살아남은 주인공 ‘라피스’를 통해, 짙은 죄책감과 과거의 상처를 딛고 다시 한번 현실을 향해 나아가려는 여정을 담아낸 판타지 작품이다. 동족을 지키지 못했다는 죄책감에 라피스는 스스로 만들어 낸 환상 속으로 도피한다. 하지만 안온했던 환상은 서서히 균열을 일으키며 붕괴하고, 그의 두려움이 형상화된 괴물이 나타나 라피스를 추격하기 시작한다. 무너지는 환상 속에서 절체절명의 위기를 맞은 순간, 의문의 조력자 ‘아줄’이 등장해 그를 현실로 이끈다. 작품은 괴물로부터 아줄과 함께 성을 탈출하려는 라피스의 여정을 통해, 과거의 트라우마에서 벗어나고자 하는 인물의 치열한 감정선을 섬세하게 묘사한다.", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
       members: [
         { name: "김정은", role: "감독, 스토리보드, 원화",
           bio: "모두 정말 고생하셨습니다. 감사합니다!!!",
@@ -218,7 +218,7 @@ window.SHOWCASE_DATA = {
           bio: "다들 고생하셨고 수고하셨습니다~!",
           illustration: "assets/members/avatar-1.svg" }
       ] },
-    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
+    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "「Endless」는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
       members: [
         { name: "김윤영", role: "총감독, 배경",
           bio: "팀원분들이 끝까지 잘해주셔서 너무 고마웠고 애니메이션 한 편을 만드는 경험을 할 수 있어서 굉장히 뜻깊었습니다! 교수님들과 팀원분들의 많은 도움이 있었기에 완성할 수 있었습니다! 감사합니다!!",
