@@ -151,10 +151,10 @@ a { color: inherit; }
   transform: translateX(-50%);
   /* 빔 자체는 탁한 베이지(--c-spotlight), 바닥에 닿는 하단부만 --c-spotlight-core에 가깝게 — 너무 밝지 않게 */
   background: linear-gradient(180deg,
-    rgba(200, 181, 150, 0.2) 0%,
-    rgba(200, 181, 150, 0.13) 48%,
-    rgba(232, 223, 196, 0.22) 82%,
-    rgba(232, 223, 196, 0.06) 100%);
+    rgba(200, 181, 150, 0.34) 0%,
+    rgba(200, 181, 150, 0.24) 48%,
+    rgba(232, 223, 196, 0.36) 82%,
+    rgba(232, 223, 196, 0.1) 100%);
   clip-path: polygon(48.5% 0%, 51.5% 0%, 85% 100%, 15% 100%);
   opacity: 0;
   filter: blur(3px);
@@ -167,10 +167,10 @@ a { color: inherit; }
 
 @keyframes heroSpotFlicker {
   0%   { opacity: 0; }
-  10%  { opacity: 0.6; }
-  22%  { opacity: 0.3; }
-  45%  { opacity: 0.85; }
-  100% { opacity: 0.85; }
+  10%  { opacity: 0.8; }
+  22%  { opacity: 0.4; }
+  45%  { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 /* --- 스포트라이트 빔 속에 쌓이는 액자 갤러리(작품 11장). 흩어진 시작 위치 → 최종 위치로 "날아와 눌러앉는" 구조 --- */
