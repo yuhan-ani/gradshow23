@@ -37,7 +37,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(2) },
     { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "작품 -3 설명", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: null,
       members: makeMembers(3) },
-    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "작품 -4 설명", runtime: "07:18", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
+    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "작품 -4 설명", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: null,
       members: makeMembers(4) },
     { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "작품 -5 설명", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "eRsGyueVLvQ", thumbnail: null,
       webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
