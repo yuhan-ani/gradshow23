@@ -125,8 +125,21 @@ window.SHOWCASE_DATA = {
         { group: "웹툰팀", name: "이혁", role: "웹툰 인물 밑색",
           bio: "고생하셨습니다.", illustration: "assets/members/avatar-5.svg" }
       ] },
-    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "작품 -6 설명", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: "assets/posters/06.jpg",
-      members: makeMembers(6) },
+    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "단편 애니메이션 「갑각」은 청소년기 관계 속에서 드러나는 감정의 어긋남과 균열을 다루는 청춘 드라마다. 작품은 16살의 여름, 친구로 지냈던 두 인물 A와 B의 관계를 서로 다른 기억과 감정의 시선으로 그려낸다. 우정과 동경, 애착과 집착 사이에서 서툴게 엇갈리는 두 사람의 관계를 통해 청소년기의 불안정한 감정과 애착이 남기는 흔적을 섬세하게 담아낸다.", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: "assets/posters/06.jpg",
+      members: [
+        { name: "박채연", role: "각본/감독, 콘티, 배경미술",
+          bio: "부족한 제게 먼지 친구들과 협력하여 작품을 만드는 과정은 정말 좋은 경험이자 큰 영광이었습니다. 팀 이름과 같이 작은 먼지들이 모여 한 덩어리를 만들듯, 사소한 것 하나부터 마지막까지 함께 만들어나가고 헤쳐 나가는 모든 과정이기에 뜻깊었습니다. 함께할 수 있어서 기뻤고, 함께 끝마쳐 더욱 기쁩니다.",
+          illustration: "assets/members/avatar-2.svg" },
+        { name: "모정현", role: "조감독, 원동화, 편집",
+          bio: "다들 힘을 합쳐 길고도 짧은 시간 동안 정말 고생 많으셨습니다. 힘든 상황도 많았지만 그만큼 배우고 느낄 수 있었던 것도 많았던 것 같습니다. 함께 작품을 완성할 수 있어서 뜻깊었고, 다들 정말 수고하셨습니다!",
+          illustration: "assets/members/avatar-3.svg" },
+        { name: "신수빈", role: "메인 원화, 캐릭터 디자인, 작화감독",
+          bio: "길기도 했고 짧기도 했던 시간이었던 것 같습니다. 여럿이서 작품을 만들어보는 건 처음이었는데 혼자서는 떠올리지 못했을 생각과, 새로운 시선을 공유하는 재미가 신선했습니다. 값진 경험으로 남을 것 같습니다. 모두 수고 많으셨습니다!",
+          illustration: "assets/members/avatar-4.svg" },
+        { name: "임지유", role: "선화, 채색, 배경",
+          bio: "졸업작품을 준비하면서 생각보다 힘든 순간도 많았지만 그래도 하나씩 완성해가는 과정이 재미있었습니다! 다 같이 고생하면서 만든 만큼 완성된 작품을 보니 뿌듯하기도 하고 이제 끝이라고 생각하니 조금 아쉽기도 합니다. 그동안 같이 고생한 팀원들 모두 수고 많았습니다ㅎㅎ",
+          illustration: "assets/members/avatar-5.svg" }
+      ] },
     { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "작품 -7 설명", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: "assets/posters/07.jpg",
       members: makeMembers(7) },
     { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "작품 -8 설명", runtime: "04:41", mediaType: "video", videoUrl: "H7GsvnBKVKk", thumbnail: "assets/posters/08.jpg",
