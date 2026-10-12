@@ -1199,3 +1199,12 @@ a { color: inherit; }
 }
 .accordion-close .accordion-toggle__icon { transform: rotate(180deg); }
 .accordion-close:hover { color: var(--c-gold-bright); }
+
+/* 외국어 원문 후기 아래에 붙는 한글 번역 */
+.member__bio--ko {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dotted var(--c-gold-soft);
+  color: var(--c-ivory);
+  opacity: 0.85;
+}

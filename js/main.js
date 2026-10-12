@@ -629,8 +629,15 @@
       const bio = document.createElement("p");
       bio.className = "member__bio";
       bio.textContent = member.bio;
+      if (member.bioKo) bio.lang = "fr";
 
       item.append(frame, name, role, bio);
+      if (member.bioKo) {
+        const bioKo = document.createElement("p");
+        bioKo.className = "member__bio member__bio--ko";
+        bioKo.textContent = member.bioKo;
+        item.appendChild(bioKo);
+      }
       gallery.appendChild(item);
     });
 
