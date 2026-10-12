@@ -205,6 +205,7 @@
       mat.className = "hero__gallery-mat";
 
       if (team.thumbnail) {
+        frame.classList.add("hero__gallery-frame--image");
         const img = document.createElement("img");
         img.src = team.thumbnail;
         img.alt = "";

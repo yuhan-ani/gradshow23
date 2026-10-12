@@ -227,6 +227,20 @@ a { color: inherit; }
 .hero--revealed .hero__gallery-mat img,
 .hero--revealed .hero__gallery-placeholder { filter: brightness(1) saturate(1); }
 
+/* 실제 포스터 이미지는 테두리까지 포함해 편집된 상태로 들어오므로, 액자(매트)를 없애고 이미지 비율 그대로 꽉 채운다 */
+.hero__gallery-frame--image { aspect-ratio: auto; }
+.hero__gallery-frame--image .hero__gallery-mat {
+  height: auto;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+.hero__gallery-frame--image .hero__gallery-mat img {
+  height: auto;
+  background: none;
+  object-fit: fill;
+}
+
 /* 마우스가 Hero를 벗어나면 패럴랙스 오프셋이 부드럽게 원위치로; 움직이는 동안은 지연 없이 바로 따라오도록 이때만 transition을 켬 */
 .hero--settling .hero__gallery,
 .hero--settling .hero__spotlight,
