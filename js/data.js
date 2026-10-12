@@ -44,7 +44,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(5) },
     { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "작품 -6 설명", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: null,
       members: makeMembers(6) },
-    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "작품 -7 설명", runtime: "03:16", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
+    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "작품 -7 설명", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: null,
       members: makeMembers(7) },
     { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "작품 -8 설명", runtime: "04:41", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
       members: makeMembers(8) },
