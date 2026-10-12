@@ -185,7 +185,7 @@ window.SHOWCASE_DATA = {
           bio: "졸업작품을 준비하며 생각했던 것을 직접 작품으로 만들어보는 값진 경험을 할 수 있었습니다. 팀원들과 함께 작업하면서 협업의 중요성과 작품을 완성하는 과정에 대해 많이 배웠습니다. 아쉬운 점도 있지만 끝까지 완성했다는 것에 의미를 두고, 좋은 경험으로 기억하고 싶습니다.",
           illustration: "assets/members/avatar-6.svg" },
         { name: "한승비", role: "3D 모델링, 렌더링",
-          bio: "3D 배경을 맡아 제작했습니다. 여러 사람과 함께 하나의 작품을 완성해가는 과정에서 많이 배우고 성장할 수 있었습니다.",
+          bio: "3D 배경을 맡아 제작했습니다. 여러 사람과 함께 하나의 작품을 완성해가는 과정에서 많이 배우고 성장할 수 있었습니다. 다들 수고하셨습니다.",
           illustration: "assets/members/avatar-1.svg" }
       ] },
     { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:48", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
