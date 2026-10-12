@@ -203,8 +203,21 @@ window.SHOWCASE_DATA = {
           bio: "함께 작업하며 막히는 점 없이 잘 해나갔고, 좋은 팀을 만나 소통도 활발하게 하며 완벽하게 마무리하여 굉장히 뿌듯합니당.",
           illustration: "assets/members/avatar-2.svg" }
       ] },
-    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
-      members: makeMembers(10) },
+    { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "단편 애니메이션 〈심해의 거성〉은 신의 분노로 수몰된 성에서 유일하게 살아남은 주인공 ‘라피스’를 통해, 짙은 죄책감과 과거의 상처를 딛고 다시 한번 현실을 향해 나아가려는 여정을 담아낸 판타지 작품이다. 동족을 지키지 못했다는 죄책감에 라피스는 스스로 만들어 낸 환상 속으로 도피한다. 하지만 안온했던 환상은 서서히 균열을 일으키며 붕괴하고, 그의 두려움이 형상화된 괴물이 나타나 라피스를 추격하기 시작한다. 무너지는 환상 속에서 절체절명의 위기를 맞은 순간, 의문의 조력자 ‘아줄’이 등장해 그를 현실로 이끈다. 작품은 괴물로부터 아줄과 함께 성을 탈출하려는 라피스의 여정을 통해, 과거의 트라우마에서 벗어나고자 하는 인물의 치열한 감정선을 섬세하게 묘사한다.", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
+      members: [
+        { name: "김정은", role: "감독, 스토리보드, 원화",
+          bio: "모두 정말 고생하셨습니다. 감사합니다!!!",
+          illustration: "assets/members/avatar-4.svg" },
+        { name: "노명진", role: "동화, 채색",
+          bio: "다 함께 라피스처럼 고난을 이겨낸 만큼, 수고 많으셨습니다.",
+          illustration: "assets/members/avatar-5.svg" },
+        { name: "서푸른", role: "영상 편집, 보정",
+          bio: "1년 동안 모두 감사했고 수고하셨습니다!",
+          illustration: "assets/members/avatar-6.svg" },
+        { name: "염호정", role: "선화, 배경",
+          bio: "다들 고생하셨고 수고하셨습니다~!",
+          illustration: "assets/members/avatar-1.svg" }
+      ] },
     { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "작품 -11 설명", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
       members: makeMembers(11) }
   ]
