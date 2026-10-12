@@ -91,8 +91,18 @@ window.SHOWCASE_DATA = {
           bio: "많이 미숙했지만 뜻깊은 제작이었습니다!",
           illustration: "assets/members/avatar-6.svg" }
       ] },
-    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "작품 -4 설명", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg",
-      members: makeMembers(4) },
+    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "서로 다른 두 세계를 배경으로, 우연한 만남을 통해 이어지는 사람들의 기억과 감정을 담아낸 감성 판타지 작품. 다른 세계에서 온 소녀 레나와 커피를 수확하며 살아가는 청년 바리의 만남을 중심으로, 낯선 두 사람이 함께 시간을 보내며 서로에게 특별한 존재가 되어가는 과정. 작품 속 커피를 기억과 감정을 연결하는 매개체로 활용하여, 소중한 사람과의 관계와 미처 전하지 못했던 마음의 의미를 담아낸 작품.", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg",
+      members: [
+        { name: "이진우", role: "감독, 편집, 스토리보드 일부, 시나리오, 원화, 동화 일부",
+          bio: "모자란 감독과 작업하느라 고생한 팀원분들에게 감사의 말씀 드리고 싶고, 진짜 저희 손으로 작품을 만들어냈다는 게 믿기지 않습니다.",
+          illustration: "assets/members/avatar-4.svg" },
+        { name: "곽상덕", role: "배경",
+          bio: "부족한 점도 많았지만 팀원분들과 함께 작품을 완성할 수 있어서 좋았습니다. 함께해주신 팀원분들께 감사드립니다.",
+          illustration: "assets/members/avatar-5.svg" },
+        { name: "임정민", role: "스토리보드 일부, 원화 일부, 동화, 선화, 채색",
+          bio: "졸업작품 작업은 저에게 이론을 넘어, 실제로 작업을 내 손으로 해본 가장 값진 시간이었습니다.",
+          illustration: "assets/members/avatar-6.svg" }
+      ] },
     { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "작품 -5 설명", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg",
       webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
       members: makeMembers(5) },
