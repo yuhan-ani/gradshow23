@@ -1062,7 +1062,7 @@ a { color: inherit; }
   font-family: var(--f-caption);
   font-style: italic;
   color: var(--c-gold);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   line-height: 1.6;
   margin: 0 0 12px;
 }
