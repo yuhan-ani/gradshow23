@@ -38,7 +38,7 @@ window.SHOWCASE_DATA = {
   teams: [
     { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "작품 -1 설명", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: "assets/posters/01.jpg",
       members: makeMembers(1) },
-    { order: 2, teamName: "blue bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "작품 -2 설명", runtime: "07:27", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg",
+    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "작품 -2 설명", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg",
       members: makeMembers(2) },
     { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "작품 -3 설명", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: "assets/posters/03.jpg",
       members: makeMembers(3) },
@@ -53,7 +53,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(7) },
     { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "작품 -8 설명", runtime: "04:41", mediaType: "video", videoUrl: "H7GsvnBKVKk", thumbnail: "assets/posters/08.jpg",
       members: makeMembers(8) },
-    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:50", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
+    { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "작품 -9 설명", runtime: "05:48", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
       members: makeMembers(9) },
     { order: 10, teamName: "Finale", title: "심해의 거성", genre: "2D 애니메이션", synopsis: "작품 -10 설명", runtime: "07:20", mediaType: "video", videoUrl: "QGioUjjWd_k", thumbnail: "assets/posters/10.jpg",
       members: makeMembers(10) },
