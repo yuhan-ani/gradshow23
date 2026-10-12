@@ -530,7 +530,7 @@ a { color: inherit; }
 
 .faculty__greeting p {
   font-size: 1.04rem;
-  line-height: 1.65;
+  line-height: 2.1;
   color: var(--c-ivory);
   opacity: 0.9;
   margin: 0 0 14px;
@@ -579,7 +579,7 @@ a { color: inherit; }
   font-style: italic;
   font-size: 0.98rem;
   letter-spacing: 0.02em;
-  line-height: 2.1;
+  line-height: 1.65;
   color: var(--c-ivory);
   opacity: 0.9;
   margin: 0;
