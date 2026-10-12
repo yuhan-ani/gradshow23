@@ -868,11 +868,13 @@ a { color: inherit; }
   font-family: var(--f-caption);
   font-style: normal;
   font-size: 0.97rem;
-  line-height: 1.5;
+  line-height: 1.75;
   color: var(--c-ivory);
   opacity: 0.92;
   margin: 0;
   max-width: 62ch;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .team-card__runtime {
@@ -1003,9 +1005,9 @@ a { color: inherit; }
 
 .member-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 26px;
-  padding: 26px 4px 10px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 44px 32px;
+  padding: 32px 4px 12px;
 }
 
 .member { text-align: center; }
@@ -1060,17 +1062,20 @@ a { color: inherit; }
   font-family: var(--f-caption);
   font-style: italic;
   color: var(--c-gold);
-  font-size: 0.78rem;
-  margin: 0 0 6px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 0 0 12px;
 }
 
 .member__bio {
   font-family: var(--f-caption);
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--c-silver);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* =========================================================
@@ -1153,7 +1158,7 @@ a { color: inherit; }
   .faculty { padding: 96px 16px 96px; }
   .faculty__groups { gap: 20px; }
   .credits { padding: 88px 16px 60px; }
-  .member-gallery { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px; }
+  .member-gallery { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
