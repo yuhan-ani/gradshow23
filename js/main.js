@@ -620,6 +620,12 @@
     const f = data.faculty;
     if (!f) return;
 
+    const headingEl = document.getElementById("facultyGreetingHeading");
+    if (headingEl) {
+      if (f.greeting && f.greeting.heading) headingEl.textContent = f.greeting.heading;
+      else headingEl.remove();
+    }
+
     const bodyEl = document.getElementById("facultyGreetingBody");
     if (bodyEl && f.greeting) {
       (f.greeting.paragraphs || []).forEach((text) => {
@@ -631,8 +637,8 @@
 
     const signEl = document.getElementById("facultyGreetingSign");
     if (signEl) {
-      if (f.greeting && f.greeting.name) {
-        signEl.textContent = `${f.greeting.name} ${f.greeting.title} 드림`;
+      if (f.greeting && f.greeting.sign) {
+        signEl.textContent = f.greeting.sign;
       } else {
         signEl.remove();
       }

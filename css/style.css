@@ -4,10 +4,10 @@
 
 :root {
   /* --- colors: final poster palette — muted orange/bronze antique gold, never pure black + bright gold --- */
-  --c-bg-deep: #060B0D;         /* 가장 어두운 암전 영역 */
-  --c-bg: #0C1215;              /* 사이트 기본 배경 */
-  --c-bg-raised: #1E272C;       /* 카드 등 살짝 띄운 배경 (bg-theatre) */
-  --c-bg-raised-2: #394449;     /* 보조/구조 배경 (bg-structure) */
+  --c-bg-deep: #050E0D;         /* 가장 어두운 암전 영역 */
+  --c-bg: #0A1614;              /* 사이트 기본 배경 */
+  --c-bg-raised: #1A2B28;       /* 카드 등 살짝 띄운 배경 (bg-theatre) */
+  --c-bg-raised-2: #354642;     /* 보조/구조 배경 (bg-structure) */
   --c-ivory: #D9A367;           /* 주요 작은 텍스트 (text-primary, 더 이상 ivory가 아닌 muted gold) */
   --c-ivory-bright: #D9A367;
   --c-gold: #CE8D49;            /* 메인 타이틀용 gold-primary */
@@ -529,6 +529,15 @@ a { color: inherit; }
   margin: 0 auto;
 }
 
+.faculty__greeting-heading {
+  font-family: var(--f-caption);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--c-gold);
+  margin: 0 0 28px;
+}
+
 .faculty__greeting p {
   font-size: 0.97rem;
   line-height: 1.85;
@@ -756,7 +765,7 @@ a { color: inherit; }
   justify-content: center;
   background:
     repeating-linear-gradient(135deg, rgba(206,141,73,0.05) 0 2px, transparent 2px 14px),
-    linear-gradient(160deg, #171d1f, #060B0D 70%);
+    linear-gradient(160deg, #142321, #050E0D 70%);
   cursor: pointer;
   border: none;
   padding: 0;
@@ -944,7 +953,7 @@ a { color: inherit; }
   justify-content: center;
   flex-direction: column;
   gap: 6px;
-  background: linear-gradient(160deg, #171c1e, #080b0d);
+  background: linear-gradient(160deg, #132220, #07110f);
   border-bottom: 1px dashed rgba(206,141,73,0.25);
   color: var(--c-silver);
   font-family: var(--f-caption);
@@ -1033,7 +1042,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 38%, rgba(217,163,103,0.14), transparent 60%), linear-gradient(160deg, #1E272C, #060B0D);
+  background: radial-gradient(circle at 50% 38%, rgba(217,163,103,0.14), transparent 60%), linear-gradient(160deg, #1A2B28, #050E0D);
   box-shadow: 0 0 22px 4px rgba(206,141,73,0.14);
   font-family: var(--f-display);
   font-size: 1.6rem;
