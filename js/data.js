@@ -79,8 +79,18 @@ window.SHOWCASE_DATA = {
           bioKo: "처음으로 팀원들과 함께 졸업작품을 제작하며 새로운 경험을 할 수 있었습니다. 3D 작업이 쉽지 않았음에도 끝까지 함께해준 팀원들에게 감사하다는 말을 전하고 싶습니다. 모두가 잘 버텨주었기에 작품도 끝까지 완성될 수 있었다고 생각하며, 앞으로도 각자 원하는 길에서 좋은 결과가 있기를 바랍니다.",
           illustration: "assets/members/avatar-4.svg" }
       ] },
-    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "작품 -3 설명", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: "assets/posters/03.jpg",
-      members: makeMembers(3) },
+    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "평화로운 마을에서 사람들의 꿈을 담고 있던 ‘꿈 구슬’이 어느 날 흔적도 없이 사라진다. 꿈 구슬이 누군가에게 도둑맞았다는 사실을 알게 된 소녀 루나는 사라진 꿈을 되찾기 위해 위험한 그림자 세계로 향한다. 그곳에서 루나는 두려움과 시련, 장애물에 맞서며 앞으로 나아간다. 끝없는 고난과 역경을 이겨낸 루나는 마침내 자신의 꿈 구슬과 마을 사람들의 꿈 구슬을 되찾고, 모두에게 잃어버린 꿈과 희망을 다시 돌려준다.", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: "assets/posters/03.jpg",
+      members: [
+        { name: "조채원", role: "원화, 동화, 채색, 스토리보드, 배경, 캐릭터 디자인",
+          bio: "우여곡절을 거쳐 만들어가는 동안 많은 것을 배울 수 있었고, 함께해온 모든 분께 감사드립니다!",
+          illustration: "assets/members/avatar-5.svg" },
+        { name: "정민석", role: "원화, 동화, 채색, 스토리보드, 캐릭터 디자인",
+          bio: "많이 미숙했지만 뜻깊은 제작이었습니다!",
+          illustration: "assets/members/avatar-6.svg" },
+        { name: "박한별", role: "감독, 원화, 동화, 채색, 스토리보드, 배경, 편집",
+          bio: "나를 죽이지 못하는 고통은 나를 더 강하게 만든다.",
+          illustration: "assets/members/avatar-1.svg" }
+      ] },
     { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "작품 -4 설명", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg",
       members: makeMembers(4) },
     { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "작품 -5 설명", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg",
