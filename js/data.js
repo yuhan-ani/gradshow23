@@ -42,7 +42,7 @@ window.SHOWCASE_DATA = {
     { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "작품 -5 설명", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: null,
       webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
       members: makeMembers(5) },
-    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "작품 -6 설명", runtime: "06:06", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: null,
+    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "작품 -6 설명", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: null,
       members: makeMembers(6) },
     { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "작품 -7 설명", runtime: "03:16", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
       members: makeMembers(7) },
