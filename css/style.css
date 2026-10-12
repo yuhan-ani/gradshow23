@@ -1001,7 +1001,7 @@ a { color: inherit; }
   transition: max-height 0.4s ease;
 }
 
-.accordion-panel.is-open { max-height: 900px; }
+.accordion-panel.is-open { max-height: none; }
 
 .member-gallery {
   display: grid;

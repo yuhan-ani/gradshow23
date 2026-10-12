@@ -560,7 +560,25 @@
     toggle.addEventListener("click", () => {
       const expanded = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!expanded));
-      panel.classList.toggle("is-open", !expanded);
+
+      if (!expanded) {
+        panel.classList.add("is-open");
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        const done = (e) => {
+          if (e.propertyName !== "max-height") return;
+          panel.removeEventListener("transitionend", done);
+          if (panel.classList.contains("is-open")) panel.style.maxHeight = "none";
+        };
+        panel.addEventListener("transitionend", done);
+        setTimeout(() => {
+          if (panel.classList.contains("is-open")) panel.style.maxHeight = "none";
+        }, 600);
+      } else {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        void panel.offsetHeight;
+        panel.classList.remove("is-open");
+        panel.style.maxHeight = "0px";
+      }
     });
   }
 
