@@ -218,8 +218,30 @@ window.SHOWCASE_DATA = {
           bio: "다들 고생하셨고 수고하셨습니다~!",
           illustration: "assets/members/avatar-1.svg" }
       ] },
-    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "작품 -11 설명", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
-      members: makeMembers(11) }
+    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "YE7VzlLtp-4", thumbnail: "assets/posters/11.jpg",
+      members: [
+        { name: "김윤영", role: "총감독, 배경",
+          bio: "팀원분들이 끝까지 잘해주셔서 너무 고마웠고 애니메이션 한 편을 만드는 경험을 할 수 있어서 굉장히 뜻깊었습니다! 교수님들과 팀원분들의 많은 도움이 있었기에 완성할 수 있었습니다! 감사합니다!!",
+          illustration: "assets/members/avatar-3.svg" },
+        { name: "최세진", role: "조감독, 원화",
+          bio: "끝까지 해내서 좋았습니다. 함께한 팀원들, 방향을 잡아주신 교수님들 모두 감사합니다.",
+          illustration: "assets/members/avatar-4.svg" },
+        { name: "주수빈", role: "배경",
+          bio: "팀원들과 합을 맞춰 나가며 하나의 작품을 완성해 낸 것이 뿌듯합니다. 많은 보람을 느낄 수 있는 시간이었습니다.",
+          illustration: "assets/members/avatar-5.svg" },
+        { name: "유현선", role: "동화",
+          bio: "이번 졸업작품을 진행하며 원화와 동화의 타이밍 감각을 확실히 익힐 수 있었습니다. 특히 핵심 동작(포즈) 사이의 연결 흐름을 파악하고, 각 동작의 프레임을 어떻게 배분하느냐에 따라 움직임의 완성도와 연출이 크게 달라진다는 점을 깊이 이해하게 되었습니다.",
+          illustration: "assets/members/avatar-6.svg" },
+        { name: "정해인", role: "동화",
+          bio: "팀원들과 함께 졸업작품을 진행하며 처음에는 제 역할을 잘 해낼 수 있을지 걱정이 많았으나, 서로 잘 이끌어준 덕분에 많은 것을 배우고 성장할 수 있었습니다. 특히 씬을 구성하는 원화와 동화의 타이밍, 채색 방법을 배우며 수행 능력을 키울 수 있었고, 배움 속 팀업의 가치와 중요성을 다시 한번 깨닫게 되었습니다.",
+          illustration: "assets/members/avatar-1.svg" },
+        { name: "김민석", role: "클린업",
+          bio: "팀원들과 함께 하나의 작품을 완성해 나가는 과정이 새롭고 뜻깊었습니다. 서로 협력하며 완성한 만큼 더욱 기억에 남는 작업이었던 것 같습니다.",
+          illustration: "assets/members/avatar-2.svg" },
+        { name: "김창윤", role: "편집",
+          bio: "능력 좋은 분들만 모인 팀에 합류해서 작업하게 되어 행운이었습니다. 작품의 분위기를 살리기 위해 사운드 연출에 특히 공을 많이 들였습니다. 즐겁게 봐주세요!",
+          illustration: "assets/members/avatar-3.svg" }
+      ] }
   ]
 };
 
