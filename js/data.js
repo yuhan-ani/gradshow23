@@ -35,7 +35,7 @@ window.SHOWCASE_DATA = {
       members: makeMembers(1) },
     { order: 2, teamName: "blue bird", title: "appel pie", genre: "3D 애니메이션", synopsis: "작품 -2 설명", runtime: "07:27", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: null,
       members: makeMembers(2) },
-    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "작품 -3 설명", runtime: "05:08", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
+    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "작품 -3 설명", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: null,
       members: makeMembers(3) },
     { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "작품 -4 설명", runtime: "07:18", mediaType: "video", videoUrl: "eRsGyueVLvQ", thumbnail: null,
       members: makeMembers(4) },
