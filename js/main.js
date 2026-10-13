@@ -561,6 +561,7 @@
 
     const $ = (sel) => ui.querySelector(sel);
     const shield = $(".vplayer__shield");
+    const center = $(".vplayer__center");
     const playBtn = $(".vplayer__play");
     const seek = $(".vplayer__seek");
     const curEl = $(".vplayer__cur");
@@ -620,7 +621,22 @@
       muteBtn.setAttribute("aria-label", silent ? "음소거 해제" : "음소거");
     }
 
-    shield.addEventListener("click", togglePlay);
+    // 터치: 화면을 누르면 컨트롤만 나오고/숨고, 재생·정지는 컨트롤 버튼이나 정중앙을 눌러야 함.
+    // 마우스: 영상 아무 곳이나 클릭하면 재생·정지
+    shield.addEventListener("click", (e) => {
+      const touch = e.pointerType ? e.pointerType !== "mouse" : isTouch();
+      if (!touch) { togglePlay(); return; }
+      if (container.classList.contains("is-idle") || !playing) {
+        showUi();
+      } else {
+        clearTimeout(idleTimer);
+        container.classList.add("is-idle");
+      }
+    });
+    center.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
     playBtn.addEventListener("click", togglePlay);
 
     seek.addEventListener("input", () => {
@@ -737,9 +753,13 @@
     document.addEventListener("fullscreenchange", () => { updateFsIcon(); syncOrientation(); });
     document.addEventListener("webkitfullscreenchange", () => { updateFsIcon(); syncOrientation(); });
 
-    ["mousemove", "touchstart", "keydown", "focusin"].forEach((evt) =>
+    ["mousemove", "keydown", "focusin"].forEach((evt) =>
       container.addEventListener(evt, showUi, { passive: true })
     );
+    // 컨트롤(버튼·슬라이더)을 만질 때는 숨김 타이머를 다시 시작. 화면(막)을 누르는 건 위의 click 처리에서 따로 다룸
+    container.addEventListener("pointerdown", (e) => {
+      if (!shield.contains(e.target) && !center.contains(e.target)) showUi();
+    }, { passive: true });
     container.addEventListener("keydown", (e) => {
       if (e.key === " " && e.target === container) { e.preventDefault(); togglePlay(); }
     });
