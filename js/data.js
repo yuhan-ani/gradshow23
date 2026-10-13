@@ -6,6 +6,8 @@
  * - 지금은 다른 사람에게 데모로 보여주기 위해 제목/설명/팀원/러닝타임을 전부 플레이스홀더(작품 -N, 팀 -N, 학생-N, 00:00)로 단순화한 상태입니다.
  */
 window.SHOWCASE_DATA = {
+  // 영상 공개 여부: false면 모든 영상 칸이 "COMING SOON"으로 가려지고, true로 바꾸면 바로 재생할 수 있게 열린다
+  videosOpen: false,
   hero: {
     title: "DRAWN TO THE SPOTLIGHT",
     subtitle: "2026 Animation & Webtoon Graduation Showcase",

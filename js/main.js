@@ -415,13 +415,22 @@
     article.innerHTML = `
       <div class="team-card__frame">
         <div class="team-card__media">
+          ${data.videosOpen === false ? `
+          <div class="video-embed video-embed--soon" data-order="${team.order}" role="img" aria-label="${escapeAttr(team.title)} 영상 공개 예정">
+            <span class="video-embed__thumb-genre">${escapeHtml(team.genre)}</span>
+            <span class="video-soon">
+              <span class="video-soon__star" aria-hidden="true"></span>
+              <span class="video-soon__title">Coming Soon</span>
+              <span class="video-soon__sub">영상 공개 예정</span>
+            </span>
+          </div>` : `
           <div class="video-embed" data-order="${team.order}">
             <button type="button" class="video-embed__thumb" aria-label="${escapeAttr(team.title)} 영상 재생">
               <span class="video-embed__thumb-genre">${escapeHtml(team.genre)}</span>
               <span class="video-embed__play" aria-hidden="true">▶</span>
               <span class="video-embed__thumb-caption">Click to Play</span>
             </button>
-          </div>
+          </div>`}
         </div>
         <div class="team-card__body">
           <span class="team-card__order">Feature No. ${String(team.order).padStart(2, "0")}</span>

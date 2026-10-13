@@ -1416,3 +1416,47 @@ a { color: inherit; }
 /* 움직이는 요소를 미리 별도 레이어로 올려 두어 첫 프레임부터 매끄럽게 */
 .hero__spotlight { will-change: opacity; }
 .hero__gallery-frame { backface-visibility: hidden; }
+
+/* 영상 공개 전: 재생 버튼 대신 COMING SOON 표시 */
+.video-embed--soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(135deg, rgba(208, 138, 78, 0.05) 0 2px, transparent 2px 14px),
+    linear-gradient(160deg, #121b24, #070B10 70%);
+  cursor: default;
+}
+.video-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  text-align: center;
+}
+.video-soon__star {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: var(--g-gold);
+  clip-path: polygon(50% 0%, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0% 50%, 39% 38%);
+  filter: drop-shadow(0 0 4px var(--c-gold-line));
+}
+.video-soon__title {
+  font-family: var(--f-display);
+  font-size: clamp(1.1rem, 3.4vw, 1.7rem);
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  text-transform: uppercase;
+  background-image: var(--g-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.video-soon__sub {
+  font-family: var(--f-caption);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--c-silver);
+}
