@@ -38,7 +38,7 @@ window.SHOWCASE_DATA = {
     ]
   },
   teams: [
-    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "〈구름을 좇는 아이〉는 ‘자신을 있는 그대로 받아들이고 사랑하자’를 주제로 제작한 2D 단편 애니메이션이다. 회색 곱슬머리 때문에 친구들에게 ‘먹구름’이라 놀림받으며 자신의 모습을 콤플렉스로 여기던 누리는 구름을 배달하는 요정 루아를 만나게 된다. 도망친 먹구름을 찾으면 머리를 바꿔주겠다는 루아의 제안을 받아들인 누리는 함께 먹구름을 찾아 나서고, 거울 속 세계에서 자신의 모습을 마주하게 된다. 그 과정에서 누리는 자신이 싫어했던 모습을 받아들이며 있는 그대로의 자신을 사랑하는 법을 깨닫는다.", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: "assets/posters/01.jpg", posterY: 70,
+    { order: 1, teamName: "몽글", title: "구름을 좇는 아이", genre: "2D 애니메이션", synopsis: "〈구름을 좇는 아이〉는 ‘자신을 있는 그대로 받아들이고 사랑하자’를 주제로 제작한 2D 단편 애니메이션이다. 회색 곱슬머리 때문에 친구들에게 ‘먹구름’이라 놀림받으며 자신의 모습을 콤플렉스로 여기던 누리는 구름을 배달하는 요정 루아를 만나게 된다. 도망친 먹구름을 찾으면 머리를 바꿔주겠다는 루아의 제안을 받아들인 누리는 함께 먹구름을 찾아 나서고, 거울 속 세계에서 자신의 모습을 마주하게 된다. 그 과정에서 누리는 자신이 싫어했던 모습을 받아들이며 있는 그대로의 자신을 사랑하는 법을 깨닫는다.", runtime: "06:56", mediaType: "video", videoUrl: "s846yUkLK1U", thumbnail: "assets/posters/01.jpg", posterY: 50,
       members: [
         { name: "홍가영", role: "원동화 러프(기본도형, 디테일, 흐름), 3D 배경 렌더, 3D 배경 보정, 컬러 가이드",
           bio: "졸업작품을 진행하며 제 스스로 욕심이 생기며 아쉬움이 남기도 했지만 동시에 작업에 재미를 느끼기도 했던 것 같습니다. 팀원분들 모두가 열심히 해주셔서 감사합니다!",
@@ -59,7 +59,7 @@ window.SHOWCASE_DATA = {
           bio: "복학하면서 프로젝트 중간에 합류하게 되어 처음에는 적응하는 데 어려움도 있었습니다. 하지만 팀원들과 함께 작업하면서 금방 익숙해졌고, 하나의 작품을 완성하기까지 여러 가지를 배우고 경험할 수 있었습니다. 쉽지만은 않았지만 끝까지 함께해서 더 뿌듯한 작업이었습니다.",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "〈Apple Pie〉는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg", posterY: 70,
+    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "〈Apple Pie〉는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg", posterY: 45,
       members: [
         { name: "이희진", role: "감독, 3D모델링 및 리깅, 애니메이팅",
           bio: "A l'approche de la projection de mon film de fin d'études, j'ai l'impression que c'est vraiment la fin... Toute l'équipe, vous avez vraiment bien travaillé. Et je remercie le professeur, l'assistant et le comité exécutif qui m'ont aidé à organiser la projection. Enfin, les gars, merci d'avoir suivi le mauvais chef, je vous aime. ＼(^○^)／",
@@ -82,7 +82,7 @@ window.SHOWCASE_DATA = {
           bioKo: "처음으로 팀원들과 함께 졸업작품을 제작하며 새로운 경험을 할 수 있었습니다. 3D 작업이 쉽지 않았음에도 끝까지 함께해준 팀원들에게 감사하다는 말을 전하고 싶습니다. 모두가 잘 버텨주었기에 작품도 끝까지 완성될 수 있었다고 생각하며, 앞으로도 각자 원하는 길에서 좋은 결과가 있기를 바랍니다.",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "평화로운 마을에서 사람들의 꿈을 담고 있던 ‘꿈 구슬’이 어느 날 흔적도 없이 사라진다. 꿈 구슬이 누군가에게 도둑맞았다는 사실을 알게 된 소녀 루나는 사라진 꿈을 되찾기 위해 위험한 그림자 세계로 향한다. 그곳에서 루나는 두려움과 시련, 장애물에 맞서며 앞으로 나아간다. 끝없는 고난과 역경을 이겨낸 루나는 마침내 자신의 꿈 구슬과 마을 사람들의 꿈 구슬을 되찾고, 모두에게 잃어버린 꿈과 희망을 다시 돌려준다.", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: "assets/posters/03.jpg",
+    { order: 3, teamName: "매드쉽", title: "카아루디루나", genre: "2D 애니메이션", synopsis: "평화로운 마을에서 사람들의 꿈을 담고 있던 ‘꿈 구슬’이 어느 날 흔적도 없이 사라진다. 꿈 구슬이 누군가에게 도둑맞았다는 사실을 알게 된 소녀 루나는 사라진 꿈을 되찾기 위해 위험한 그림자 세계로 향한다. 그곳에서 루나는 두려움과 시련, 장애물에 맞서며 앞으로 나아간다. 끝없는 고난과 역경을 이겨낸 루나는 마침내 자신의 꿈 구슬과 마을 사람들의 꿈 구슬을 되찾고, 모두에게 잃어버린 꿈과 희망을 다시 돌려준다.", runtime: "05:08", mediaType: "video", videoUrl: "XgGh9kan85w", thumbnail: "assets/posters/03.jpg", posterY: 25,
       members: [
         { name: "박한별", role: "감독, 원화, 동화, 채색, 스토리보드, 배경, 편집",
           bio: "나를 죽이지 못하는 고통은 나를 더 강하게 만든다.",
@@ -94,7 +94,7 @@ window.SHOWCASE_DATA = {
           bio: "많이 미숙했지만 뜻깊은 제작이었습니다!",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "서로 다른 두 세계를 배경으로, 우연한 만남을 통해 이어지는 사람들의 기억과 감정을 담아낸 감성 판타지 작품. 다른 세계에서 온 소녀 레나와 커피를 수확하며 살아가는 청년 바리의 만남을 중심으로, 낯선 두 사람이 함께 시간을 보내며 서로에게 특별한 존재가 되어가는 과정. 작품 속 커피를 기억과 감정을 연결하는 매개체로 활용하여, 소중한 사람과의 관계와 미처 전하지 못했던 마음의 의미를 담아낸 작품.", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg", posterY: 70,
+    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "서로 다른 두 세계를 배경으로, 우연한 만남을 통해 이어지는 사람들의 기억과 감정을 담아낸 감성 판타지 작품. 다른 세계에서 온 소녀 레나와 커피를 수확하며 살아가는 청년 바리의 만남을 중심으로, 낯선 두 사람이 함께 시간을 보내며 서로에게 특별한 존재가 되어가는 과정. 작품 속 커피를 기억과 감정을 연결하는 매개체로 활용하여, 소중한 사람과의 관계와 미처 전하지 못했던 마음의 의미를 담아낸 작품.", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg", posterY: 55,
       members: [
         { name: "이진우", role: "감독, 편집, 스토리보드 일부, 시나리오, 원화, 동화 일부",
           bio: "모자란 감독과 작업하느라 고생한 팀원분들에게 감사의 말씀 드리고 싶고, 진짜 저희 손으로 작품을 만들어냈다는 게 믿기지 않습니다.",
@@ -106,7 +106,7 @@ window.SHOWCASE_DATA = {
           bio: "졸업작품 작업은 저에게 이론을 넘어, 실제로 작업을 내 손으로 해본 가장 값진 시간이었습니다.",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 5,
+    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 15,
       webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
       members: [
         { group: "PV 프로모션팀", name: "장진형", role: "팀장, 프로모션 스틸컷 제작, 웹툰 인물 명암 및 러프 보조",
@@ -128,7 +128,7 @@ window.SHOWCASE_DATA = {
         { group: "웹툰팀", name: "이혁", role: "웹툰 인물 밑색",
           bio: "고생하셨습니다.", illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "단편 애니메이션 〈갑각〉은 청소년기 관계 속에서 드러나는 감정의 어긋남과 균열을 다루는 청춘 드라마다. 작품은 16살의 여름, 친구로 지냈던 두 인물 A와 B의 관계를 서로 다른 기억과 감정의 시선으로 그려낸다. 우정과 동경, 애착과 집착 사이에서 서툴게 엇갈리는 두 사람의 관계를 통해 청소년기의 불안정한 감정과 애착이 남기는 흔적을 섬세하게 담아낸다.", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: "assets/posters/06.jpg", posterY: 70,
+    { order: 6, teamName: "먼지", title: "갑각", genre: "2D 애니메이션", synopsis: "단편 애니메이션 〈갑각〉은 청소년기 관계 속에서 드러나는 감정의 어긋남과 균열을 다루는 청춘 드라마다. 작품은 16살의 여름, 친구로 지냈던 두 인물 A와 B의 관계를 서로 다른 기억과 감정의 시선으로 그려낸다. 우정과 동경, 애착과 집착 사이에서 서툴게 엇갈리는 두 사람의 관계를 통해 청소년기의 불안정한 감정과 애착이 남기는 흔적을 섬세하게 담아낸다.", runtime: "06:06", mediaType: "video", videoUrl: "sub8wsunoPg", thumbnail: "assets/posters/06.jpg", posterY: 50,
       members: [
         { name: "박채연", role: "각본/감독, 콘티, 배경미술",
           bio: "부족한 제게 먼지 친구들과 협력하여 작품을 만드는 과정은 정말 좋은 경험이자 큰 영광이었습니다. 팀 이름과 같이 작은 먼지들이 모여 한 덩어리를 만들듯, 사소한 것 하나부터 마지막까지 함께 만들어나가고 헤쳐 나가는 모든 과정이기에 뜻깊었습니다. 함께할 수 있어서 기뻤고, 함께 끝마쳐 더욱 기쁩니다.",
@@ -143,7 +143,7 @@ window.SHOWCASE_DATA = {
           bio: "졸업작품을 준비하면서 생각보다 힘든 순간도 많았지만 그래도 하나씩 완성해가는 과정이 재미있었습니다! 다 같이 고생하면서 만든 만큼 완성된 작품을 보니 뿌듯하기도 하고 이제 끝이라고 생각하니 조금 아쉽기도 합니다. 그동안 같이 고생한 팀원들 모두 수고 많았습니다ㅎㅎ",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "〈Instant World〉는 달콤한 간식을 좋아하지만 먹을 수 없는 병을 가진 소녀 시온과, 그런 시온을 돕는 미니미 로크의 이야기를 담은 2D 뮤직비디오 애니메이션이다. 상상 속 간식으로 가득한 세계에서 두 친구가 함께하는 따뜻한 일상과 추억을 통해, 좋아하는 것들과 소중한 행복을 마음속에 간직하며 살아가는 의미를 전한다.", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: "assets/posters/07.jpg", posterY: 70,
+    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "〈Instant World〉는 달콤한 간식을 좋아하지만 먹을 수 없는 병을 가진 소녀 시온과, 그런 시온을 돕는 미니미 로크의 이야기를 담은 2D 뮤직비디오 애니메이션이다. 상상 속 간식으로 가득한 세계에서 두 친구가 함께하는 따뜻한 일상과 추억을 통해, 좋아하는 것들과 소중한 행복을 마음속에 간직하며 살아가는 의미를 전한다.", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: "assets/posters/07.jpg", posterY: 45,
       members: [
         { name: "고은빈", role: "감독, 원동화, 배경",
           bio: "긴 시간 동안 졸업작품을 제작하면서 많은 점을 배울 수 있는 시간이었습니다. 다 함께 힘을 모아 제작하게 되어 기쁘고 즐거웠습니다. 부족한 점이 많은 감독이었지만, 믿고 함께해 준 팀원분들에게 감사합니다. 수고 많으셨습니다!",
@@ -221,7 +221,7 @@ window.SHOWCASE_DATA = {
           bio: "다들 고생하셨고 수고하셨습니다~!",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "d_K_x9l9suk", thumbnail: "assets/posters/11.jpg", posterY: 70,
+    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "d_K_x9l9suk", thumbnail: "assets/posters/11.jpg", posterY: 55,
       members: [
         { name: "김윤영", role: "총감독, 배경",
           bio: "팀원분들이 끝까지 잘해주셔서 너무 고마웠고 애니메이션 한 편을 만드는 경험을 할 수 있어서 굉장히 뜻깊었습니다! 교수님들과 팀원분들의 많은 도움이 있었기에 완성할 수 있었습니다! 감사합니다!!",
