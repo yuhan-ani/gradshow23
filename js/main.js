@@ -482,16 +482,21 @@
       container.appendChild(playerHost);
 
       const YT = await loadYouTubeAPI();
+      let controls = null;
       new YT.Player(playerHost.id, {
         videoId: team.videoUrl,
-        playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+        playerVars: { controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, playsinline: 1, iv_load_policy: 3 },
         events: {
-          onReady: (e) => e.target.playVideo(),
+          onReady: (e) => {
+            controls = buildPlayerControls(container, e.target, YT);
+            e.target.playVideo();
+          },
           onStateChange: (e) => {
             if (e.data === YT.PlayerState.PLAYING) {
               if (activePlayer && activePlayer !== e.target) activePlayer.pauseVideo();
               activePlayer = e.target;
             }
+            if (controls) controls.onState(e.data);
             if (team.mediaType === "video+webtoon" && e.data === YT.PlayerState.ENDED) {
               revealWebtoonPrompt(team.order);
             }
@@ -499,6 +504,193 @@
         }
       });
     });
+  }
+
+  /* ---------------------------------------------------------
+     4.5 직접 만든 재생 컨트롤 — 유튜브 기본 컨트롤/로고/제목 링크를 가리고
+         재생·진행바·시간·소리·전체화면을 사이트에서 제공
+  --------------------------------------------------------- */
+  const ICONS = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4.2" height="14" rx="1" fill="currentColor"/><rect x="13.8" y="5" width="4.2" height="14" rx="1" fill="currentColor"/></svg>',
+    volume: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5l4.5 3.8V5.7L7.5 9.5H4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    muted: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5l4.5 3.8V5.7L7.5 9.5H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    enter: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  };
+
+  function formatTime(sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    const m = Math.floor(sec / 60);
+    const s = String(sec % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  function buildPlayerControls(container, player, YT) {
+    container.classList.add("vplayer", "is-paused");
+
+    const ui = document.createElement("div");
+    ui.className = "vplayer__ui";
+    ui.innerHTML = `
+      <div class="vplayer__shield"></div>
+      <div class="vplayer__center" aria-hidden="true">${ICONS.play}</div>
+      <div class="vplayer__bar">
+        <button type="button" class="vplayer__btn vplayer__play" aria-label="재생">${ICONS.play}</button>
+        <span class="vplayer__time vplayer__cur">0:00</span>
+        <input class="vplayer__seek" type="range" min="0" max="1000" value="0" step="1" aria-label="재생 위치">
+        <span class="vplayer__time vplayer__dur">0:00</span>
+        <button type="button" class="vplayer__btn vplayer__mute" aria-label="음소거">${ICONS.volume}</button>
+        <input class="vplayer__vol" type="range" min="0" max="100" value="100" step="1" aria-label="볼륨">
+        <button type="button" class="vplayer__btn vplayer__fs" aria-label="전체화면">${ICONS.enter}</button>
+      </div>`;
+    container.appendChild(ui);
+
+    const $ = (sel) => ui.querySelector(sel);
+    const shield = $(".vplayer__shield");
+    const playBtn = $(".vplayer__play");
+    const seek = $(".vplayer__seek");
+    const curEl = $(".vplayer__cur");
+    const durEl = $(".vplayer__dur");
+    const muteBtn = $(".vplayer__mute");
+    const vol = $(".vplayer__vol");
+    const fsBtn = $(".vplayer__fs");
+
+    let playing = false;
+    let seeking = false;
+    let tick = null;
+    let idleTimer = null;
+
+    function setFill(el, pct) { el.style.setProperty("--p", `${pct}%`); }
+    setFill(seek, 0);
+    setFill(vol, 100);
+
+    function refreshTime() {
+      const dur = player.getDuration() || 0;
+      const cur = seeking ? (seek.value / 1000) * dur : player.getCurrentTime() || 0;
+      curEl.textContent = formatTime(cur);
+      durEl.textContent = formatTime(dur);
+      if (!seeking) {
+        const pct = dur ? (cur / dur) * 100 : 0;
+        seek.value = String(Math.round(pct * 10));
+        setFill(seek, pct);
+      }
+    }
+
+    function showUi() {
+      container.classList.remove("is-idle");
+      clearTimeout(idleTimer);
+      if (playing) idleTimer = setTimeout(() => container.classList.add("is-idle"), 2600);
+    }
+
+    function togglePlay() {
+      const st = player.getPlayerState();
+      if (st === YT.PlayerState.PLAYING || st === YT.PlayerState.BUFFERING) {
+        player.pauseVideo();
+      } else {
+        if (st === YT.PlayerState.ENDED) player.seekTo(0, true);
+        player.playVideo();
+      }
+      showUi();
+    }
+
+    // 유튜브 API의 mute/setVolume은 바로 반영되지 않으므로 상태를 직접 기억해 아이콘에 사용
+    let isMuted = !!player.isMuted();
+    let level = Number(player.getVolume());
+    if (!Number.isFinite(level)) level = 100;
+    vol.value = String(level);
+    setFill(vol, level);
+
+    function updateMuteIcon() {
+      const silent = isMuted || level === 0;
+      muteBtn.innerHTML = silent ? ICONS.muted : ICONS.volume;
+      muteBtn.setAttribute("aria-label", silent ? "음소거 해제" : "음소거");
+    }
+
+    shield.addEventListener("click", togglePlay);
+    playBtn.addEventListener("click", togglePlay);
+
+    seek.addEventListener("input", () => {
+      seeking = true;
+      setFill(seek, seek.value / 10);
+      refreshTime();
+      showUi();
+    });
+    seek.addEventListener("change", () => {
+      const dur = player.getDuration() || 0;
+      player.seekTo((seek.value / 1000) * dur, true);
+      seeking = false;
+      refreshTime();
+    });
+
+    muteBtn.addEventListener("click", () => {
+      if (isMuted || level === 0) {
+        player.unMute();
+        isMuted = false;
+        if (level === 0) { level = 60; player.setVolume(60); vol.value = "60"; setFill(vol, 60); }
+      } else {
+        player.mute();
+        isMuted = true;
+      }
+      updateMuteIcon();
+      showUi();
+    });
+
+    vol.addEventListener("input", () => {
+      level = Number(vol.value);
+      setFill(vol, level);
+      player.setVolume(level);
+      if (level > 0 && isMuted) { player.unMute(); isMuted = false; }
+      updateMuteIcon();
+      showUi();
+    });
+
+    const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+    function updateFsIcon() {
+      const on = fsElement() === container || container.classList.contains("is-pseudo-fs");
+      fsBtn.innerHTML = on ? ICONS.exit : ICONS.enter;
+      fsBtn.setAttribute("aria-label", on ? "전체화면 종료" : "전체화면");
+    }
+    fsBtn.addEventListener("click", () => {
+      if (fsElement() === container) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else if (container.classList.contains("is-pseudo-fs")) {
+        container.classList.remove("is-pseudo-fs");
+        updateFsIcon();
+      } else if (container.requestFullscreen || container.webkitRequestFullscreen) {
+        const req = (container.requestFullscreen || container.webkitRequestFullscreen).call(container);
+        if (req && req.catch) req.catch(() => { container.classList.add("is-pseudo-fs"); updateFsIcon(); });
+      } else {
+        container.classList.add("is-pseudo-fs");
+        updateFsIcon();
+      }
+      showUi();
+    });
+    document.addEventListener("fullscreenchange", updateFsIcon);
+    document.addEventListener("webkitfullscreenchange", updateFsIcon);
+
+    ["mousemove", "touchstart", "keydown", "focusin"].forEach((evt) =>
+      container.addEventListener(evt, showUi, { passive: true })
+    );
+    container.addEventListener("keydown", (e) => {
+      if (e.key === " " && e.target === container) { e.preventDefault(); togglePlay(); }
+    });
+
+    updateMuteIcon();
+    refreshTime();
+
+    return {
+      onState(state) {
+        const S = YT.PlayerState;
+        playing = state === S.PLAYING || state === S.BUFFERING;
+        container.classList.toggle("is-paused", !playing);
+        playBtn.innerHTML = playing ? ICONS.pause : ICONS.play;
+        playBtn.setAttribute("aria-label", playing ? "일시정지" : "재생");
+        clearInterval(tick);
+        if (state === S.PLAYING) tick = setInterval(refreshTime, 250);
+        refreshTime();
+        showUi();
+      }
+    };
   }
 
   /* ---------------------------------------------------------

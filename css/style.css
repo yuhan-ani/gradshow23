@@ -1230,3 +1230,138 @@ a { color: inherit; }
   background: linear-gradient(90deg, transparent, var(--c-gold-line));
 }
 .member-group::after { background: linear-gradient(270deg, transparent, var(--c-gold-line)); }
+
+/* =========================================================
+   VIDEO PLAYER — 직접 만든 재생 컨트롤
+   ========================================================= */
+.vplayer__ui { position: absolute; inset: 0; z-index: 2; }
+
+/* 유튜브 플레이어 전체를 덮는 투명한 막: 로고·제목·채널 링크가 눌리지 않게 하고, 클릭하면 재생/일시정지 */
+.vplayer__shield { position: absolute; inset: 0; cursor: pointer; }
+.vplayer.is-idle .vplayer__shield { cursor: none; }
+
+.vplayer__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 76px;
+  height: 76px;
+  margin: -38px 0 0 -38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-gold);
+  background: rgba(7, 11, 16, 0.55);
+  color: var(--c-gold-bright);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.vplayer__center svg { width: 34px; height: 34px; margin-left: 3px; }
+.vplayer.is-paused .vplayer__center { opacity: 1; transform: scale(1); }
+
+.vplayer__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 34px 14px 10px;
+  background: linear-gradient(180deg, rgba(7, 11, 16, 0), rgba(7, 11, 16, 0.88));
+  color: var(--c-ivory);
+  transition: opacity 0.3s ease;
+}
+.vplayer.is-idle .vplayer__bar { opacity: 0; pointer-events: none; }
+
+.vplayer__btn {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--c-gold-bright);
+  cursor: pointer;
+}
+.vplayer__btn svg { width: 22px; height: 22px; }
+.vplayer__btn:hover { color: var(--c-spotlight-core); }
+.vplayer__btn:focus-visible,
+.vplayer__seek:focus-visible,
+.vplayer__vol:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 2px; }
+
+.vplayer__time {
+  flex: none;
+  font-family: var(--f-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-silver);
+}
+
+.vplayer__seek,
+.vplayer__vol {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  height: 4px;
+  padding: 10px 0;
+  margin: 0;
+  background-clip: content-box;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--c-gold) var(--p, 0%), rgba(232, 223, 196, 0.22) var(--p, 0%));
+  border-radius: 6px;
+  cursor: pointer;
+  touch-action: none;
+}
+.vplayer__seek { flex: 1; min-width: 0; }
+.vplayer__vol { flex: none; width: 72px; }
+
+.vplayer__seek::-webkit-slider-thumb,
+.vplayer__vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-gold-bright);
+  border: 0;
+  box-shadow: 0 0 0 3px rgba(7, 11, 16, 0.5);
+}
+.vplayer__seek::-moz-range-thumb,
+.vplayer__vol::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-gold-bright);
+  border: 0;
+}
+.vplayer__seek::-moz-range-track,
+.vplayer__vol::-moz-range-track { background: transparent; }
+
+/* 전체화면 */
+.vplayer:fullscreen,
+.vplayer:-webkit-full-screen { aspect-ratio: auto; border: 0; width: 100%; height: 100%; }
+.vplayer.is-pseudo-fs {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  aspect-ratio: auto;
+  border: 0;
+}
+
+@media (max-width: 560px) {
+  .vplayer__vol { display: none; }
+  .vplayer__bar { gap: 8px; padding: 30px 8px 6px; }
+  .vplayer__center { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
+  .vplayer__center svg { width: 28px; height: 28px; }
+}
