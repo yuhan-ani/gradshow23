@@ -237,10 +237,24 @@
 
     const after = (ms, fn) => window.setTimeout(fn, ms);
 
-    after(300, () => hero.classList.add("hero--posters-in"));    // 11개 포스터 조립
-    after(2100, () => hero.classList.add("hero--spotlight-on")); // 스포트라이트 점등
-    after(2400, () => hero.classList.add("hero--revealed"));     // 포스터가 빛을 받아 밝아짐
-    after(2800, () => hero.classList.add("hero--ornament-in"));  // 금장식 등장(타이틀은 CSS 자체 딜레이로 비슷한 시점에 등장)
+    // 포스터 사진과 글꼴이 준비(내려받기 + 디코딩)되기 전에 애니메이션이 시작되면 움직이는 도중에 사진이 튀어나오며 끊겨 보인다.
+    // 모두 준비된 뒤에 시작하되, 느린 네트워크에서도 너무 오래 기다리지 않도록 최대 3초까지만 기다린다.
+    const imgs = Array.from(hero.querySelectorAll(".hero__gallery-frame img"));
+    const ready = imgs.map((img) =>
+      img.decode ? img.decode().catch(() => {}) : new Promise((res) => { img.complete ? res() : (img.onload = img.onerror = res); })
+    );
+    if (document.fonts && document.fonts.ready) ready.push(document.fonts.ready);
+    const cap = new Promise((res) => window.setTimeout(res, 3000));
+
+    Promise.race([Promise.all(ready), cap]).then(() => {
+      // 준비된 직후 한 프레임을 먼저 그린 다음 시작해서 시작 시점의 끊김도 줄인다
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        after(300, () => hero.classList.add("hero--posters-in"));    // 11개 포스터 조립
+        after(2100, () => hero.classList.add("hero--spotlight-on")); // 스포트라이트 점등
+        after(2400, () => hero.classList.add("hero--revealed"));     // 포스터가 빛을 받아 밝아짐
+        after(2800, () => hero.classList.add("hero--ornament-in"));  // 금장식 등장(타이틀은 CSS 자체 딜레이로 비슷한 시점에 등장)
+      }));
+    });
   }
 
   /* --- Hero 인터랙션: 스크롤에는 포스터/텍스트가 깊이감 있게 반응하고,

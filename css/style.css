@@ -241,12 +241,8 @@ a { color: inherit; }
   object-fit: cover;
   display: block;
   background: repeating-linear-gradient(135deg, #8a6f45 0 2px, #CBA680 2px 6px);
-  filter: brightness(0.5) saturate(0.75);
-  transition: filter 1.1s ease;
 }
 
-.hero--revealed .hero__gallery-mat img,
-.hero--revealed .hero__gallery-placeholder { filter: brightness(1) saturate(1); }
 
 /* 실제 포스터 이미지는 테두리까지 포함해 편집된 상태로 들어오므로, 액자(매트)를 없애고 이미지 비율 그대로 꽉 채운다 */
 .hero__gallery-frame--image { aspect-ratio: auto; }
@@ -1402,3 +1398,21 @@ a { color: inherit; }
 .vplayer__center { pointer-events: auto; cursor: pointer; }
 .vplayer__center::before { content: ""; position: absolute; inset: -16px; border-radius: 50%; }
 .vplayer.is-idle .vplayer__center { cursor: none; }
+
+/* 포스터가 "빛을 받아 밝아지는" 연출: 사진에 filter를 거는 대신 어두운 덮개의 투명도만 바꿔서 GPU가 처리하게 한다
+   (filter 전환은 매 프레임 다시 그려져서 11장이 동시에 움직일 때 끊기는 원인이 된다) */
+.hero__gallery-mat { position: relative; }
+.hero__gallery-mat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 11, 16, 0.5);
+  opacity: 1;
+  transition: opacity 1.1s ease;
+  pointer-events: none;
+}
+.hero--revealed .hero__gallery-mat::after { opacity: 0; }
+
+/* 움직이는 요소를 미리 별도 레이어로 올려 두어 첫 프레임부터 매끄럽게 */
+.hero__spotlight { will-change: opacity; }
+.hero__gallery-frame { backface-visibility: hidden; }
