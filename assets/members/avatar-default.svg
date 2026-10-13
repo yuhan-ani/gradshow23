@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="팀원 프로필 기본 아이콘">
+  <defs>
+    <radialGradient id="bgd" cx="50%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#19232D"/>
+      <stop offset="100%" stop-color="#070B10"/>
+    </radialGradient>
+    <linearGradient id="gd" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0A671"/>
+      <stop offset="100%" stop-color="#BA7336"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bgd)"/>
+  <g fill="url(#gd)">
+    <circle cx="100" cy="82" r="34"/>
+    <path d="M46,200 C46,150 70,126 100,126 C130,126 154,150 154,200 Z"/>
+  </g>
+</svg>

@@ -421,7 +421,7 @@
             <span class="video-soon">
               <span class="video-soon__star" aria-hidden="true"></span>
               <span class="video-soon__title">Coming Soon</span>
-              <span class="video-soon__sub">영상 공개 예정</span>
+              <span class="video-soon__sub">${data.videosOpenDate ? `${escapeHtml(data.videosOpenDate)} ` : ""}영상 공개 예정</span>
             </span>
           </div>` : `
           <div class="video-embed" data-order="${team.order}">
