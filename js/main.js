@@ -489,6 +489,9 @@
         events: {
           onReady: (e) => {
             controls = buildPlayerControls(container, e.target, YT);
+            const frame = container.querySelector("iframe");
+            if (frame) frame.setAttribute("tabindex", "-1");
+            container.addEventListener("scroll", () => { container.scrollTop = 0; container.scrollLeft = 0; });
             hideCaptions(e.target);
             e.target.playVideo();
           },
@@ -667,14 +670,33 @@
       } else if (container.classList.contains("is-pseudo-fs")) {
         container.classList.remove("is-pseudo-fs");
         updateFsIcon();
-      } else if (container.requestFullscreen || container.webkitRequestFullscreen) {
-        const req = (container.requestFullscreen || container.webkitRequestFullscreen).call(container);
-        if (req && req.catch) req.catch(() => { container.classList.add("is-pseudo-fs"); updateFsIcon(); });
       } else {
-        container.classList.add("is-pseudo-fs");
-        updateFsIcon();
+        const usePseudo = () => {
+          if (fsElement() === container) return;
+          container.classList.add("is-pseudo-fs");
+          updateFsIcon();
+        };
+        const request = container.requestFullscreen || container.webkitRequestFullscreen;
+        if (request) {
+          try {
+            const req = request.call(container);
+            if (req && req.catch) req.catch(usePseudo);
+          } catch (err) {
+            usePseudo();
+          }
+          // 일부 브라우저(앱 내장 브라우저 등)는 요청을 조용히 무시하므로, 곧바로 전환되지 않으면 화면 채우기로 대체
+          setTimeout(usePseudo, 450);
+        } else {
+          usePseudo();
+        }
       }
       showUi();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && container.classList.contains("is-pseudo-fs")) {
+        container.classList.remove("is-pseudo-fs");
+        updateFsIcon();
+      }
     });
     document.addEventListener("fullscreenchange", updateFsIcon);
     document.addEventListener("webkitfullscreenchange", updateFsIcon);

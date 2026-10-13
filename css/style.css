@@ -1376,3 +1376,9 @@ a { color: inherit; }
   width: 100%;
   height: calc(100% + 128px);
 }
+
+/* 틀이 안쪽에서 저절로 스크롤되어 영상이 밀리는 것을 막는다(clip은 프로그램으로도 스크롤되지 않음) */
+.vplayer { overflow: hidden; }
+@supports (overflow: clip) {
+  .vplayer { overflow: clip; }
+}
