@@ -659,10 +659,33 @@
     });
 
     const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+
+    // 전체화면에서는 화면 비율이 16:9가 아닐 수 있어서, 영상(16:9)이 잘리지 않고 가운데에 오도록
+    // 유튜브 틀 크기를 직접 계산한다(위아래 64px 여분은 유튜브 표시를 가리기 위한 것)
+    const frame = container.querySelector("iframe");
+    function layoutFrame() {
+      if (!frame) return;
+      const isFs = fsElement() === container || container.classList.contains("is-pseudo-fs");
+      if (!isFs) {
+        ["left", "top", "width", "height"].forEach((p) => frame.style.removeProperty(p));
+        return;
+      }
+      const W = container.clientWidth;
+      const H = container.clientHeight;
+      const bw = Math.min(W, (H * 16) / 9);
+      const bh = (bw * 9) / 16;
+      frame.style.left = `${(W - bw) / 2}px`;
+      frame.style.top = `${(H - bh) / 2 - 64}px`;
+      frame.style.width = `${bw}px`;
+      frame.style.height = `${bh + 128}px`;
+    }
+    window.addEventListener("resize", layoutFrame);
+
     function updateFsIcon() {
       const on = fsElement() === container || container.classList.contains("is-pseudo-fs");
       fsBtn.innerHTML = on ? ICONS.exit : ICONS.enter;
       fsBtn.setAttribute("aria-label", on ? "전체화면 종료" : "전체화면");
+      layoutFrame();
     }
     fsBtn.addEventListener("click", () => {
       if (fsElement() === container) {
@@ -698,8 +721,21 @@
         updateFsIcon();
       }
     });
-    document.addEventListener("fullscreenchange", updateFsIcon);
-    document.addEventListener("webkitfullscreenchange", updateFsIcon);
+    // 휴대폰에서 진짜 전체화면이 되면 가로 방향으로 잠금(지원하는 브라우저만). 나가면 해제
+    const isTouch = () => window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    function syncOrientation() {
+      if (!isTouch() || !screen.orientation) return;
+      try {
+        if (fsElement() === container) {
+          const p = screen.orientation.lock && screen.orientation.lock("landscape");
+          if (p && p.catch) p.catch(() => {});
+        } else if (screen.orientation.unlock) {
+          screen.orientation.unlock();
+        }
+      } catch (err) { /* 방향 잠금을 지원하지 않으면 무시 */ }
+    }
+    document.addEventListener("fullscreenchange", () => { updateFsIcon(); syncOrientation(); });
+    document.addEventListener("webkitfullscreenchange", () => { updateFsIcon(); syncOrientation(); });
 
     ["mousemove", "touchstart", "keydown", "focusin"].forEach((evt) =>
       container.addEventListener(evt, showUi, { passive: true })

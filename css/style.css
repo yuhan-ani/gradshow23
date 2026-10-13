@@ -1382,3 +1382,18 @@ a { color: inherit; }
 @supports (overflow: clip) {
   .vplayer { overflow: clip; }
 }
+
+/* 세로로 든 휴대폰에서 '화면 채우기' 전체화면이 되면 영상을 90도 눕혀 가로 화면처럼 보여준다
+   (진짜 전체화면 + 방향 잠금이 되는 기기에서는 이미 가로라서 적용되지 않는다) */
+@media (orientation: portrait) and (pointer: coarse) {
+  .vplayer.is-pseudo-fs {
+    inset: auto;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    width: 100dvh;
+    height: 100vw;
+    transform-origin: top left;
+    transform: translateX(100vw) rotate(90deg);
+  }
+}
