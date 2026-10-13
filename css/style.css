@@ -1461,27 +1461,23 @@ a { color: inherit; }
   color: var(--c-silver);
 }
 
-/* 작품 카드 뒤에 해당 팀의 포스터를 옅게 깔아, 글자 뒤로 은은하게 비치게 한다.
-   (카드 틀의 ::before/::after는 금색 점 장식과 안쪽 테두리에 이미 쓰고 있어서 별도 요소로 둔다) */
-.team-card__frame { isolation: isolate; }
-.team-card__poster {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-.team-card__poster::before,
-.team-card__poster::after {
+/* COMING SOON 칸: 해당 팀 포스터를 글자 뒤에 반투명하게 깔는다(영상 칸은 항상 16:9라서 모든 작품에서 같은 비율로 보인다) */
+.video-embed--soon { isolation: isolate; }
+.video-embed--soon::before,
+.video-embed--soon::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
 }
-.team-card__poster::before {
-  background: var(--poster, none) center / cover no-repeat;
-  opacity: 0.4;
-  filter: blur(2px) saturate(0.9);
+.video-embed--soon::before {
+  background: var(--poster, none) center 30% / cover no-repeat;
+  opacity: 0.42;
+  filter: blur(1.5px) saturate(0.9);
 }
-.team-card__poster::after {
-  background: linear-gradient(180deg, rgba(12, 19, 26, 0.35), rgba(12, 19, 26, 0.72));
+.video-embed--soon::after {
+  background: linear-gradient(180deg, rgba(7, 11, 16, 0.3), rgba(7, 11, 16, 0.6));
 }
+.video-embed--soon .video-soon,
+.video-embed--soon .video-embed__thumb-genre { z-index: 1; }
+.video-embed--soon .video-soon { position: relative; text-shadow: 0 0 10px rgba(7, 11, 16, 0.9); }

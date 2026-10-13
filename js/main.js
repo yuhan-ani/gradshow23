@@ -415,7 +415,6 @@
 
     article.innerHTML = `
       <div class="team-card__frame">
-        <div class="team-card__poster" aria-hidden="true"></div>
         <div class="team-card__media">
           ${data.videosOpen === false ? `
           <div class="video-embed video-embed--soon" data-order="${team.order}" role="img" aria-label="${escapeAttr(team.title)} 영상 공개 예정">
