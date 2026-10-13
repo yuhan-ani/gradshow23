@@ -411,7 +411,10 @@
     const article = document.createElement("article");
     article.className = "team-card";
     article.id = `team-${team.order}`;
-    if (team.thumbnail) article.style.setProperty("--poster", `url("${new URL(team.thumbnail, document.baseURI).href}")`);
+    if (team.thumbnail) {
+      article.style.setProperty("--poster", `url("${new URL(team.thumbnail, document.baseURI).href}")`);
+      article.style.setProperty("--poster-y", `${team.posterY != null ? team.posterY : 30}%`);
+    }
 
     article.innerHTML = `
       <div class="team-card__frame">

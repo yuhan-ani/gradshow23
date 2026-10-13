@@ -1471,7 +1471,7 @@ a { color: inherit; }
   z-index: -1;
 }
 .video-embed--soon::before {
-  background: var(--poster, none) center 30% / cover no-repeat;
+  background: var(--poster, none) center var(--poster-y, 30%) / cover no-repeat;
   opacity: 0.42;
   filter: blur(1.5px) saturate(0.9);
 }
