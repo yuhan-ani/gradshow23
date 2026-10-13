@@ -1365,3 +1365,14 @@ a { color: inherit; }
   .vplayer__center { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
   .vplayer__center svg { width: 28px; height: 28px; }
 }
+
+/* 일시정지·재생 직전에 유튜브가 띄우는 제목/채널/공유/로고 표시를 가리기 위해,
+   영상 틀을 위아래로 64px씩 더 길게 잡고 넘치는 부분은 .video-embed의 overflow로 잘라낸다.
+   (영상은 가로 기준으로 맞춰지므로 보이는 영역의 화면은 그대로) */
+.vplayer iframe {
+  inset: auto;
+  left: 0;
+  top: -64px;
+  width: 100%;
+  height: calc(100% + 128px);
+}

@@ -485,16 +485,18 @@
       let controls = null;
       new YT.Player(playerHost.id, {
         videoId: team.videoUrl,
-        playerVars: { controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, playsinline: 1, iv_load_policy: 3 },
+        playerVars: { controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0 },
         events: {
           onReady: (e) => {
             controls = buildPlayerControls(container, e.target, YT);
+            hideCaptions(e.target);
             e.target.playVideo();
           },
           onStateChange: (e) => {
             if (e.data === YT.PlayerState.PLAYING) {
               if (activePlayer && activePlayer !== e.target) activePlayer.pauseVideo();
               activePlayer = e.target;
+              hideCaptions(e.target);
             }
             if (controls) controls.onState(e.data);
             if (team.mediaType === "video+webtoon" && e.data === YT.PlayerState.ENDED) {
@@ -518,6 +520,15 @@
     enter: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   };
+
+  // 유튜브 자막은 재생이 시작된 뒤에 늦게 올라오기도 해서 준비될 때와 재생될 때 모두 끈다
+  function hideCaptions(player) {
+    try {
+      player.unloadModule("captions");
+      player.unloadModule("cc");
+      player.setOption("captions", "track", {});
+    } catch (err) { /* 자막 모듈이 없으면 무시 */ }
+  }
 
   function formatTime(sec) {
     sec = Math.max(0, Math.floor(sec || 0));
