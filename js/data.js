@@ -8,7 +8,7 @@
 window.SHOWCASE_DATA = {
   // 영상 공개 여부: false면 모든 영상 칸이 "COMING SOON"으로 가려지고, true로 바꾸면 바로 재생할 수 있게 열린다
   videosOpen: false,
-  videosOpenDate: "10월 26일",
+  videosOpenDate: "10월 26일 (월)",
   hero: {
     title: "DRAWN TO THE SPOTLIGHT",
     subtitle: "2026 Animation & Webtoon Graduation Showcase",
