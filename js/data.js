@@ -59,7 +59,7 @@ window.SHOWCASE_DATA = {
           bio: "복학하면서 프로젝트 중간에 합류하게 되어 처음에는 적응하는 데 어려움도 있었습니다. 하지만 팀원들과 함께 작업하면서 금방 익숙해졌고, 하나의 작품을 완성하기까지 여러 가지를 배우고 경험할 수 있었습니다. 쉽지만은 않았지만 끝까지 함께해서 더 뿌듯한 작업이었습니다.",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "〈Apple Pie〉는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg", posterY: 45,
+    { order: 2, teamName: "Blue Bird", title: "Apple Pie", genre: "3D 애니메이션", synopsis: "〈Apple Pie〉는 주인공인 소년이 맛있는 애플파이를 만들어 할머니를 행복하게 만들어주기 위해 오랫동안 노력하였다. 하지만 끝내 완성된 애플파이를 전달하지 못한 주인공의 위기와 극복을 담은 감성적인 가족 드라마 장르의 3D 애니메이션이다.", runtime: "07:30", mediaType: "video", videoUrl: "sp1Z-oJXQNY", thumbnail: "assets/posters/02.jpg", posterY: 50,
       members: [
         { name: "이희진", role: "감독, 3D모델링 및 리깅, 애니메이팅",
           bio: "A l'approche de la projection de mon film de fin d'études, j'ai l'impression que c'est vraiment la fin... Toute l'équipe, vous avez vraiment bien travaillé. Et je remercie le professeur, l'assistant et le comité exécutif qui m'ont aidé à organiser la projection. Enfin, les gars, merci d'avoir suivi le mauvais chef, je vous aime. ＼(^○^)／",
@@ -94,7 +94,7 @@ window.SHOWCASE_DATA = {
           bio: "많이 미숙했지만 뜻깊은 제작이었습니다!",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "서로 다른 두 세계를 배경으로, 우연한 만남을 통해 이어지는 사람들의 기억과 감정을 담아낸 감성 판타지 작품. 다른 세계에서 온 소녀 레나와 커피를 수확하며 살아가는 청년 바리의 만남을 중심으로, 낯선 두 사람이 함께 시간을 보내며 서로에게 특별한 존재가 되어가는 과정. 작품 속 커피를 기억과 감정을 연결하는 매개체로 활용하여, 소중한 사람과의 관계와 미처 전하지 못했던 마음의 의미를 담아낸 작품.", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg", posterY: 55,
+    { order: 4, teamName: "미정", title: "레나의 여행", genre: "2D 애니메이션", synopsis: "서로 다른 두 세계를 배경으로, 우연한 만남을 통해 이어지는 사람들의 기억과 감정을 담아낸 감성 판타지 작품. 다른 세계에서 온 소녀 레나와 커피를 수확하며 살아가는 청년 바리의 만남을 중심으로, 낯선 두 사람이 함께 시간을 보내며 서로에게 특별한 존재가 되어가는 과정. 작품 속 커피를 기억과 감정을 연결하는 매개체로 활용하여, 소중한 사람과의 관계와 미처 전하지 못했던 마음의 의미를 담아낸 작품.", runtime: "07:18", mediaType: "video", videoUrl: "7zEALosyLzI", thumbnail: "assets/posters/04.jpg", posterY: 50,
       members: [
         { name: "이진우", role: "감독, 편집, 스토리보드 일부, 시나리오, 원화, 동화 일부",
           bio: "모자란 감독과 작업하느라 고생한 팀원분들에게 감사의 말씀 드리고 싶고, 진짜 저희 손으로 작품을 만들어냈다는 게 믿기지 않습니다.",
@@ -106,7 +106,7 @@ window.SHOWCASE_DATA = {
           bio: "졸업작품 작업은 저에게 이론을 넘어, 실제로 작업을 내 손으로 해본 가장 값진 시간이었습니다.",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 15,
+    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 12,
       webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
       members: [
         { group: "PV 프로모션팀", name: "장진형", role: "팀장, 프로모션 스틸컷 제작, 웹툰 인물 명암 및 러프 보조",
@@ -221,7 +221,7 @@ window.SHOWCASE_DATA = {
           bio: "다들 고생하셨고 수고하셨습니다~!",
           illustration: "assets/members/avatar-default.svg" }
       ] },
-    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "d_K_x9l9suk", thumbnail: "assets/posters/11.jpg", posterY: 55,
+    { order: 11, teamName: "약한친구들", title: "Endless", genre: "2D 애니메이션", synopsis: "〈Endless〉는 의료용 마약류의 불법 유통과 중독의 위험성을 다룬 범죄·사회 고발 추리 애니메이션이다. 의료용 마약을 불법 유통하던 병원장은 자신의 범죄를 은폐하기 위해 살인을 저지르지만, 사건 이후 기억을 잃게 된다. 이후 사건을 목격한 간호사의 협박을 계기로 잃어버린 기억을 되찾고, 자신이 저지른 범죄와 마주하게 된다. 그러나 끝내 자신마저 마약에 중독되는 비극적인 결말을 맞이한다. 작품은 “이젠 누구도 돌아갈 수 없어”라는 대사를 통해 한 번 시작된 마약 범죄와 중독이 돌이킬 수 없는 결과로 이어질 수 있음을 보여주며, 마약류 오남용과 불법 유통의 심각성에 대한 경각심을 전달하고자 한다.", runtime: "07:05", mediaType: "video", videoUrl: "d_K_x9l9suk", thumbnail: "assets/posters/11.jpg", posterY: 60,
       members: [
         { name: "김윤영", role: "총감독, 배경",
           bio: "팀원분들이 끝까지 잘해주셔서 너무 고마웠고 애니메이션 한 편을 만드는 경험을 할 수 있어서 굉장히 뜻깊었습니다! 교수님들과 팀원분들의 많은 도움이 있었기에 완성할 수 있었습니다! 감사합니다!!",
