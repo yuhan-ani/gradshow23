@@ -637,10 +637,17 @@
 
     // 터치: 화면을 누르면 컨트롤만 나오고/숨고, 재생·정지는 컨트롤 버튼이나 정중앙을 눌러야 함.
     // 마우스: 영상 아무 곳이나 클릭하면 재생·정지
+    // 폰은 터치할 때 가짜 mousemove 등을 먼저 보내 컨트롤이 미리 켜지므로, 터치를 시작한 순간의 상태를 기억해서 판단한다
+    let idleAtTouch = null;
+    shield.addEventListener("pointerdown", () => {
+      idleAtTouch = container.classList.contains("is-idle");
+    }, { passive: true });
     shield.addEventListener("click", (e) => {
       const touch = e.pointerType ? e.pointerType !== "mouse" : isTouch();
       if (!touch) { togglePlay(); return; }
-      if (container.classList.contains("is-idle") || !playing) {
+      const wasHidden = idleAtTouch !== null ? idleAtTouch : container.classList.contains("is-idle");
+      idleAtTouch = null;
+      if (wasHidden || !playing) {
         showUi();
       } else {
         clearTimeout(idleTimer);
@@ -767,9 +774,13 @@
     document.addEventListener("fullscreenchange", () => { updateFsIcon(); syncOrientation(); });
     document.addEventListener("webkitfullscreenchange", () => { updateFsIcon(); syncOrientation(); });
 
-    ["mousemove", "keydown", "focusin"].forEach((evt) =>
+    ["keydown", "focusin"].forEach((evt) =>
       container.addEventListener(evt, showUi, { passive: true })
     );
+    // 진짜 마우스가 움직일 때만 컨트롤을 띄운다(터치 때 브라우저가 만들어 보내는 가짜 mousemove는 무시)
+    container.addEventListener("pointermove", (e) => {
+      if (e.pointerType === "mouse") showUi();
+    }, { passive: true });
     // 컨트롤(버튼·슬라이더)을 만질 때는 숨김 타이머를 다시 시작. 화면(막)을 누르는 건 위의 click 처리에서 따로 다룸
     container.addEventListener("pointerdown", (e) => {
       if (!shield.contains(e.target) && !center.contains(e.target)) showUi();
