@@ -140,7 +140,7 @@ window.SHOWCASE_DATA = {
           bio: "졸업작품을 준비하면서 생각보다 힘든 순간도 많았지만 그래도 하나씩 완성해가는 과정이 재미있었습니다! 다 같이 고생하면서 만든 만큼 완성된 작품을 보니 뿌듯하기도 하고 이제 끝이라고 생각하니 조금 아쉽기도 합니다. 그동안 같이 고생한 팀원들 모두 수고 많았습니다ㅎㅎ",
           illustration: "assets/members/avatar-5.svg" }
       ] },
-    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "작품 -7 설명", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: "assets/posters/07.jpg",
+    { order: 7, teamName: "달콤공방", title: "Instant World", genre: "2D 애니메이션", synopsis: "〈Instant World〉는 달콤한 간식을 좋아하지만 먹을 수 없는 병을 가진 소녀 시온과, 그런 시온을 돕는 미니미 로크의 이야기를 담은 2D 뮤직비디오 애니메이션이다. 상상 속 간식으로 가득한 세계에서 두 친구가 함께하는 따뜻한 일상과 추억을 통해, 좋아하는 것들과 소중한 행복을 마음속에 간직하며 살아가는 의미를 전한다.", runtime: "03:16", mediaType: "video", videoUrl: "skOjLSdg4KY", thumbnail: "assets/posters/07.jpg",
       members: [
         { name: "고은빈", role: "감독, 원동화, 배경",
           bio: "긴 시간 동안 졸업작품을 제작하면서 많은 점을 배울 수 있는 시간이었습니다. 다 함께 힘을 모아 제작하게 되어 기쁘고 즐거웠습니다. 부족한 점이 많은 감독이었지만, 믿고 함께해 준 팀원분들에게 감사합니다. 수고 많으셨습니다!",
@@ -161,7 +161,7 @@ window.SHOWCASE_DATA = {
           bio: "긴 시간 동안 함께 작업하느라 모두 고생 많았고 정말 뜻깊은 시간이었습니다! 앞으로도 다들 행복하시길!!",
           illustration: "assets/members/avatar-6.svg" }
       ] },
-    { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "작품 -8 설명", runtime: "04:41", mediaType: "video", videoUrl: "H7GsvnBKVKk", thumbnail: "assets/posters/08.jpg",
+    { order: 8, teamName: "ARCO", title: "인형의 메아리", genre: "2D 애니메이션", synopsis: "골동품 가게에서 우연히 움직이는 인형 에오스를 만난 세린. 두 사람은 계약을 맺고, 에오스의 잃어버린 가족을 찾기 위해 나선다. 그러던 중 세뇌당한 쌍둥이 셀레네와 마주하게 된다. 과연 세린과 에오스는 셀레네의 세뇌를 풀고 소중한 유대를 되찾을 수 있을까?", runtime: "04:41", mediaType: "video", videoUrl: "H7GsvnBKVKk", thumbnail: "assets/posters/08.jpg",
       members: [
         { name: "한아연", role: "팀장, 3D 모델링",
           bio: "얼결에 감독 노릇을 하고 부족한 점도 많이 느끼고 어디서도 경험하기 힘든 값진 경험을 한 것 같습니다. 다음에 비슷한 일을 하게 된다면 발판 삼아 나아가고자 합니다. 다들 너무 수고 많았습니다!",
