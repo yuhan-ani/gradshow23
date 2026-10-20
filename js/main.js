@@ -10,7 +10,39 @@
 
   // 영상 공개 전 확인용 미리보기: 주소 뒤에 ?preview=anim23 을 붙여 들어간 화면에서만 영상이 열린다(일반 방문자에게는 COMING SOON 유지)
   const isVideoPreview = new URLSearchParams(window.location.search).get("preview") === "anim23";
-  if (isVideoPreview) data.videosOpen = true;
+
+  /* ---------------------------------------------------------
+     영상 공개 상태: 'before'(공개 전) | 'open'(공개 중) | 'after'(공개 종료)
+     - 미리보기 주소이거나 videosOpen === true 이면 항상 'open', false 이면 항상 'before'
+     - 그 외(null)에는 data.videoSchedule 의 시각에 따라 자동 결정
+     - 방문자 기기의 시계는 틀릴 수 있어서, 사이트 서버가 응답하는 시각(Date 헤더)을 우선 사용한다
+  --------------------------------------------------------- */
+  let clockOffset = 0; // 서버 시각 - 기기 시각 (ms)
+
+  function currentVideoState() {
+    if (isVideoPreview || data.videosOpen === true) return "open";
+    if (data.videosOpen === false) return "before";
+    const s = data.videoSchedule || {};
+    const now = Date.now() + clockOffset;
+    const open = Date.parse(s.open);
+    const close = Date.parse(s.close);
+    if (Number.isFinite(open) && now < open) return "before";
+    if (Number.isFinite(close) && now >= close) return "after";
+    return "open";
+  }
+
+  async function syncClock() {
+    try {
+      const ctl = new AbortController();
+      const timer = setTimeout(() => ctl.abort(), 1500);
+      const res = await fetch(`js/data.js?t=${Date.now()}`, { method: "HEAD", cache: "no-store", signal: ctl.signal });
+      clearTimeout(timer);
+      const server = Date.parse(res.headers.get("Date"));
+      if (Number.isFinite(server)) clockOffset = server - Date.now();
+    } catch (err) { /* 서버 시각을 못 얻으면 기기 시계를 그대로 사용 */ }
+  }
+
+  let videoState = "before";
 
   /* ---------------------------------------------------------
      0. YouTube IFrame API — lazy load, 1회만
@@ -423,13 +455,13 @@
     article.innerHTML = `
       <div class="team-card__frame">
         <div class="team-card__media">
-          ${data.videosOpen === false ? `
-          <div class="video-embed video-embed--soon" data-order="${team.order}" role="img" aria-label="${escapeAttr(team.title)} 영상 공개 예정">
+          ${videoState !== "open" ? `
+          <div class="video-embed video-embed--soon" data-order="${team.order}" role="img" aria-label="${escapeAttr(team.title)} ${videoState === "after" ? "영상 공개 종료" : "영상 공개 예정"}">
             <span class="video-embed__thumb-genre">${escapeHtml(team.genre)}</span>
             <span class="video-soon">
               <span class="video-soon__star" aria-hidden="true"></span>
-              <span class="video-soon__title">Coming Soon</span>
-              <span class="video-soon__sub">${data.videosOpenDate ? `${escapeHtml(data.videosOpenDate)} ` : ""}영상 공개 예정</span>
+              <span class="video-soon__title">${videoState === "after" ? "Thank You" : "Coming Soon"}</span>
+              <span class="video-soon__sub">${videoState === "after" ? "영상 공개가 종료되었습니다" : `${data.videosOpenDate ? `${escapeHtml(data.videosOpenDate)} ` : ""}영상 공개 예정`}</span>
             </span>
           </div>` : `
           <div class="video-embed" data-order="${team.order}">
@@ -1050,7 +1082,6 @@
     renderHero();
     renderFaculty();
     renderTOC();
-    renderTeamCards();
     renderCredits();
     if (isVideoPreview) {
       const badge = document.createElement("div");
@@ -1060,5 +1091,26 @@
     }
     setupHeroEntrance();
     setupHeroInteraction();
+
+    // 서버 시각을 확인한 뒤(최대 1.5초) 작품 카드를 그린다. 첫 화면 연출은 이것을 기다리지 않는다
+    syncClock().then(() => {
+      videoState = currentVideoState();
+      renderTeamCards();
+      if (location.hash && location.hash.length > 1) {
+        const target = document.querySelector(location.hash);
+        if (target) target.scrollIntoView();
+      }
+      watchVideoState();
+    });
   });
+
+  // 열려 있는 채로 공개/종료 시각이 지나면 자동으로 화면을 갱신한다(영상을 재생 중이면 멈출 때까지 기다림)
+  function watchVideoState() {
+    if (isVideoPreview || data.videosOpen === true || data.videosOpen === false) return;
+    window.setInterval(() => {
+      if (currentVideoState() === videoState) return;
+      const playing = activePlayer && typeof activePlayer.getPlayerState === "function" && activePlayer.getPlayerState() === 1;
+      if (!playing) window.location.reload();
+    }, 30000);
+  }
 })();

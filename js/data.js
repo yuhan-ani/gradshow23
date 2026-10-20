@@ -6,8 +6,15 @@
  * - 지금은 다른 사람에게 데모로 보여주기 위해 제목/설명/팀원/러닝타임을 전부 플레이스홀더(작품 -N, 팀 -N, 학생-N, 00:00)로 단순화한 상태입니다.
  */
 window.SHOWCASE_DATA = {
-  // 영상 공개 여부: false면 모든 영상 칸이 "COMING SOON"으로 가려지고, true로 바꾸면 바로 재생할 수 있게 열린다
-  videosOpen: false,
+  // 영상 공개 설정
+  //  - videosOpen: null  → 아래 일정(videoSchedule)에 따라 자동으로 열고 닫는다(기본)
+  //  - videosOpen: true  → 일정과 상관없이 항상 열림 / false → 항상 가림(COMING SOON)
+  // 시각은 모두 한국 시간(+09:00)이며, 공개 시작 시각 이상 ~ 종료 시각 미만에만 영상이 열린다
+  videosOpen: null,
+  videoSchedule: {
+    open: "2026-10-26T07:00:00+09:00",
+    close: "2026-11-01T23:59:00+09:00"
+  },
   videosOpenDate: "10월 26일 (월)",
   hero: {
     title: "DRAWN TO THE SPOTLIGHT",
