@@ -1464,3 +1464,19 @@ a { color: inherit; }
   opacity: 0.9;
   pointer-events: none;
 }
+
+/* 팀원이 여러 칸으로 나뉠 때 칸 사이에 금색 세로선(가로선은 없음).
+   각 팀원의 왼쪽 틈 한가운데에 선을 두고, 맨 왼쪽 칸의 선은 갤러리 밖으로 나가 잘리게 해서 줄이 바뀌어도 알맞게 보인다 */
+.member-gallery { overflow: hidden; }
+.member { position: relative; }
+.member::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--c-gold-line) 14%, var(--c-gold-line) 86%, transparent);
+  opacity: 0.55;
+  pointer-events: none;
+}
