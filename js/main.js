@@ -8,6 +8,10 @@
   const data = window.SHOWCASE_DATA;
   if (!data) return;
 
+  // 영상 공개 전 확인용 미리보기: 주소 뒤에 ?preview=anim23 을 붙여 들어간 화면에서만 영상이 열린다(일반 방문자에게는 COMING SOON 유지)
+  const isVideoPreview = new URLSearchParams(window.location.search).get("preview") === "anim23";
+  if (isVideoPreview) data.videosOpen = true;
+
   /* ---------------------------------------------------------
      0. YouTube IFrame API — lazy load, 1회만
   --------------------------------------------------------- */
@@ -1070,6 +1074,12 @@
     renderTOC();
     renderTeamCards();
     renderCredits();
+    if (isVideoPreview) {
+      const badge = document.createElement("div");
+      badge.className = "preview-badge";
+      badge.textContent = "영상 미리보기";
+      document.body.appendChild(badge);
+    }
     setupHeroEntrance();
     setupHeroInteraction();
   });

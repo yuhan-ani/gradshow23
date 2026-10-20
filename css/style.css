@@ -1481,3 +1481,20 @@ a { color: inherit; }
 .video-embed--soon .video-soon,
 .video-embed--soon .video-embed__thumb-genre { z-index: 1; }
 .video-embed--soon .video-soon { position: relative; text-shadow: 0 0 10px rgba(7, 11, 16, 0.9); }
+
+/* 영상 미리보기 모드 표시(?preview=... 로 들어왔을 때만 나타남) */
+.preview-badge {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 9700;
+  padding: 6px 12px;
+  font-family: var(--f-caption);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--c-bg-deep);
+  background: var(--c-gold-bright);
+  border-radius: 999px;
+  opacity: 0.9;
+  pointer-events: none;
+}
