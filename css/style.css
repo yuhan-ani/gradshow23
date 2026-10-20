@@ -1255,7 +1255,7 @@ a { color: inherit; }
   transform: scale(0.9);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
-.vplayer__center svg { width: 38px; height: 38px; margin-left: 3px; }
+.vplayer__center svg { width: 38px; height: 38px; }
 .vplayer.is-paused .vplayer__center { opacity: 1; transform: scale(1); }
 
 .vplayer__bar {
