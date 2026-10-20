@@ -933,23 +933,6 @@
       const item = document.createElement("div");
       item.className = "member";
 
-      const frame = document.createElement("div");
-      frame.className = "member__frame";
-
-      if (member.illustration) {
-        const img = document.createElement("img");
-        img.className = "member__portrait";
-        img.src = member.illustration;
-        img.alt = `${member.name} 캐릭터 일러스트`;
-        frame.appendChild(img);
-      } else {
-        const placeholder = document.createElement("div");
-        placeholder.className = "member__portrait-placeholder";
-        placeholder.setAttribute("aria-hidden", "true");
-        placeholder.textContent = initials(member.name);
-        frame.appendChild(placeholder);
-      }
-
       const name = document.createElement("p");
       name.className = "member__name";
       name.textContent = member.name;
@@ -963,7 +946,7 @@
       bio.textContent = member.bio;
       if (member.bioKo) bio.lang = "fr";
 
-      item.append(frame, name, role, bio);
+      item.append(name, role, bio);
       if (member.bioKo) {
         const bioKo = document.createElement("p");
         bioKo.className = "member__bio member__bio--ko";
@@ -974,11 +957,6 @@
     });
 
     return gallery;
-  }
-
-  function initials(name) {
-    if (!name) return "?";
-    return name.trim().slice(-2);
   }
 
   /* ---------------------------------------------------------
