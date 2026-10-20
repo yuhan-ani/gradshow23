@@ -283,13 +283,19 @@
     const cap = new Promise((res) => window.setTimeout(res, 3000));
 
     Promise.race([Promise.all(ready), cap]).then(() => {
-      // 준비된 직후 한 프레임을 먼저 그린 다음 시작해서 시작 시점의 끊김도 줄인다
-      requestAnimationFrame(() => requestAnimationFrame(() => {
+      // 준비된 직후 한 프레임을 먼저 그린 다음 시작해서 시작 시점의 끊김도 줄인다.
+      // 일부 앱 내장 브라우저는 화면 갱신(rAF)을 늦게 시작하거나 멈추므로, 시간 기준 백업(250ms)도 함께 걸어 반드시 시작되게 한다
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
         after(300, () => hero.classList.add("hero--posters-in"));    // 11개 포스터 조립
         after(2100, () => hero.classList.add("hero--spotlight-on")); // 스포트라이트 점등
         after(2400, () => hero.classList.add("hero--revealed"));     // 포스터가 빛을 받아 밝아짐
         after(2800, () => hero.classList.add("hero--ornament-in"));  // 금장식 등장(타이틀은 CSS 자체 딜레이로 비슷한 시점에 등장)
-      }));
+      };
+      requestAnimationFrame(() => requestAnimationFrame(start));
+      window.setTimeout(start, 250);
     });
   }
 

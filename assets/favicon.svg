@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#19232D"/><stop offset="1" stop-color="#070B10"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E0A671"/><stop offset="1" stop-color="#D08A4E"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <polygon fill="url(#gold)" points="32,9 36.1,24.2 55,32 36.1,39.8 32,55 27.9,39.8 9,32 27.9,24.2"/>
+</svg>
