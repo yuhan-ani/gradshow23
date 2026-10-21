@@ -299,7 +299,7 @@ a { color: inherit; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold-bright);
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 2.1vw, 1.7rem);
   margin: 0 0 18px;
   /* 포스터 위에 겹쳐도 읽히도록 어두운 외곽선 */
   -webkit-text-stroke: 0.6px var(--c-bg-raised);
@@ -387,7 +387,7 @@ a { color: inherit; }
   font-family: var(--f-caption);
   font-style: normal;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1.45vw, 1.35rem);
   color: var(--c-silver);
   margin: 0 0 8px;
   white-space: nowrap;
@@ -396,7 +396,7 @@ a { color: inherit; }
 
 .hero__venue {
   font-family: var(--f-body);
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1.35vw, 1.25rem);
   font-weight: 500;
   letter-spacing: 0.06em;
   text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
