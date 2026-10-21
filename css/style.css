@@ -391,15 +391,14 @@ a { color: inherit; }
   color: var(--c-silver);
   margin: 0 0 8px;
   white-space: nowrap;
-  -webkit-text-stroke: 0.35px currentColor;
   text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
 }
 
 .hero__venue {
   font-family: var(--f-body);
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
   color: var(--c-silver);
   margin: 0;
