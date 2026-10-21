@@ -448,8 +448,6 @@
   }
 
   function buildTeamCard(team) {
-    const isWebtoon = team.mediaType === "video+webtoon";
-
     const article = document.createElement("article");
     article.className = "team-card";
     article.id = `team-${team.order}`;
@@ -486,13 +484,14 @@
           <p class="team-card__synopsis">${escapeHtml(team.synopsis)}</p>
           <span class="team-card__runtime">Running Time — ${escapeHtml(team.runtime)}</span>
 
-          ${isWebtoon ? `
-          <div class="webtoon-prompt" id="webtoonPrompt-${team.order}" aria-hidden="true">
-            <span class="webtoon-prompt__arrow" aria-hidden="true">▾</span>
-            <span>${escapeHtml(team.webtoonPrompt || "웹툰 감상하기")}</span>
-          </div>
-          <div class="webtoon-viewer" id="webtoonViewer-${team.order}" aria-label="${escapeAttr(team.title)} 웹툰"></div>
-          ` : ""}
+          ${team.webtoonUrl ? (videoState === "open" ? `
+          <a class="webtoon-link" href="${escapeAttr(team.webtoonUrl)}" target="_blank" rel="noopener noreferrer">
+            <span>웹툰 보러 가기</span>
+            <span class="webtoon-link__arrow" aria-hidden="true">↗</span>
+          </a>` : `
+          <p class="webtoon-link webtoon-link--soon" role="note">
+            <span>${videoState === "after" ? "웹툰 공개가 종료되었습니다" : `웹툰 ${data.videosOpenDate ? `${escapeHtml(data.videosOpenDate)} ` : ""}공개 예정`}</span>
+          </p>`) : ""}
 
           <button type="button" class="accordion-toggle" aria-expanded="false" aria-controls="members-${team.order}">
             <span class="accordion-toggle__icon" aria-hidden="true">▾</span>
@@ -571,9 +570,6 @@
               hideCaptions(e.target);
             }
             if (controls) controls.onState(e.data);
-            if (team.mediaType === "video+webtoon" && e.data === YT.PlayerState.ENDED) {
-              revealWebtoonPrompt(team.order);
-            }
           }
         }
       });
@@ -860,69 +856,6 @@
         showUi();
       }
     };
-  }
-
-  /* ---------------------------------------------------------
-     5. 웹툰 특수 흐름 — 재생 완료 → 안내 페이드인 →
-        스크롤 → 안내 페이드아웃 & 웹툰 인라인 뷰어 노출
-  --------------------------------------------------------- */
-  function revealWebtoonPrompt(order) {
-    const prompt = document.getElementById(`webtoonPrompt-${order}`);
-    if (!prompt) return;
-
-    prompt.setAttribute("aria-hidden", "false");
-    prompt.classList.add("is-visible");
-
-    let triggered = false;
-    const onScroll = () => {
-      if (triggered) return;
-      triggered = true;
-      window.removeEventListener("scroll", onScroll);
-      fadeOutPromptAndOpenWebtoon(order);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
-
-  function fadeOutPromptAndOpenWebtoon(order) {
-    const prompt = document.getElementById(`webtoonPrompt-${order}`);
-    const viewer = document.getElementById(`webtoonViewer-${order}`);
-    if (prompt) {
-      prompt.classList.add("is-fading");
-      prompt.classList.remove("is-visible");
-      window.setTimeout(() => prompt.setAttribute("aria-hidden", "true"), 600);
-    }
-    if (viewer && !viewer.dataset.rendered) {
-      renderWebtoonViewer(viewer, order);
-      viewer.dataset.rendered = "true";
-    }
-    if (viewer) viewer.classList.add("is-open");
-  }
-
-  function renderWebtoonViewer(viewer, order) {
-    const team = data.teams.find((t) => t.order === order);
-    if (!team) return;
-
-    const images = team.webtoonImages;
-    const cutCount = (images && images.length) || team.webtoonCutCount || 6;
-
-    for (let i = 0; i < cutCount; i++) {
-      const src = images && images[i];
-      if (src) {
-        const img = document.createElement("img");
-        img.className = "webtoon-viewer__cut";
-        img.src = src;
-        img.alt = `${team.title} 웹툰 ${i + 1}컷`;
-        img.loading = "lazy";
-        viewer.appendChild(img);
-      } else {
-        const cut = document.createElement("div");
-        cut.className = "webtoon-viewer__placeholder-cut";
-        cut.setAttribute("role", "img");
-        cut.setAttribute("aria-label", `${team.title} 웹툰 ${i + 1}컷 (이미지 준비 중)`);
-        cut.textContent = `Cut ${String(i + 1).padStart(2, "0")} · 이미지 준비 중`;
-        viewer.appendChild(cut);
-      }
-    }
   }
 
   /* ---------------------------------------------------------

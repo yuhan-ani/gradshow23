@@ -1,7 +1,7 @@
 /**
  * 상영회 데이터
  * - 실제 정보가 확정되면 아래 값만 교체하면 됩니다.
- * - thumbnail / webtoonImages 를 null로 두면 자동으로 장식 플레이스홀더가 표시됩니다.
+ * - thumbnail 을 null로 두면 자동으로 장식 플레이스홀더가 표시됩니다. webtoonUrl 이 있는 작품에는 "웹툰 보러 가기" 버튼이 생기며, 영상과 같은 일정(videoSchedule)으로 열리고 닫힙니다.
  * - videoUrl 은 유튜브 videoId 문자열입니다. (현재는 블렌더 재단의 공개 라이선스 영상으로 임시 대체 — 실제 작품 영상으로 교체 필요)
  * - 지금은 다른 사람에게 데모로 보여주기 위해 제목/설명/팀원/러닝타임을 전부 플레이스홀더(작품 -N, 팀 -N, 학생-N, 00:00)로 단순화한 상태입니다.
  */
@@ -96,8 +96,8 @@ window.SHOWCASE_DATA = {
         { name: "임정민", role: "스토리보드 일부, 원화 일부, 동화, 선화, 채색",
           bio: "졸업작품 작업은 저에게 이론을 넘어, 실제로 작업을 내 손으로 해본 가장 값진 시간이었습니다." }
       ] },
-    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video+webtoon", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 12,
-      webtoonPrompt: "웹툰 감상하기", webtoonImages: null, webtoonCutCount: 8,
+    { order: 5, teamName: "200%", title: "소리 없는 불꽃", genre: "웹툰", synopsis: "〈소리 없는 불꽃〉은 대기업 회장의 마약 비리를 파헤치는 기자 이재현과 피해자 유가족 박소연의 이야기를 담은 웹툰 프로모션 영상이다. 화재 사건을 시작으로 숨겨진 마약 비리의 진실을 추적하며, 권력과 비리에 맞서는 평범한 사람들의 모습을 빠른 장면 전환으로 표현했다. 작은 목소리들이 모여 거대한 권력에 맞서는 과정을 통해 정의와 연대의 메시지를 전달하고자 했다.", runtime: "01:39", mediaType: "video", videoUrl: "no3wjGTGP4A", thumbnail: "assets/posters/05.jpg", posterY: 12,
+      webtoonUrl: "https://m.blog.naver.com/PostView.naver?blogId=wkdwlsgud99&logNo=224446726335&proxyReferer=&noTrackingCode=true",
       members: [
         { group: "PV 프로모션팀", name: "장진형", role: "팀장, 프로모션 스틸컷 제작, 웹툰 인물 명암 및 러프 보조",
           bio: "모두 고생하셨습니다!" },

@@ -882,82 +882,41 @@ a { color: inherit; }
 }
 
 /* =========================================================
-   WEBTOON special flow
+   WEBTOON link — 외부(블로그) 웹툰으로 가는 버튼. 영상과 같은 일정으로 열리고 닫힌다
    ========================================================= */
-.webtoon-prompt {
+.webtoon-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  justify-content: center;
-  margin: 6px 0 24px;
-  padding: 14px;
-  border-top: 1px dotted var(--c-gold-soft);
-  border-bottom: 1px dotted var(--c-gold-soft);
-  font-family: var(--f-display);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  color: var(--c-gold);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.webtoon-prompt.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.webtoon-prompt.is-fading {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-
-.webtoon-prompt__arrow { animation: scrollPulse 1.8s ease-in-out infinite; }
-
-.webtoon-viewer {
-  max-width: 640px;
-  margin: 0 auto 28px;
-  border: 1px solid var(--c-gold-soft);
-  padding: 10px;
-  background: var(--c-bg);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.6s ease;
-}
-
-.webtoon-viewer.is-open {
-  opacity: 1;
-  max-height: none;
-  overflow: visible;
-}
-
-.webtoon-viewer__cut {
-  width: 100%;
-  display: block;
-}
-
-.webtoon-viewer__cut + .webtoon-viewer__cut { margin-top: 2px; }
-
-.webtoon-viewer__placeholder-cut {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 6px;
-  background: linear-gradient(160deg, #131c25, #080c11);
-  border-bottom: 1px dashed rgba(208, 138, 78,0.25);
-  color: var(--c-silver);
+  margin: 22px 0 6px;
+  padding: 15px 18px;
+  border: 1px solid var(--c-gold);
+  background: linear-gradient(180deg, rgba(208, 138, 78, 0.14), rgba(208, 138, 78, 0.04));
+  color: var(--c-gold-bright);
   font-family: var(--f-caption);
-  font-style: italic;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
-
-.webtoon-viewer__placeholder-cut:last-child { border-bottom: none; }
+a.webtoon-link:hover,
+a.webtoon-link:focus-visible {
+  background: linear-gradient(180deg, rgba(208, 138, 78, 0.3), rgba(208, 138, 78, 0.1));
+  color: var(--c-spotlight-core);
+  transform: translateY(-1px);
+}
+.webtoon-link__arrow { font-size: 1.1em; }
+.webtoon-link--soon {
+  border-style: dashed;
+  border-color: var(--c-gold-soft);
+  background: none;
+  color: var(--c-silver);
+  font-weight: 400;
+  cursor: default;
+}
 
 /* =========================================================
    ACCORDION — 만든 사람들 보기
@@ -1124,7 +1083,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero__scroll-line, .hero__scroll-arrow, .webtoon-prompt__arrow { animation: none; }
+  .hero__scroll-line, .hero__scroll-arrow { animation: none; }
   .hero__frame-diamond { animation: none; opacity: 1; transform: translateX(-50%) scale(1); }
   .hero__content { animation: none; opacity: 1; transform: none; }
   .hero__gallery { opacity: 1; transform: translateX(-50%); }
