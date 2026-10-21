@@ -29,6 +29,128 @@ window.SHOWCASE_DATA = {
     website: "https://anima.yuhan.ac.kr/index.do",
     instagram: "https://www.instagram.com/yuhan.ani/"
   },
+  /* 오시는 길 — 약도(assets/route/campus-map.png, 954x1104) 위의 좌표로 경로를 그린다.
+     segments: 경로 조각. kind = walk(걷기) | drive(차) | stairs(계단) | elevator(엘리베이터) | jump(건물 안 이동, 선 없이 순간이동)
+     steps: 단계. draw = 그 단계에서 그려지는 segments 번호 */
+  directions: {
+    title: "오시는 길",
+    destination: "유재라관(8호관) 6층 유한아트홀",
+    notices: [
+      "빨간 구간은 공사 중이라 지나갈 수 없어요.",
+      "1호관과 8호관 사이 오르막길은 매우 가파르니 이용하지 마세요."
+    ],
+    map: {
+      image: "assets/route/campus-map.png",
+      width: 954,
+      height: 1104,
+      labels: [
+        { x: 150, y: 78, t: "7호관" },
+        { x: 645, y: 66, t: "8호관", dest: true },
+        { x: 645, y: 106, t: "유재라관", dest: true, small: true },
+        { x: 597, y: 386, t: "1호관" },
+        { x: 468, y: 530, t: "3호관" },
+        { x: 216, y: 478, t: "5호관", small: true },
+        { x: 57, y: 486, t: "6호관" },
+        { x: 93, y: 796, t: "4호관" },
+        { x: 93, y: 826, t: "학생회관", small: true },
+        { x: 600, y: 796, t: "2호관" },
+        { x: 150, y: 270, t: "언덕 위", area: true },
+        { x: 150, y: 300, t: "3층 높이", area: true, small: true },
+        { x: 150, y: 905, t: "낮은 지대", area: true },
+        { x: 150, y: 935, t: "지하 2층 높이", area: true, small: true },
+        { x: 565, y: 300, t: "공사 중", warn: true },
+        { x: 360, y: 480, t: "공사", warn: true },
+        { x: 360, y: 512, t: "중", warn: true },
+        { x: 847, y: 295, t: "주차장", poi: true },
+        { x: 612, y: 972, t: "버스정류장", poi: true },
+        { x: 586, y: 747, t: "엘리베이터", poi: true, anchor: "start", dx: -62 },
+        { x: 842, y: 538, t: "돌계단", poi: true },
+        { x: 880, y: 430, t: "동상", poi: true },
+        { x: 640, y: 1048, t: "횡단보도", poi: true }
+      ]
+    },
+    routes: [
+      {
+        id: "stairs",
+        name: "계단으로",
+        tag: "걸어서 · 계단 5층 정도",
+        summary: "횡단보도를 건너 4호관을 지나 계단으로 올라가는 길",
+        segments: [
+          { kind: "walk", points: [[466, 1068], [466, 935]] },
+          { kind: "walk", points: [[466, 935], [466, 866], [272, 866]] },
+          { kind: "stairs", points: [[272, 866], [272, 752]], label: { t: "계단 · 5층", dx: 74, dy: 0 } },
+          { kind: "walk", points: [[272, 752], [272, 289]] },
+          { kind: "walk", points: [[272, 289], [459, 137], [576, 139]] }
+        ],
+        steps: [
+          { draw: [0], title: "횡단보도 건너기",
+            text: "학교 앞 큰 도로의 횡단보도를 건너 학교 쪽으로 올라옵니다." },
+          { draw: [1], title: "4호관(학생회관) 앞으로",
+            text: "둥근 건물이 보이는 4호관(학생회관) 앞으로 걸어가 입구로 들어갑니다.",
+            photo: { src: "assets/route/photo-4ho.jpg", caption: "4호관(학생회관) 입구" } },
+          { draw: [2], title: "계단으로 5층 올라가기", chip: { type: "stairs", text: "계단 · 5층 정도" },
+            text: "계단으로 5층 정도 올라갑니다. 다 올라오면 언덕 위(3층 높이)가 나와요." },
+          { draw: [3], title: "5호관을 가로질러 북쪽으로", chip: { type: "warn", text: "공사 구간 주의" },
+            text: "길이 막혀 있어서 5호관은 건물을 가로질러 반대편(북쪽)으로 나옵니다. 오른쪽의 빨간 구간은 공사 중이라 갈 수 없어요." },
+          { draw: [4], title: "유재라관(8호관) 도착",
+            text: "북동쪽으로 풀밭 사이 길을 따라가면 유재라관(8호관)입니다. 건물 안에서 6층 유한아트홀로 올라오세요." }
+        ]
+      },
+      {
+        id: "elevator",
+        name: "엘리베이터로",
+        tag: "걸어서 · 엘리베이터 이용",
+        summary: "버스정류장에서 돌계단을 올라 3호관 엘리베이터로 3층까지 가는 길",
+        segments: [
+          { kind: "walk", points: [[650, 916], [775, 916]] },
+          { kind: "walk", points: [[775, 916], [775, 531]] },
+          { kind: "stairs", points: [[775, 531], [699, 531]] },
+          { kind: "walk", points: [[699, 531], [694, 710], [497, 710]] },
+          { kind: "elevator", points: [[497, 710], [416, 709]], label: { t: "L → 3층", dx: 0, dy: -38 } },
+          { kind: "walk", points: [[416, 709], [240, 707], [250, 237]] },
+          { kind: "walk", points: [[250, 237], [376, 223], [446, 139], [575, 146]] }
+        ],
+        steps: [
+          { draw: [0], title: "정류장에서 오른쪽으로",
+            text: "버스정류장(유한대학교)에서 내려 오른쪽(동쪽) 인도를 따라 걷습니다." },
+          { draw: [1], title: "오르막길 옆 인도로 올라가기",
+            text: "오르막 차도를 따라 난 인도로 위쪽(북쪽)으로 올라갑니다. 오른쪽에 유한 박사님 동상이 보여요.",
+            photo: { src: "assets/route/photo-statue.jpg", caption: "유한 박사님 동상" } },
+          { draw: [2], title: "돌계단 올라가기", chip: { type: "stairs", text: "돌계단" },
+            text: "초록 풀밭 두 칸 사이의 돌계단을 올라 1·2·3호관에 둘러싸인 안뜰로 들어갑니다. 안뜰이 바깥보다 높은 지대예요.",
+            photo: { src: "assets/route/photo-stairs.jpg", caption: "돌계단" } },
+          { draw: [3], title: "안뜰을 지나 엘리베이터로",
+            text: "풀밭 오른쪽 길을 따라 내려가 풀밭 아래쪽에서 왼쪽으로 돌아 3호관 엘리베이터(자주색 표시)로 갑니다." },
+          { draw: [4], title: "엘리베이터로 3층까지", chip: { type: "elevator", text: "엘리베이터 · L → 3층" },
+            text: "엘리베이터에는 L(로비)층으로 표시되지만 실제로는 지하 2층이에요. 3층 버튼을 눌러 올라가 건물 반대편(서쪽) 출구로 나옵니다." },
+          { draw: [5], title: "5호관을 가로질러 북쪽으로", chip: { type: "warn", text: "공사 구간 주의" },
+            text: "서쪽으로 5호관까지 걸어가서, 길이 막혀 있어 건물을 가로질러 반대편(북쪽)으로 나옵니다." },
+          { draw: [6], title: "유재라관(8호관) 도착",
+            text: "북동쪽으로 풀밭 사이 길을 따라가면 유재라관(8호관)입니다. 건물 안에서 6층 유한아트홀로 올라오세요." }
+        ]
+      },
+      {
+        id: "car",
+        name: "자차로",
+        tag: "주차 후 엘리베이터",
+        summary: "주차장에 주차하고 엘리베이터로 1층(7호관)에 올라가는 길",
+        segments: [
+          { kind: "drive", points: [[839, 982], [827, 397]] },
+          { kind: "jump", points: [[827, 397], [295, 194]], label: { t: "엘리베이터 → 1층", dx: -150, dy: 44 } },
+          { kind: "walk", points: [[295, 194], [301, 229], [341, 230], [469, 143], [577, 143]] }
+        ],
+        steps: [
+          { draw: [0], title: "오르막 차도로 주차장까지",
+            text: "큰 도로에서 오르막 차도로 올라가 주차장에 주차합니다.",
+            photo: { src: "assets/route/photo-uphill.jpg", caption: "주차장으로 가는 오르막 차도" } },
+          { draw: [1], title: "엘리베이터로 1층(7호관)", chip: { type: "elevator", text: "엘리베이터 · 1층" },
+            text: "주차장 엘리베이터를 타고 1층으로 올라가면 7호관입니다." },
+          { draw: [2], title: "7호관에서 8호관으로",
+            text: "7호관 아래쪽 출구로 나와 오른쪽(동쪽) 풀밭 사이 길을 따라가면 유재라관(8호관)입니다. 건물 안에서 6층 유한아트홀로 올라오세요." }
+        ]
+      }
+    ]
+  },
   faculty: {
     greeting: {
       paragraphs: [

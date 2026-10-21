@@ -1,4 +1,7 @@
 .claude/
 
-# 포스터 원본(큰 파일)은 올리지 않고, 줄여 만든 NN.jpg만 사용
+# Poster originals (large) are kept local; only the resized NN.jpg copies are used on the site
 assets/posters/*_.jpg
+
+# Route photo originals (large) are kept local; only the resized copies in assets/route/ are used
+assets/map/
