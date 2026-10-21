@@ -59,12 +59,13 @@
         <div class="route-modal__box">
           <header class="route-modal__head">
             <div>
-              <p class="route-modal__eyebrow">How to get here</p>
+              <p class="route-modal__eyebrow">Directions · Getting Here</p>
               <h2 class="route-modal__title" id="routeTitle">${esc(cfg.title)}</h2>
               <p class="route-modal__dest">${esc(cfg.destination)}</p>
             </div>
             <button type="button" class="route-modal__close" data-close aria-label="닫기">&times;</button>
           </header>
+          <div class="route-orn" aria-hidden="true"><span></span><i></i><span></span></div>
           <div class="route-tabs" role="tablist" aria-label="이동 방법"></div>
           <div class="route-modal__body">
             <div class="route-map-wrap">
@@ -75,6 +76,7 @@
                 <li><i class="route-legend__sw route-legend__sw--warn"></i>공사 중</li>
                 <li><i class="route-legend__sw route-legend__sw--grass"></i>풀밭</li>
               </ul>
+              ${cfg.mapNote ? `<p class="route-map-note">※ ${esc(cfg.mapNote)}</p>` : ""}
             </div>
             <div class="route-panel">
               <ul class="route-notices">${(cfg.notices || []).map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
@@ -92,7 +94,7 @@
               <div class="route-controls">
                 <button type="button" class="route-ctl" data-act="prev">이전</button>
                 <button type="button" class="route-ctl route-ctl--primary" data-act="next">다음</button>
-                <button type="button" class="route-ctl" data-act="play" aria-pressed="false">자동 재생</button>
+                <button type="button" class="route-ctl" data-act="play" aria-pressed="false">자동 안내</button>
               </div>
             </div>
           </div>
@@ -367,7 +369,7 @@
     function startAuto() {
       autoplay = true;
       el.play.setAttribute("aria-pressed", "true");
-      el.play.textContent = "정지";
+      el.play.textContent = "안내 정지";
       const route = cfg.routes[routeIdx];
       const begin = async () => {
         let i = stepIdx >= route.steps.length - 1 ? 0 : stepIdx;
@@ -386,7 +388,7 @@
     function stopAuto() {
       autoplay = false;
       clearTimeout(autoTimer);
-      if (el.play) { el.play.setAttribute("aria-pressed", "false"); el.play.textContent = "자동 재생"; }
+      if (el.play) { el.play.setAttribute("aria-pressed", "false"); el.play.textContent = "자동 안내"; }
     }
 
     /* ---------- open / close ---------- */

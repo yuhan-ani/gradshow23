@@ -1783,3 +1783,58 @@ html.route-open { overflow: hidden; }
   .route-svg { width: auto; max-width: 100%; height: min(40vh, 118vw); }
   .route-legend { display: none; }
 }
+
+/* 오시는 길 — 격식 다듬기 */
+.route-modal__box::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--c-gold-soft);
+  pointer-events: none;
+}
+.route-modal__head { padding-top: 4px; }
+.route-modal__title { letter-spacing: 0.12em; }
+.route-modal__dest { letter-spacing: 0.06em; }
+.route-orn { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; }
+.route-orn span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--c-gold-line)); }
+.route-orn span:last-child { background: linear-gradient(270deg, transparent, var(--c-gold-line)); }
+.route-orn i { width: 7px; height: 7px; background: var(--c-gold); transform: rotate(45deg); }
+
+.route-tabs { counter-reset: rt; margin-top: 16px; }
+.route-tab { counter-increment: rt; position: relative; }
+.route-tab::before {
+  content: counter(rt, upper-roman);
+  display: block;
+  margin-bottom: 3px;
+  font-family: var(--f-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--c-gold);
+}
+.route-tab__name { letter-spacing: 0.06em; }
+
+.route-map-note { margin: 8px 0 0; font-size: 0.7rem; line-height: 1.55; color: var(--c-silver); opacity: 0.8; word-break: keep-all; }
+
+.route-notices {
+  list-style: none;
+  padding: 12px 16px;
+  color: var(--c-ivory);
+  background: rgba(208, 138, 78, 0.07);
+  border: 1px solid var(--c-gold-soft);
+  border-left: 3px solid #b8434f;
+}
+.route-notices li { position: relative; padding-left: 14px; word-break: keep-all; }
+.route-notices li + li { margin-top: 3px; }
+.route-notices li::before { content: "◆"; position: absolute; left: 0; top: 0.12em; font-size: 0.6em; color: var(--c-gold); }
+
+.route-step { border-left: 0; background: linear-gradient(180deg, rgba(7, 11, 16, 0.5), rgba(7, 11, 16, 0.25)); border: 1px solid var(--c-gold-soft); padding: 20px 22px 22px; }
+.route-step__title { font-size: 1.3rem; letter-spacing: 0.04em; line-height: 1.4; word-break: keep-all; }
+.route-step__text { color: var(--c-silver); }
+.route-chip { border-radius: 0; letter-spacing: 0.08em; margin-bottom: 4px; }
+
+.route-dots { gap: 6px; }
+.route-dot { box-sizing: content-box; height: 3px; padding: 9px 0; width: 22px; border-radius: 0; background-clip: content-box; }
+.route-dot.is-current { width: 44px; }
+
+.route-ctl { letter-spacing: 0.14em; }
+.route-dot.is-done, .route-dot.is-current { background-clip: content-box; }
