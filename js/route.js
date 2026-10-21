@@ -36,7 +36,21 @@
       if (parent) parent.appendChild(n);
       return n;
     }
-    const pathD = (pts) => "M" + pts.map((p) => p[0] + " " + p[1]).join(" L");
+    // 꺾이는 곳을 둥글게 이어서 부드러운 길로 그린다
+    const pathD = (pts, r = 20) => {
+      if (pts.length < 3) return "M" + pts.map((p) => p[0] + " " + p[1]).join(" L");
+      let d = "M" + pts[0][0] + " " + pts[0][1];
+      for (let i = 1; i < pts.length - 1; i++) {
+        const a = pts[i - 1], b = pts[i], c = pts[i + 1];
+        const l1 = Math.hypot(b[0] - a[0], b[1] - a[1]), l2 = Math.hypot(c[0] - b[0], c[1] - b[1]);
+        const k = Math.min(r, l1 / 2, l2 / 2);
+        const p1 = [b[0] + (a[0] - b[0]) * k / l1, b[1] + (a[1] - b[1]) * k / l1];
+        const p2 = [b[0] + (c[0] - b[0]) * k / l2, b[1] + (c[1] - b[1]) * k / l2];
+        d += " L" + p1[0].toFixed(1) + " " + p1[1].toFixed(1) + " Q" + b[0] + " " + b[1] + " " + p2[0].toFixed(1) + " " + p2[1].toFixed(1);
+      }
+      const z = pts[pts.length - 1];
+      return d + " L" + z[0] + " " + z[1];
+    };
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
     function textWidth(t, size) {
@@ -59,13 +73,11 @@
         <div class="route-modal__box">
           <header class="route-modal__head">
             <div>
-              <p class="route-modal__eyebrow">Directions · Getting Here</p>
               <h2 class="route-modal__title" id="routeTitle">${esc(cfg.title)}</h2>
               <p class="route-modal__dest">${esc(cfg.destination)}</p>
             </div>
             <button type="button" class="route-modal__close" data-close aria-label="닫기">&times;</button>
           </header>
-          <div class="route-orn" aria-hidden="true"><span></span><i></i><span></span></div>
           <div class="route-tabs" role="tablist" aria-label="이동 방법"></div>
           <div class="route-modal__body">
             <div class="route-map-wrap">
@@ -141,7 +153,7 @@
 
       const labels = svgEl("g", { class: "route-labels" }, svg);
       (m.labels || []).forEach((L) => {
-        const size = L.poi ? 24 : L.warn ? 28 : L.area ? (L.small ? 20 : 26) : L.small ? 22 : 30;
+        const size = L.poi ? 22 : L.warn ? 26 : L.area ? 20 : L.small ? 22 : 28;
         const cls = L.dest ? "dest" : L.warn ? "warn" : L.poi ? "poi" : L.area ? "area" : "bld";
         const g = svgEl("g", { class: "route-label route-label--" + cls }, labels);
         if (L.poi) {
@@ -323,7 +335,7 @@
     function updatePanel() {
       const route = cfg.routes[routeIdx];
       const step = route.steps[stepIdx];
-      el.count.textContent = `STEP ${stepIdx + 1} / ${route.steps.length}`;
+      el.count.textContent = `${stepIdx + 1} / ${route.steps.length}`;
       el.title.textContent = step.title;
       el.text.textContent = step.text;
       if (step.chip) {
