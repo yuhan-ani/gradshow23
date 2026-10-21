@@ -295,6 +295,7 @@ a { color: inherit; }
 .hero__edition {
   font-family: var(--f-caption);
   font-style: italic;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-gold-bright);
@@ -375,7 +376,9 @@ a { color: inherit; }
 .hero__subtitle {
   font-family: var(--f-deco);
   font-size: clamp(1rem, 2.6vw, 1.4rem);
+  font-weight: 600;
   letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
   color: var(--c-ivory);
   margin: 0 0 22px;
 }
@@ -388,12 +391,16 @@ a { color: inherit; }
   color: var(--c-silver);
   margin: 0 0 8px;
   white-space: nowrap;
+  -webkit-text-stroke: 0.35px currentColor;
+  text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
 }
 
 .hero__venue {
   font-family: var(--f-body);
   font-size: 0.76rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
+  text-shadow: 0 1px 8px rgba(7, 11, 16, 0.85);
   color: var(--c-silver);
   margin: 0;
 }
