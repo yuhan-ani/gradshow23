@@ -188,10 +188,10 @@
         let tag = null;
         if (s.label) {
           const mid = isJump ? { x: s.points[0][0], y: s.points[0][1] } : line.getPointAtLength(len / 2);
-          const w = textWidth(s.label.t, 26) + 28;
+          const w = textWidth(s.label.t, 28) + 28;
           tag = svgEl("g", { class: "route-seg-tag", transform: `translate(${mid.x + (s.label.dx || 0)} ${mid.y + (s.label.dy || 0)})` }, icons);
-          svgEl("rect", { x: -w / 2, y: -21, width: w, height: 40, rx: 20 }, tag);
-          const t = svgEl("text", { x: 0, y: 8, "text-anchor": "middle", "font-size": 26 }, tag);
+          svgEl("rect", { x: -w / 2, y: -23, width: w, height: 44, rx: 22 }, tag);
+          const t = svgEl("text", { x: 0, y: 9, "text-anchor": "middle", "font-size": 28 }, tag);
           t.textContent = s.label.t;
         }
         segs.push({ s, outline, line, len, dashed, isJump, tag });
