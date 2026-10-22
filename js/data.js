@@ -61,13 +61,13 @@ window.SHOWCASE_DATA = {
         { x: 748, y: 196, t: "주차장", s: 28, poi: true },
         { x: 935, y: 386, t: "동상", s: 28, poi: true },
         { x: 822, y: 1078, t: "버스정류장", s: 28, poi: true },
-        { x: 904, y: 624, t: "돌계단", s: 28, poi: true },
+        { x: 904, y: 568, t: "돌계단", s: 28, poi: true },
         { x: 430, y: 966, t: "엘리베이터", s: 28, poi: true },
         { x: 309, y: 1114, t: "계단", s: 28, poi: true },
         { x: 640, y: 1098, t: "횡단보도", s: 28, poi: true }
       ],
       blocked: [
-        { points: [[252, 356], [330, 320], [426, 294]], label: { t: "막힌 길", dx: -62, dy: -50 } }
+        { points: [[376, 247], [396, 232], [440, 232]] }
       ]
     },
     routes: [
