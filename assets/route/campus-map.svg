@@ -8,6 +8,10 @@
       <rect width="10" height="10" fill="#243a52"/>
       <rect width="10" height="4" fill="#a9bdd3"/>
     </pattern>
+    <pattern id="steps-v" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#243a52"/>
+      <rect width="4" height="10" fill="#a9bdd3"/>
+    </pattern>
     <g id="bld">
       <rect x="-30" y="182" width="285" height="165" rx="6"/>
       <rect x="718" y="98" width="60" height="175" rx="5"/>
@@ -82,7 +86,7 @@
 
   <!-- 계단 -->
   <g><circle cx="309" cy="1030" r="48" fill="#dde6ef" stroke="#9db0c5" stroke-width="5"/><circle cx="309" cy="1030" r="32" fill="url(#steps)"/></g>
-  <rect x="866" y="652" width="72" height="44" fill="url(#steps)"/>
+  <rect x="866" y="652" width="72" height="44" fill="url(#steps-v)"/>
 
   <!-- 6호관·5호관을 잇는 연결 건물 속 편의점 -->
   <rect x="124" y="824" width="62" height="54" rx="7" fill="#f6d365"/>
