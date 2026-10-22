@@ -57,7 +57,6 @@ window.SHOWCASE_DATA = {
         { x: 120, y: 146, t: "언덕 위", s: 24, area: true },
         { x: 120, y: 172, t: "3층 높이", s: 20, area: true },
         { x: 112, y: 1034, t: "낮은 지대", s: 24, area: true },
-        { x: 112, y: 1060, t: "지하 2층 높이", s: 20, area: true },
         { x: 491, y: 296, t: "공사 중", s: 24, warn: true },
         { x: 530, y: 384, t: "공사 중", s: 24, warn: true },
         { x: 322, y: 650, t: "공사 중", s: 24, warn: true, r: -90 },
