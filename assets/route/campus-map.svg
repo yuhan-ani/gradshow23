@@ -12,7 +12,7 @@
       <rect x="-30" y="182" width="285" height="165" rx="6"/>
       <rect x="718" y="98" width="60" height="175" rx="5"/>
       <rect x="48" y="420" width="72" height="470" rx="5"/>
-      <rect x="110" y="738" width="90" height="76"/>
+      <rect x="110" y="812" width="90" height="76"/>
       <path d="M212 422H270V492H294V886H190V516H212Z"/>
       <rect x="347" y="400" width="393" height="65" rx="5"/>
       <rect x="347" y="400" width="72" height="545" rx="5"/>
@@ -83,7 +83,7 @@
   <rect x="866" y="652" width="72" height="44" fill="url(#steps)"/>
 
   <!-- 6호관·5호관을 잇는 연결 건물 속 편의점 -->
-  <rect x="124" y="748" width="62" height="56" rx="7" fill="#f6d365"/>
+  <rect x="124" y="824" width="62" height="54" rx="7" fill="#f6d365"/>
 
   <!-- 표시물 -->
   <rect x="398" y="876" width="44" height="50" rx="6" fill="#b183e8" stroke="#0d1620" stroke-width="3"/>

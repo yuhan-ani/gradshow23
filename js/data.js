@@ -58,7 +58,7 @@ window.SHOWCASE_DATA = {
         { x: 491, y: 296, t: "공사 중", s: 24, warn: true },
         { x: 530, y: 382, t: "공사 중", s: 26, warn: true },
         { x: 311, y: 640, t: "공사 중", s: 26, warn: true, r: -90 },
-        { x: 155, y: 856, t: "편의점", s: 28, poi: true },
+        { x: 155, y: 796, t: "편의점", s: 28, poi: true },
         { x: 748, y: 196, t: "주차장", s: 28, poi: true },
         { x: 935, y: 386, t: "동상", s: 28, poi: true },
         { x: 822, y: 1078, t: "버스정류장", s: 28, poi: true },
@@ -66,9 +66,6 @@ window.SHOWCASE_DATA = {
         { x: 430, y: 966, t: "엘리베이터", s: 28, poi: true },
         { x: 309, y: 1114, t: "계단", s: 28, poi: true },
         { x: 640, y: 1098, t: "횡단보도", s: 28, poi: true }
-      ],
-      blocked: [
-        { points: [[376, 247], [396, 232], [440, 232]] }
       ]
     },
     routes: [
@@ -78,7 +75,7 @@ window.SHOWCASE_DATA = {
         tag: "도보 · 계단 약 5층",
         segments: [
           { kind: "walk", points: [[511, 1032], [309, 1030]] },
-          { kind: "stairs", points: [[309, 1030], [309, 988]], label: { t: "계단 · 5층", dx: -150, dy: -100 } },
+          { kind: "stairs", points: [[309, 1030], [309, 988]] },
           { kind: "walk", points: [[309, 988], [309, 926], [256, 914], [250, 362]] },
           { kind: "walk", points: [[250, 362], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
