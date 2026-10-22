@@ -5,3 +5,5 @@ assets/posters/*_.jpg
 
 # Route photo originals (large) are kept local; only the resized copies in assets/route/ are used
 assets/map/
+
+_tmp/

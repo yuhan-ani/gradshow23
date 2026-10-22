@@ -1,5 +1,5 @@
 /**
- * 오시는 길 — 약도 위에서 경로가 단계별로 이어지는 길안내 시뮬레이션
+ * 오시는 길 — 약도 위에 경로를 그리고, 약도의 사진 버튼을 누르면 사진을 보여 준다
  * 데이터는 js/data.js 의 SHOWCASE_DATA.directions 를 읽는다.
  */
 (function () {
@@ -19,14 +19,9 @@
 
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    let modal = null;
-    let svg = null, routeGroup = null;
-    let routeIdx = 0, stepIdx = 0;
-    let runToken = 0;
-    let autoplay = false, autoTimer = null;
-    let lastFocus = null;
-    let segs = []; // 현재 경로의 조각별 SVG 요소
-    let marker = null, markerFadeTimer = null;
+    let modal = null, svg = null, routeGroup = null, spotGroup = null;
+    let routeIdx = 0, runToken = 0, lastFocus = null;
+    let segs = [], marker = null, spots = [], viewerIdx = -1;
     const el = {};
 
     /* ---------- helpers ---------- */
@@ -37,7 +32,7 @@
       return n;
     }
     // 꺾이는 곳을 둥글게 이어서 부드러운 길로 그린다
-    const pathD = (pts, r = 20) => {
+    const pathD = (pts, r = 22) => {
       if (pts.length < 3) return "M" + pts.map((p) => p[0] + " " + p[1]).join(" L");
       let d = "M" + pts[0][0] + " " + pts[0][1];
       for (let i = 1; i < pts.length - 1; i++) {
@@ -75,56 +70,37 @@
             <div>
               <h2 class="route-modal__title" id="routeTitle">${esc(cfg.title)}</h2>
               <p class="route-modal__dest">${esc(cfg.destination)}</p>
+              ${cfg.address ? `<p class="route-modal__addr">${esc(cfg.address)}</p>` : ""}
             </div>
             <button type="button" class="route-modal__close" data-close aria-label="닫기">&times;</button>
           </header>
           <div class="route-tabs" role="tablist" aria-label="이동 방법"></div>
-          <div class="route-modal__body">
-            <div class="route-map-wrap">
-              <div class="route-map" id="routeMap"></div>
-              <ul class="route-legend" aria-label="약도 색상 안내">
-                <li><i class="route-legend__sw route-legend__sw--low"></i>낮은 지대 (지하 2층 높이)</li>
-                <li><i class="route-legend__sw route-legend__sw--high"></i>언덕 위 (3층 높이)</li>
-                <li><i class="route-legend__sw route-legend__sw--warn"></i>공사 중</li>
-                <li><i class="route-legend__sw route-legend__sw--grass"></i>풀밭</li>
-              </ul>
-              ${cfg.mapNote ? `<p class="route-map-note">※ ${esc(cfg.mapNote)}</p>` : ""}
-            </div>
-            <div class="route-panel">
-              <ul class="route-notices">${(cfg.notices || []).map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
-              <div class="route-step" aria-live="polite">
-                <p class="route-step__count"></p>
-                <h3 class="route-step__title"></h3>
-                <p class="route-chip" hidden></p>
-                <p class="route-step__text"></p>
-                <figure class="route-step__photo" hidden>
-                  <img alt="" loading="lazy" decoding="async">
-                  <figcaption></figcaption>
-                </figure>
-              </div>
-              <div class="route-dots" role="group" aria-label="단계 이동"></div>
-              <div class="route-controls">
-                <button type="button" class="route-ctl" data-act="prev">이전</button>
-                <button type="button" class="route-ctl route-ctl--primary" data-act="next">다음</button>
-                <button type="button" class="route-ctl" data-act="play" aria-pressed="false">자동 안내</button>
-              </div>
-            </div>
+          <div class="route-map" id="routeMap"></div>
+          <div class="route-bar">
+            <p class="route-hint" hidden>사진 아이콘을 누르면 실제 길 사진을 볼 수 있습니다.</p>
+            <button type="button" class="route-replay">경로 다시 보기</button>
+          </div>
+          <div class="route-viewer" hidden>
+            <div class="route-viewer__backdrop" data-viewer-close></div>
+            <figure class="route-viewer__box">
+              <img alt="">
+              <figcaption></figcaption>
+              <button type="button" class="route-viewer__btn route-viewer__prev" aria-label="이전 사진">&#8249;</button>
+              <button type="button" class="route-viewer__btn route-viewer__next" aria-label="다음 사진">&#8250;</button>
+              <button type="button" class="route-viewer__btn route-viewer__close" data-viewer-close aria-label="사진 닫기">&times;</button>
+            </figure>
           </div>
         </div>`;
       document.body.appendChild(modal);
 
       el.tabs = modal.querySelector(".route-tabs");
-      el.count = modal.querySelector(".route-step__count");
-      el.title = modal.querySelector(".route-step__title");
-      el.chip = modal.querySelector(".route-chip");
-      el.text = modal.querySelector(".route-step__text");
-      el.photo = modal.querySelector(".route-step__photo");
-      el.photoImg = el.photo.querySelector("img");
-      el.photoCap = el.photo.querySelector("figcaption");
-      el.dots = modal.querySelector(".route-dots");
-      el.prev = modal.querySelector('[data-act="prev"]');
-      el.next = modal.querySelector('[data-act="next"]');
-      el.play = modal.querySelector('[data-act="play"]');
+      el.hint = modal.querySelector(".route-hint");
+      el.replay = modal.querySelector(".route-replay");
+      el.viewer = modal.querySelector(".route-viewer");
+      el.vImg = el.viewer.querySelector("img");
+      el.vCap = el.viewer.querySelector("figcaption");
+      el.vPrev = el.viewer.querySelector(".route-viewer__prev");
+      el.vNext = el.viewer.querySelector(".route-viewer__next");
       el.close = modal.querySelector(".route-modal__close");
 
       cfg.routes.forEach((r, i) => {
@@ -137,10 +113,13 @@
         el.tabs.appendChild(b);
       });
 
-      modal.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) close(); });
-      el.prev.addEventListener("click", () => { stopAuto(); go(stepIdx - 1); });
-      el.next.addEventListener("click", () => { stopAuto(); go(stepIdx + 1); });
-      el.play.addEventListener("click", () => (autoplay ? stopAuto() : startAuto()));
+      modal.addEventListener("click", (e) => {
+        if (e.target.closest("[data-viewer-close]")) { closeViewer(); return; }
+        if (e.target.closest("[data-close]")) close();
+      });
+      el.replay.addEventListener("click", () => play());
+      el.vPrev.addEventListener("click", () => showSpot(viewerIdx - 1));
+      el.vNext.addEventListener("click", () => showSpot(viewerIdx + 1));
       modal.addEventListener("keydown", onKey);
 
       buildMapBase();
@@ -153,80 +132,97 @@
 
       const labels = svgEl("g", { class: "route-labels" }, svg);
       (m.labels || []).forEach((L) => {
-        const size = L.poi ? 22 : L.warn ? 26 : L.area ? 20 : L.small ? 22 : 28;
-        const cls = L.dest ? "dest" : L.warn ? "warn" : L.poi ? "poi" : L.area ? "area" : "bld";
+        const size = L.s || 28;
+        const cls = L.dest ? "dest" : L.warn ? "warn" : L.poi ? "poi" : L.area ? "area" : L.court ? "court" : "bld";
         const g = svgEl("g", { class: "route-label route-label--" + cls }, labels);
+        if (L.r) g.setAttribute("transform", `rotate(${L.r} ${L.x} ${L.y})`);
         if (L.poi) {
-          const w = textWidth(L.t, size) + 26;
-          svgEl("rect", { x: L.x - w / 2, y: L.y - size * 0.95, width: w, height: size * 1.5, rx: size * 0.75 }, g);
+          const w = textWidth(L.t, size) + 28;
+          svgEl("rect", { x: L.x - w / 2, y: L.y - size * 0.98, width: w, height: size * 1.52, rx: size * 0.76 }, g);
         }
         const t = svgEl("text", { x: L.x, y: L.y, "text-anchor": "middle", "font-size": size }, g);
         t.textContent = L.t;
       });
 
       routeGroup = svgEl("g", { class: "route-routes" }, svg);
-      document.getElementById("routeMap").appendChild(svg);
+      spotGroup = svgEl("g", { class: "route-spots" }, svg);
+      modal.querySelector("#routeMap").appendChild(svg);
     }
 
     /* ---------- route drawing ---------- */
     function renderRoute() {
       routeGroup.textContent = "";
+      spotGroup.textContent = "";
       segs = [];
       const route = cfg.routes[routeIdx];
-      const ghost = svgEl("g", { class: "route-ghost" }, routeGroup);
       const live = svgEl("g", { class: "route-live" }, routeGroup);
       const icons = svgEl("g", { class: "route-seg-labels" }, routeGroup);
 
-      route.segments.forEach((s, k) => {
+      route.segments.forEach((s) => {
         const d = pathD(s.points);
-        const dashed = s.kind === "stairs" || s.kind === "elevator";
         const isJump = s.kind === "jump";
-        if (!isJump) svgEl("path", { d, class: "route-ghost__line" }, ghost);
-
+        const dashed = s.kind === "stairs" || s.kind === "elevator";
         const outline = svgEl("path", { d, class: "route-line route-line--outline" }, live);
         const line = svgEl("path", { d, class: "route-line route-line--" + s.kind }, live);
         const len = isJump ? 1 : line.getTotalLength();
         let tag = null;
         if (s.label) {
-          const mid = isJump ? s.points[0] : line.getPointAtLength(len / 2);
-          const tx = mid.x != null ? mid.x : mid[0], ty = mid.y != null ? mid.y : mid[1];
-          const w = textWidth(s.label.t, 22) + 22;
-          tag = svgEl("g", { class: "route-seg-tag", transform: `translate(${tx + (s.label.dx || 0)} ${ty + (s.label.dy || 0)})` }, icons);
-          svgEl("rect", { x: -w / 2, y: -17, width: w, height: 32, rx: 16 }, tag);
-          const t = svgEl("text", { x: 0, y: 6, "text-anchor": "middle", "font-size": 22 }, tag);
+          const mid = isJump ? { x: s.points[0][0], y: s.points[0][1] } : line.getPointAtLength(len / 2);
+          const w = textWidth(s.label.t, 26) + 28;
+          tag = svgEl("g", { class: "route-seg-tag", transform: `translate(${mid.x + (s.label.dx || 0)} ${mid.y + (s.label.dy || 0)})` }, icons);
+          svgEl("rect", { x: -w / 2, y: -21, width: w, height: 40, rx: 20 }, tag);
+          const t = svgEl("text", { x: 0, y: 8, "text-anchor": "middle", "font-size": 26 }, tag);
           t.textContent = s.label.t;
         }
-        segs.push({ s, outline, line, len, dashed, isJump, tag, p: 0 });
-        setProgress(k, 0);
+        segs.push({ s, outline, line, len, dashed, isJump, tag });
       });
 
-      // 출발 / 도착 표시
       const first = route.segments[0].points[0];
       const lastSeg = route.segments[route.segments.length - 1];
       const end = lastSeg.points[lastSeg.points.length - 1];
       const start = svgEl("g", { class: "route-start", transform: `translate(${first[0]} ${first[1]})` }, routeGroup);
       svgEl("circle", { r: 15 }, start);
-      const st = svgEl("text", { y: -26, "text-anchor": "middle", "font-size": 24 }, start);
+      const st = svgEl("text", { y: -28, "text-anchor": "middle", "font-size": 28 }, start);
       st.textContent = "출발";
       const dest = svgEl("g", { class: "route-end", transform: `translate(${end[0]} ${end[1]})` }, routeGroup);
-      svgEl("polygon", { points: "0,-26 7,-8 26,0 7,8 0,26 -7,8 -26,0 -7,-8" }, dest);
+      svgEl("polygon", { points: "0,-30 8,-9 30,0 8,9 0,30 -8,9 -30,0 -8,-9" }, dest);
 
       marker = svgEl("g", { class: "route-marker" }, routeGroup);
-      svgEl("circle", { r: 26, class: "route-marker__pulse" }, marker);
+      svgEl("circle", { r: 28, class: "route-marker__pulse" }, marker);
       svgEl("circle", { r: 13, class: "route-marker__dot" }, marker);
-      placeMarker(first);
+
+      renderSpots(route);
+    }
+
+    function renderSpots(route) {
+      spots = (route.spots || []).filter((p) => p.photo);
+      el.hint.hidden = !spots.length;
+      spots.forEach((p, i) => {
+        const g = svgEl("g", { class: "route-spot", transform: `translate(${p.x} ${p.y})`, tabindex: "0", role: "button", "aria-label": (p.label || "사진 보기") }, spotGroup);
+        svgEl("circle", { r: 26, class: "route-spot__bg" }, g);
+        // 카메라 모양
+        svgEl("path", { d: "M-12 -6h5l3-5h8l3 5h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-24a2 2 0 0 1-2-2v-14a2 2 0 0 1 2-2z", class: "route-spot__cam" }, g);
+        svgEl("circle", { r: 6, class: "route-spot__lens" }, g);
+        if (p.label) {
+          const size = 24, w = textWidth(p.label, size) + 24;
+          const pill = svgEl("g", { class: "route-spot__label", transform: "translate(0 52)" }, g);
+          svgEl("rect", { x: -w / 2, y: -size * 0.95, width: w, height: size * 1.5, rx: size * 0.75 }, pill);
+          const t = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", "font-size": size }, pill);
+          t.textContent = p.label;
+        }
+        const act = () => openViewer(i);
+        g.addEventListener("click", act);
+        g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } });
+      });
     }
 
     function dashArrayFor(seg, p) {
-      if (!seg.dashed) {
-        return seg.len + " " + (seg.len + 4);
-      }
       const target = seg.len * p, parts = [];
       let pos = 0;
       while (pos < target - 0.01) {
-        const dash = Math.min(14, target - pos); parts.push(dash); pos += dash;
+        const dash = Math.min(16, target - pos); parts.push(dash); pos += dash;
         if (pos >= target - 0.01) break;
-        const gap = Math.min(10, target - pos); parts.push(gap); pos += gap;
+        const gap = Math.min(11, target - pos); parts.push(gap); pos += gap;
       }
       if (parts.length % 2 === 1) parts.push(seg.len + 50); else { parts.push(0); parts.push(seg.len + 50); }
       return parts.join(" ");
@@ -234,7 +230,6 @@
 
     function setProgress(k, p) {
       const seg = segs[k];
-      seg.p = p;
       if (seg.isJump) {
         seg.line.style.opacity = p > 0.99 ? "1" : "0"; seg.outline.style.display = "none";
         if (seg.tag) seg.tag.classList.toggle("is-on", p > 0.98);
@@ -246,8 +241,8 @@
         seg.line.style.strokeDashoffset = 0; seg.outline.style.strokeDashoffset = 0;
       } else {
         const off = seg.len * (1 - p);
-        seg.line.style.strokeDasharray = seg.len + " " + (seg.len + 4);
-        seg.outline.style.strokeDasharray = seg.len + " " + (seg.len + 4);
+        const da = seg.len + " " + (seg.len + 4);
+        seg.line.style.strokeDasharray = da; seg.outline.style.strokeDasharray = da;
         seg.line.style.strokeDashoffset = off; seg.outline.style.strokeDashoffset = off;
       }
       const vis = p > 0.001 ? "1" : "0";
@@ -255,152 +250,80 @@
       if (seg.tag) seg.tag.classList.toggle("is-on", p > 0.98);
     }
 
-    function pointAt(k, p) {
-      const seg = segs[k];
-      if (seg.isJump) { const pt = p < 1 ? seg.s.points[0] : seg.s.points[seg.s.points.length - 1]; return pt; }
-      const q = seg.line.getPointAtLength(seg.len * p);
-      return [q.x, q.y];
-    }
-    function placeMarker(pt) { marker.setAttribute("transform", `translate(${pt[0]} ${pt[1]})`); }
-
-    function endOf(k) {
-      const pts = segs[k].s.points; return pts[pts.length - 1];
-    }
-    function startOf(k) { return segs[k].s.points[0]; }
+    const placeMarker = (pt) => marker.setAttribute("transform", `translate(${pt[0]} ${pt[1]})`);
+    const endOf = (k) => { const pts = segs[k].s.points; return pts[pts.length - 1]; };
+    const startOf = (k) => segs[k].s.points[0];
 
     function animateSeg(k, token) {
       const seg = segs[k];
       if (seg.isJump) {
-        // 건물 안에서의 이동: 표시가 사라졌다가 도착 지점에서 나타난다
         return new Promise(async (res) => {
           marker.classList.add("is-hidden");
           await sleep(reduceMotion ? 0 : 450);
           if (token !== runToken) return res();
           placeMarker(endOf(k)); setProgress(k, 1);
           marker.classList.remove("is-hidden");
-          await sleep(reduceMotion ? 0 : 350);
+          await sleep(reduceMotion ? 0 : 300);
           res();
         });
       }
       return new Promise((res) => {
         if (reduceMotion) { setProgress(k, 1); placeMarker(endOf(k)); return res(); }
-        const dur = Math.max(650, Math.min(2200, seg.len * (seg.dashed ? 2.4 : 2.0)));
+        const dur = Math.max(500, Math.min(1500, seg.len * 1.6));
         const t0 = performance.now();
         (function frame(now) {
           if (token !== runToken) return res();
           const t = Math.min(1, (now - t0) / dur);
-          const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // ease in-out
+          const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
           setProgress(k, e);
-          placeMarker(pointAt(k, e));
+          const q = seg.line.getPointAtLength(seg.len * e);
+          placeMarker([q.x, q.y]);
           if (t < 1) requestAnimationFrame(frame); else res();
         })(t0);
       });
     }
 
-    /* ---------- steps ---------- */
-    async function go(i, opts) {
-      const route = cfg.routes[routeIdx];
-      i = Math.max(0, Math.min(route.steps.length - 1, i));
+    // 경로를 처음부터 차례로 그린다
+    async function play() {
       const token = ++runToken;
-      stepIdx = i;
-      updatePanel();
-
-      const drawnBefore = new Set();
-      route.steps.slice(0, i).forEach((s) => s.draw.forEach((k) => drawnBefore.add(k)));
-      const cur = route.steps[i].draw;
-      segs.forEach((seg, k) => {
-        if (drawnBefore.has(k)) setProgress(k, 1);
-        else if (!cur.includes(k)) setProgress(k, 0);
-      });
-
-      // 이 단계가 시작되는 위치에 표시를 둔다
-      const prev = i > 0 ? route.steps[i - 1].draw : null;
-      const startPt = prev ? endOf(prev[prev.length - 1]) : startOf(cur[0]);
+      segs.forEach((_, k) => setProgress(k, 0));
       marker.classList.remove("is-hidden");
-      placeMarker(startPt);
-      cur.forEach((k) => { if (!segs[k].isJump) setProgress(k, 0); });
-
-      if (opts && opts.instant) {
-        cur.forEach((k) => setProgress(k, 1));
-        placeMarker(endOf(cur[cur.length - 1]));
-        marker.classList.remove("is-hidden");
-        return;
-      }
-      for (const k of cur) {
-        if (token !== runToken) return;
+      placeMarker(startOf(0));
+      for (let k = 0; k < segs.length; k++) {
         await animateSeg(k, token);
+        if (token !== runToken) return;
       }
-    }
-
-    function updatePanel() {
-      const route = cfg.routes[routeIdx];
-      const step = route.steps[stepIdx];
-      el.count.textContent = `${stepIdx + 1} / ${route.steps.length}`;
-      el.title.textContent = step.title;
-      el.text.textContent = step.text;
-      if (step.chip) {
-        el.chip.hidden = false;
-        el.chip.textContent = step.chip.text;
-        el.chip.className = "route-chip route-chip--" + step.chip.type;
-      } else { el.chip.hidden = true; }
-      if (step.photo) {
-        el.photo.hidden = false;
-        el.photoImg.src = step.photo.src;
-        el.photoImg.alt = step.photo.caption || "";
-        el.photoCap.textContent = step.photo.caption || "";
-      } else { el.photo.hidden = true; el.photoImg.removeAttribute("src"); }
-
-      el.dots.textContent = "";
-      route.steps.forEach((s, i) => {
-        const d = document.createElement("button");
-        d.type = "button";
-        d.className = "route-dot" + (i === stepIdx ? " is-current" : i < stepIdx ? " is-done" : "");
-        d.setAttribute("aria-label", `${i + 1}단계: ${s.title}`);
-        if (i === stepIdx) d.setAttribute("aria-current", "step");
-        d.addEventListener("click", () => { stopAuto(); go(i); });
-        el.dots.appendChild(d);
-      });
-      el.prev.disabled = stepIdx === 0;
-      const last = stepIdx === route.steps.length - 1;
-      el.next.disabled = last;
-
-      [...el.tabs.children].forEach((b, i) => {
-        b.classList.toggle("is-active", i === routeIdx);
-        b.setAttribute("aria-selected", String(i === routeIdx));
-      });
     }
 
     function selectRoute(i) {
-      stopAuto();
       routeIdx = i;
+      [...el.tabs.children].forEach((b, j) => { b.classList.toggle("is-active", j === i); b.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      closeViewer();
       renderRoute();
-      go(0);
+      play();
     }
 
-    /* ---------- autoplay ---------- */
-    function startAuto() {
-      autoplay = true;
-      el.play.setAttribute("aria-pressed", "true");
-      el.play.textContent = "안내 정지";
-      const route = cfg.routes[routeIdx];
-      const begin = async () => {
-        let i = stepIdx >= route.steps.length - 1 ? 0 : stepIdx;
-        while (autoplay) {
-          await go(i);
-          if (!autoplay) break;
-          await new Promise((r) => { autoTimer = setTimeout(r, reduceMotion ? 1600 : 1800); });
-          if (!autoplay) break;
-          if (i >= route.steps.length - 1) break;
-          i++;
-        }
-        stopAuto();
-      };
-      begin();
+    /* ---------- 사진 보기 ---------- */
+    function openViewer(i) {
+      el.viewer.hidden = false;
+      showSpot(i);
+      el.viewer.querySelector(".route-viewer__close").focus({ preventScroll: true });
     }
-    function stopAuto() {
-      autoplay = false;
-      clearTimeout(autoTimer);
-      if (el.play) { el.play.setAttribute("aria-pressed", "false"); el.play.textContent = "자동 안내"; }
+    function showSpot(i) {
+      if (!spots.length) return;
+      viewerIdx = (i + spots.length) % spots.length;
+      const p = spots[viewerIdx];
+      el.vImg.src = p.photo;
+      el.vImg.alt = p.caption || p.label || "";
+      el.vCap.textContent = p.caption || p.label || "";
+      const many = spots.length > 1;
+      el.vPrev.hidden = !many; el.vNext.hidden = !many;
+    }
+    function closeViewer() {
+      if (!el.viewer || el.viewer.hidden) return;
+      el.viewer.hidden = true;
+      el.vImg.removeAttribute("src");
+      viewerIdx = -1;
     }
 
     /* ---------- open / close ---------- */
@@ -410,14 +333,12 @@
       modal.hidden = false;
       document.documentElement.classList.add("route-open");
       requestAnimationFrame(() => modal.classList.add("is-open"));
-      routeIdx = 0;
-      renderRoute();
-      go(0);
+      selectRoute(0);
       el.close.focus({ preventScroll: true });
     }
     function close() {
-      stopAuto();
       runToken++;
+      closeViewer();
       modal.classList.remove("is-open");
       modal.hidden = true;
       document.documentElement.classList.remove("route-open");
@@ -425,11 +346,14 @@
     }
 
     function onKey(e) {
-      if (e.key === "Escape") { e.preventDefault(); close(); return; }
-      if (e.key === "ArrowRight") { stopAuto(); go(stepIdx + 1); return; }
-      if (e.key === "ArrowLeft") { stopAuto(); go(stepIdx - 1); return; }
+      if (e.key === "Escape") { e.preventDefault(); if (!el.viewer.hidden) closeViewer(); else close(); return; }
+      if (!el.viewer.hidden) {
+        if (e.key === "ArrowRight") showSpot(viewerIdx + 1);
+        else if (e.key === "ArrowLeft") showSpot(viewerIdx - 1);
+      }
       if (e.key === "Tab") {
-        const f = [...modal.querySelectorAll("button:not([disabled]), a[href]")].filter((n) => n.offsetParent !== null);
+        const scope = el.viewer.hidden ? modal : el.viewer;
+        const f = [...scope.querySelectorAll("button:not([disabled]):not([hidden]), [tabindex='0']")].filter((n) => n.offsetParent !== null || n.closest("svg"));
         if (!f.length) return;
         const first = f[0], last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
