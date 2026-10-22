@@ -74,6 +74,7 @@
             </div>
             <button type="button" class="route-modal__close" data-close aria-label="닫기">&times;</button>
           </header>
+          ${cfg.notice ? `<p class="route-notice">${esc(cfg.notice)}</p>` : ""}
           <div class="route-tabs" role="tablist" aria-label="이동 방법"></div>
           <div class="route-map" id="routeMap"></div>
           <div class="route-bar">

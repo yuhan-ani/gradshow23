@@ -36,6 +36,7 @@ window.SHOWCASE_DATA = {
   directions: {
     title: "오시는 길",
     address: "(14780) 경기도 부천시 소사구 경인로 590",
+    notice: "현재 교내 공사로 길이 복잡합니다. 약도를 보시고 천천히 찾아와 주세요.",
     destination: "유재라관(8호관) 6층 유한아트홀",
     map: {
       image: "assets/route/campus-map.svg",

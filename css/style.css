@@ -1673,3 +1673,6 @@ html.route-open { overflow: hidden; }
 .route-blocked__x path { fill: none; stroke: #ffd9de; stroke-width: 5; stroke-linecap: round; }
 .route-blocked__label rect { fill: #4b1d2a; stroke: #ff8da0; stroke-width: 2; }
 .route-blocked__label text { fill: #ffd9de; font-family: var(--f-body); font-weight: 700; }
+
+.route-notice { margin: 16px 0 0; padding: 10px 14px; font-size: 0.9rem; line-height: 1.6; color: var(--c-ivory); background: rgba(7, 11, 16, 0.4); border: 1px solid var(--c-gold-soft); border-left: 3px solid #e0707f; word-break: keep-all; }
+.route-notice + .route-tabs { margin-top: 12px; }
