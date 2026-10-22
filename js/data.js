@@ -141,9 +141,9 @@ window.SHOWCASE_DATA = {
         spots: [
           { x: 944, y: 1070, label: "버스정류장", photos: [
             { src: "assets/route/photos/busstop.jpg", caption: "유한대학교 버스정류장" } ] },
-          "uphill",
+          { ref: "uphill", x: 937, y: 860, onRoute: true },
           "statue",
-          { x: 992, y: 680, label: "돌계단", photos: [
+          { x: 897, y: 677, onRoute: true, label: "돌계단", photos: [
             { src: "assets/route/photos/stone-stairs.jpg", caption: "돌계단" } ] },
           { x: 722, y: 812, label: "농구장", photos: [
             { src: "assets/route/photos/court.jpg", caption: "농구장" },
@@ -151,9 +151,15 @@ window.SHOWCASE_DATA = {
           { x: 548, y: 886, onRoute: true, label: "엘리베이터", photos: [
             { src: "assets/route/photos/elev-view.jpg", caption: "엘리베이터가 보이는 곳" },
             { src: "assets/route/photos/elev-l.jpg", caption: "엘리베이터 — L층에서 3층으로" } ] },
-          { x: 326, y: 850, label: "3층", photos: [
+          { x: 360, y: 908, onRoute: true, label: "3층", photos: [
             { src: "assets/route/photos/elev-3f.jpg", caption: "3층에서 내렸을 때" } ] },
-          "h5in", "h5out", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+          { ref: "h5in", x: 254, y: 890, onRoute: true },
+          { ref: "h5out", x: 251, y: 426, onRoute: true },
+          { ref: "gardenEntry", x: 290, y: 326, onRoute: true },
+          { ref: "fork1", x: 376, y: 247, onRoute: true },
+          { ref: "fork2", x: 351, y: 175, onRoute: true },
+          { ref: "fork3", x: 436, y: 102, onRoute: true },
+          { ref: "h8", x: 520, y: 185, onRoute: true }
         ]
       },
       {
@@ -166,10 +172,14 @@ window.SHOWCASE_DATA = {
           { kind: "walk", points: [[215, 352], [250, 364], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
         spots: [
-          "uphill", "statue",
+          { ref: "uphill", x: 999, y: 860, onRoute: true }, "statue",
           { x: 772, y: 348, label: "주차장 입구", photos: [
             { src: "assets/route/photos/parking.jpg", caption: "주차장 입구" } ] },
-          "gardenEntry", "fork1", "fork2", "fork3", "h8"
+          { ref: "gardenEntry", x: 290, y: 327, onRoute: true },
+          { ref: "fork1", x: 376, y: 247, onRoute: true },
+          { ref: "fork2", x: 351, y: 175, onRoute: true },
+          { ref: "fork3", x: 436, y: 102, onRoute: true },
+          { ref: "h8", x: 520, y: 185, onRoute: true }
         ]
       }
     ]
