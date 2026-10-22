@@ -113,11 +113,17 @@ window.SHOWCASE_DATA = {
         spots: [
           { x: 436, y: 1112, label: "횡단보도", photos: [
             { src: "assets/route/photos/crosswalk.jpg", caption: "횡단보도 건너편 신호등" } ] },
-          { x: 372, y: 1082, label: "계단 입구", photos: [
+          { x: 372, y: 1031, onRoute: true, label: "계단 입구", photos: [
             { src: "assets/route/photos/stair-in.jpg", caption: "계단 입구" } ] },
-          { x: 262, y: 960, label: "계단 출구", photos: [
+          { x: 309, y: 962, onRoute: true, label: "계단 출구", photos: [
             { src: "assets/route/photos/stair-out.jpg", caption: "계단 출구" } ] },
-          "h5in", "h5out", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+          { ref: "h5in", x: 254, y: 890, onRoute: true },
+          { ref: "h5out", x: 251, y: 426, onRoute: true },
+          { ref: "gardenEntry", x: 290, y: 326, onRoute: true },
+          { ref: "fork1", x: 376, y: 247, onRoute: true },
+          { ref: "fork2", x: 351, y: 175, onRoute: true },
+          { ref: "fork3", x: 436, y: 102, onRoute: true },
+          { ref: "h8", x: 520, y: 185, onRoute: true }
         ]
       },
       {

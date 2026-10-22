@@ -250,7 +250,7 @@
     function renderSpots(route) {
       // 이름(문자열)으로 적은 사진 버튼은 spotLib 에서 가져온다
       spots = (route.spots || [])
-        .map((p) => (typeof p === "string" ? (cfg.spotLib || {})[p] : p))
+        .map((p) => (typeof p === "string" ? (cfg.spotLib || {})[p] : p && p.ref ? Object.assign({}, (cfg.spotLib || {})[p.ref], p) : p))
         .filter((p) => p && p.photos && p.photos.length);
       el.photoBar.hidden = !spots.length;
       spots.forEach((p, i) => {
