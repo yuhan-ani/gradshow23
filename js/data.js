@@ -291,7 +291,7 @@ window.SHOWCASE_DATA = {
     { order: 9, teamName: "무르무르", title: "개복치의 죽음", genre: "3D 애니메이션", synopsis: "사소한 자극에도 생명을 잃는 개복치처럼, 사회적 고립 속에서 한 줄의 희망을 얻었지만, 결국엔 무너져 버리는 현대인의 유약한 심리를 그린 3D AI 애니메이션", runtime: "05:48", mediaType: "video", videoUrl: "LdncHR0kHaU", thumbnail: "assets/posters/09.jpg",
       members: [
         { name: "김혁진", role: "감독, Scenario, Storyboard, Animatic, Character, Prop, Environment Modeling, Rigging, Animating, AI Production, Post-Processing, Sound Design, Editing",
-          bio: "졸업작품을 만드는 내내 힘들어서 개복치가 될 뻔했지만, 좋은 팀원들이 있어 함께 힘을 합쳐 작품을 만들 수 있었다. 그리고 나온 작품을 보니 그간의 시련들이 보상으로 돌아온 것 같아 행복했다." },
+          bio: "졸업작품을 만드는 내내 힘들어서 개복치가 될 뻔했지만, 좋은 팀원들이 있어 함께 힘을 합쳐 작품을 만들 수 있었습니다. 그리고 나온 작품을 보니 그간의 시련들이 보상으로 돌아와 행복했습니다." },
         { name: "김지원", role: "Character Design, Title Design, Poster Design, 2D Graphic Art",
           bio: "좋은 팀원들을 만난 덕분에 힘든 과정도 즐겁게 이겨낼 수 있었고, 서로 소통하며 끝까지 함께 완성해 낼 수 있어서 정말 뜻깊은 시간이었습니다." },
         { name: "이권준", role: "Prop Modeling, Environment Modeling",
