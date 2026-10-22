@@ -1665,3 +1665,11 @@ html.route-open { overflow: hidden; }
 @media (min-width: 601px) {
   .route-svg { width: 100%; height: min(calc(100vh - 300px), 900px); height: min(calc(100dvh - 300px), 900px); }
 }
+
+/* 공사로 끊긴 길 */
+.route-blocked__outline { fill: none; stroke: rgba(13, 22, 32, 0.9); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+.route-blocked__line { fill: none; stroke: #ff8da0; stroke-width: 9; stroke-dasharray: 2 16; stroke-linecap: round; stroke-linejoin: round; }
+.route-blocked__x circle { fill: #4b1d2a; stroke: #ff8da0; stroke-width: 4; }
+.route-blocked__x path { fill: none; stroke: #ffd9de; stroke-width: 5; stroke-linecap: round; }
+.route-blocked__label rect { fill: #4b1d2a; stroke: #ff8da0; stroke-width: 2; }
+.route-blocked__label text { fill: #ffd9de; font-family: var(--f-body); font-weight: 700; }

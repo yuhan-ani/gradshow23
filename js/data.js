@@ -40,7 +40,7 @@ window.SHOWCASE_DATA = {
     map: {
       image: "assets/route/campus-map.svg",
       width: 1044,
-      height: 1140,
+      height: 1200,
       labels: [
         { x: 115, y: 280, t: "7호관", s: 34 },
         { x: 594, y: 140, t: "8호관", s: 38, dest: true },
@@ -53,17 +53,21 @@ window.SHOWCASE_DATA = {
         { x: 650, y: 984, t: "2호관", s: 32 },
         { x: 798, y: 796, t: "농구장", s: 24, court: true },
         { x: 160, y: 158, t: "언덕 위 · 3층 높이", s: 24, area: true },
-        { x: 175, y: 1046, t: "낮은 지대 · 지하 2층 높이", s: 24, area: true },
+        { x: 112, y: 1036, t: "낮은 지대", s: 24, area: true },
+        { x: 112, y: 1064, t: "지하 2층 높이", s: 22, area: true },
         { x: 491, y: 296, t: "공사 중", s: 24, warn: true },
         { x: 530, y: 382, t: "공사 중", s: 26, warn: true },
         { x: 311, y: 640, t: "공사 중", s: 26, warn: true, r: -90 },
         { x: 748, y: 196, t: "주차장", s: 28, poi: true },
         { x: 935, y: 494, t: "동상", s: 28, poi: true },
-        { x: 826, y: 1068, t: "버스정류장", s: 28, poi: true },
+        { x: 822, y: 1078, t: "버스정류장", s: 28, poi: true },
         { x: 904, y: 624, t: "돌계단", s: 28, poi: true },
         { x: 430, y: 966, t: "엘리베이터", s: 28, poi: true },
-        { x: 232, y: 1078, t: "계단", s: 28, poi: true },
-        { x: 640, y: 1110, t: "횡단보도", s: 28, poi: true }
+        { x: 309, y: 1114, t: "계단", s: 28, poi: true },
+        { x: 640, y: 1098, t: "횡단보도", s: 28, poi: true }
+      ],
+      blocked: [
+        { points: [[252, 356], [330, 320], [426, 294]], label: { t: "막힌 길", dx: -24, dy: -48 } }
       ]
     },
     routes: [
@@ -72,9 +76,9 @@ window.SHOWCASE_DATA = {
         name: "계단 이용",
         tag: "도보 · 계단 약 5층",
         segments: [
-          { kind: "walk", points: [[511, 1024], [309, 1030]] },
-          { kind: "stairs", points: [[309, 1030], [309, 926]], label: { t: "계단 · 5층", dx: -122, dy: -100 } },
-          { kind: "walk", points: [[309, 926], [256, 914], [250, 362]] },
+          { kind: "walk", points: [[511, 1032], [309, 1030]] },
+          { kind: "stairs", points: [[309, 1030], [309, 988]], label: { t: "계단 · 5층", dx: -150, dy: -100 } },
+          { kind: "walk", points: [[309, 988], [309, 926], [256, 914], [250, 362]] },
           { kind: "walk", points: [[250, 362], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
         spots: []
@@ -84,11 +88,11 @@ window.SHOWCASE_DATA = {
         name: "엘리베이터 이용",
         tag: "도보 · 3호관 엘리베이터",
         segments: [
-          { kind: "walk", points: [[826, 992], [944, 986], [928, 678]] },
+          { kind: "walk", points: [[822, 1028], [944, 990], [928, 678]] },
           { kind: "stairs", points: [[928, 678], [866, 676]] },
-          { kind: "walk", points: [[866, 676], [864, 862], [472, 890]] },
-          { kind: "elevator", points: [[472, 890], [441, 900]], label: { t: "L → 3층", dx: 6, dy: -44 } },
-          { kind: "walk", points: [[441, 900], [309, 914], [256, 914], [250, 362]] },
+          { kind: "walk", points: [[866, 676], [864, 862], [452, 892]] },
+          { kind: "elevator", points: [[452, 892], [414, 902]], label: { t: "L → 3층", dx: 8, dy: -46 } },
+          { kind: "walk", points: [[414, 902], [309, 914], [256, 914], [250, 362]] },
           { kind: "walk", points: [[250, 362], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
         spots: []
@@ -98,7 +102,7 @@ window.SHOWCASE_DATA = {
         name: "자가용 이용",
         tag: "주차장 · 엘리베이터",
         segments: [
-          { kind: "drive", points: [[1012, 1124], [1008, 1060], [990, 658], [704, 342], [748, 282]] },
+          { kind: "drive", points: [[1016, 1170], [1008, 1060], [990, 658], [704, 342], [748, 282]] },
           { kind: "jump", points: [[748, 282], [215, 352]], label: { t: "엘리베이터 → 1층", dx: -40, dy: 92 } },
           { kind: "walk", points: [[215, 352], [250, 364], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],

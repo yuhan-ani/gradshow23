@@ -144,6 +144,25 @@
         t.textContent = L.t;
       });
 
+      // 공사로 끊긴 길: 점선이 공사 구간에 닿아 멈춘다
+      (m.blocked || []).forEach((b) => {
+        const g = svgEl("g", { class: "route-blocked" }, svg);
+        const d = pathD(b.points, 18);
+        svgEl("path", { d, class: "route-blocked__outline" }, g);
+        svgEl("path", { d, class: "route-blocked__line" }, g);
+        const e = b.points[b.points.length - 1];
+        const x = svgEl("g", { class: "route-blocked__x", transform: `translate(${e[0]} ${e[1]})` }, g);
+        svgEl("circle", { r: 20 }, x);
+        svgEl("path", { d: "M-9 -9L9 9M9 -9L-9 9" }, x);
+        if (b.label) {
+          const size = 24, w = textWidth(b.label.t, size) + 26;
+          const pill = svgEl("g", { class: "route-blocked__label", transform: `translate(${e[0] + (b.label.dx || 0)} ${e[1] + (b.label.dy || 0)})` }, g);
+          svgEl("rect", { x: -w / 2, y: -size * 0.95, width: w, height: size * 1.5, rx: size * 0.75 }, pill);
+          const t = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", "font-size": size }, pill);
+          t.textContent = b.label.t;
+        }
+      });
+
       routeGroup = svgEl("g", { class: "route-routes" }, svg);
       spotGroup = svgEl("g", { class: "route-spots" }, svg);
       modal.querySelector("#routeMap").appendChild(svg);
