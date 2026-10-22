@@ -79,7 +79,7 @@ window.SHOWCASE_DATA = {
       h5out: { x: 205, y: 395, label: "5호관 출구", photos: [
         { src: "assets/route/photos/h5-out.jpg", caption: "5호관 출구" },
         { src: "assets/route/photos/h5-view7.jpg", caption: "5호관을 나오면 보이는 7호관" } ] },
-      gardenEntry: { x: 300, y: 296, label: "8호관 가는 길 입구", photos: [
+      gardenEntry: { x: 292, y: 352, label: "8호관 가는 길 입구", photos: [
         { src: "assets/route/photos/garden-7ho-side.jpg", caption: "7호관 옆, 8호관으로 가는 길" },
         { src: "assets/route/photos/garden-entry.jpg", caption: "8호관으로 들어가는 길 입구" } ] },
       fork1: { x: 420, y: 272, label: "첫 번째 갈림길", photos: [
@@ -139,10 +139,10 @@ window.SHOWCASE_DATA = {
           "statue",
           { x: 992, y: 680, label: "돌계단", photos: [
             { src: "assets/route/photos/stone-stairs.jpg", caption: "돌계단" } ] },
-          { x: 690, y: 845, label: "농구장", photos: [
+          { x: 722, y: 812, label: "농구장", photos: [
             { src: "assets/route/photos/court.jpg", caption: "농구장" },
             { src: "assets/route/photos/to-elev.jpg", caption: "농구장을 지나 엘리베이터로 가는 길" } ] },
-          { x: 548, y: 944, label: "엘리베이터", photos: [
+          { x: 548, y: 886, onRoute: true, label: "엘리베이터", photos: [
             { src: "assets/route/photos/elev-view.jpg", caption: "엘리베이터가 보이는 곳" },
             { src: "assets/route/photos/elev-l.jpg", caption: "엘리베이터 — L층에서 3층으로" } ] },
           { x: 326, y: 850, label: "3층", photos: [
@@ -161,7 +161,7 @@ window.SHOWCASE_DATA = {
         ],
         spots: [
           "uphill", "statue",
-          { x: 684, y: 228, label: "주차장 입구", photos: [
+          { x: 772, y: 348, label: "주차장 입구", photos: [
             { src: "assets/route/photos/parking.jpg", caption: "주차장 입구" } ] },
           "gardenEntry", "fork1", "fork2", "fork3", "h8"
         ]

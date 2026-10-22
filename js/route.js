@@ -226,6 +226,7 @@
 
     // 사진 점이 경로 선 위에 겹치지 않도록, 선에서 조금 떨어진 곳으로 옮긴다
     function nudgeFromRoute(p, route) {
+      if (p.onRoute) return [p.x, p.y];
       const MIN = 42;
       let best = null;
       route.segments.forEach((s) => {
