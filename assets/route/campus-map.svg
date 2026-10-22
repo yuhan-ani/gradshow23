@@ -48,6 +48,7 @@
   <rect x="470" y="490" width="415" height="390" rx="30" fill="#21405c"/>
   <!-- 언덕 위 -->
   <polygon points="0,120 700,120 700,400 347,400 347,935 0,935" fill="#463b2d"/>
+  <rect x="270" y="930" width="82" height="86" fill="#463b2d"/>
 
   <!-- 길 -->
   <g fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="30" stroke-linejoin="round">

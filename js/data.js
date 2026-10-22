@@ -29,7 +29,7 @@ window.SHOWCASE_DATA = {
     website: "https://anima.yuhan.ac.kr/index.do",
     instagram: "https://www.instagram.com/yuhan.ani/"
   },
-  /* 오시는 길 — 약도(assets/route/campus-map.svg, 1044x1140) 위의 좌표로 경로를 그린다.
+  /* 오시는 길 — 약도(assets/route/campus-map.svg, 1044x1200) 위의 좌표로 경로를 그린다.
      약도는 실제 지도와 방향이 같게(위쪽이 남쪽, 오른쪽이 서쪽) 그려져 있어서, 글에는 동·서·남·북을 쓰지 않는다.
      segments: 경로 조각. kind = walk(걷기) | drive(차) | stairs(계단) | elevator(엘리베이터) | jump(건물 안 이동, 선 없이 순간이동)
      spots: 약도 위 사진 버튼. 누르면 사진이 열린다. { x, y, label, photo, caption }  (photo가 없는 항목은 표시하지 않는다) */
@@ -39,7 +39,7 @@ window.SHOWCASE_DATA = {
     notice: "현재 교내 공사로 길이 복잡합니다. 약도를 보시고 천천히 찾아와 주세요.",
     destination: "유재라관(8호관) 6층 유한아트홀",
     map: {
-      image: "assets/route/campus-map.svg",
+      image: "assets/route/campus-map.svg?v=20261023",
       width: 1044,
       height: 1200,
       labels: [
