@@ -44,6 +44,12 @@
   <path d="M690 335L990 655L1008 1060" stroke="#1c2d40" stroke-width="44" stroke-linejoin="round" stroke-linecap="butt" fill="none"/>
   <!-- 동상 앞에서 주차장으로 가는 길 -->
   <path d="M990 655L984 520L920 478L860 400L815 325L772 290L750 282" stroke="#1c2d40" stroke-width="40" stroke-linejoin="round" stroke-linecap="butt" fill="none"/>
+  <!-- 1호관 맨 위 선부터 위쪽은 언덕 위 높이 -->
+  <clipPath id="above1"><rect x="0" y="0" width="1044" height="400"/></clipPath>
+  <g clip-path="url(#above1)" fill="none" stroke="#463b2d" stroke-width="44" stroke-linejoin="round">
+    <path d="M690 335L990 655L1008 1060" stroke-linecap="butt"/>
+    <path d="M990 655L984 520L920 478L860 400L815 325L772 290L750 282" stroke-width="40"/>
+  </g>
   <!-- 안뜰 -->
   <rect x="470" y="490" width="415" height="390" rx="30" fill="#21405c"/>
   <!-- 언덕 위 -->
