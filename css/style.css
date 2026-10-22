@@ -1500,7 +1500,7 @@ html.route-open { overflow: hidden; }
 .route-modal[hidden] { display: none; }
 .route-modal.is-open { opacity: 1; }
 
-.route-modal__backdrop { position: absolute; inset: 0; background: rgba(5, 8, 12, 0.86); backdrop-filter: blur(4px); }
+.route-modal__backdrop { position: absolute; inset: 0; background: rgba(5, 8, 12, 0.94); }
 
 .route-modal__box {
   position: relative;
@@ -1585,7 +1585,6 @@ html.route-open { overflow: hidden; }
 .route-label--poi text { fill: #eef3f8; font-weight: 500; }
 
 /* 경로 */
-.route-live { filter: drop-shadow(0 0 7px rgba(242, 198, 143, 0.7)); }
 .route-line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .route-line--outline { stroke: rgba(13, 22, 32, 0.95); stroke-width: 26; }
 .route-line--walk,
@@ -1601,13 +1600,12 @@ html.route-open { overflow: hidden; }
 
 .route-start circle { fill: #fff3df; stroke: #0d1620; stroke-width: 6; }
 .route-start text { fill: #fff3df; stroke: #0d1620; stroke-width: 7; paint-order: stroke; font-weight: 700; font-family: var(--f-body); }
-.route-end polygon { fill: #fff3df; stroke: #f2c68f; stroke-width: 3; filter: drop-shadow(0 0 8px rgba(242, 198, 143, 0.9)); }
+.route-end polygon { fill: #fff3df; stroke: #f2c68f; stroke-width: 4; }
 
 .route-marker { transition: opacity 0.25s ease; pointer-events: none; }
 .route-marker.is-hidden { opacity: 0; }
 .route-marker__dot { fill: #f2c68f; stroke: #fff; stroke-width: 5; }
-.route-marker__pulse { fill: rgba(242, 198, 143, 0.4); transform-box: fill-box; transform-origin: center; animation: routePulse 1.7s ease-out infinite; }
-@keyframes routePulse { 0% { transform: scale(0.55); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
+.route-marker__pulse { fill: rgba(242, 198, 143, 0.35); }
 
 /* 사진 버튼 */
 .route-spot { cursor: pointer; outline: none; }
@@ -1664,7 +1662,6 @@ html.route-open { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .route-modal { transition: none; }
-  .route-marker__pulse { animation: none; opacity: 0.5; }
 }
 
 @media (min-width: 601px) {
@@ -1673,3 +1670,7 @@ html.route-open { overflow: hidden; }
 
 .route-notice { margin: 16px 0 0; padding: 10px 14px; font-size: 0.9rem; line-height: 1.6; color: var(--c-ivory); background: rgba(7, 11, 16, 0.4); border: 1px solid var(--c-gold-soft); border-left: 3px solid #e0707f; word-break: keep-all; }
 .route-notice + .route-tabs { margin-top: 12px; }
+
+/* 길안내 창이 열려 있는 동안에는 뒤쪽 첫 화면의 움직임을 멈춰서 폰에서 버벅이지 않게 한다 */
+html.route-open .hero,
+html.route-open .hero * { animation-play-state: paused !important; }

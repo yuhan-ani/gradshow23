@@ -39,7 +39,7 @@ window.SHOWCASE_DATA = {
     notice: "현재 교내 공사로 길이 복잡합니다. 약도를 보시고 천천히 찾아와 주세요.",
     destination: "유재라관(8호관) 6층 유한아트홀",
     map: {
-      image: "assets/route/campus-map.svg?v=20261023c",
+      image: "assets/route/campus-map.svg?v=20261023d",
       width: 1044,
       height: 1200,
       labels: [
