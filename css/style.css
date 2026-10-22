@@ -1554,7 +1554,11 @@ html.route-open { overflow: hidden; }
 .route-map { border: 1px solid var(--c-gold-soft); background: #0d1620; line-height: 0; }
 .route-svg { display: block; width: 100%; height: auto; }
 
-.route-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.route-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 12px; margin-top: 12px; }
+.route-photobar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.route-photobar[hidden] { display: none; }
+.route-toggle { flex: none; padding: 7px 14px; font-family: var(--f-body); font-size: 0.85rem; color: var(--c-silver); background: none; border: 1px solid var(--c-gold-soft); border-radius: 999px; cursor: pointer; }
+.route-toggle[aria-pressed="true"] { color: var(--c-bg-deep); background: var(--c-gold-bright); border-color: var(--c-gold-bright); }
 .route-hint { margin: 0; font-size: 0.85rem; color: var(--c-silver); word-break: keep-all; }
 .route-replay {
   margin-left: auto;
@@ -1607,14 +1611,12 @@ html.route-open { overflow: hidden; }
 
 /* 사진 버튼 */
 .route-spot { cursor: pointer; outline: none; }
-.route-spot__bg { fill: #f2c68f; stroke: #0d1620; stroke-width: 5; transition: transform 0.2s ease; transform-box: fill-box; transform-origin: center; }
+.route-spot__hit { fill: transparent; }
+.route-spot__bg { fill: #f2c68f; stroke: #0d1620; stroke-width: 4; opacity: 0.95; transition: transform 0.2s ease; transform-box: fill-box; transform-origin: center; }
 .route-spot:hover .route-spot__bg,
-.route-spot:focus-visible .route-spot__bg { transform: scale(1.18); }
+.route-spot:focus-visible .route-spot__bg { transform: scale(1.25); opacity: 1; }
 .route-spot:focus-visible .route-spot__bg { stroke: #fff; }
-.route-spot__cam { fill: #0d1620; }
-.route-spot__lens { fill: #f2c68f; }
-.route-spot__label rect { fill: rgba(13, 22, 32, 0.94); stroke: rgba(242, 198, 143, 0.75); stroke-width: 2; }
-.route-spot__label text { fill: #eef3f8; font-family: var(--f-body); font-weight: 500; }
+.route-spot__num { fill: #0d1620; font-family: var(--f-body); font-weight: 700; pointer-events: none; }
 
 /* 사진 보기 */
 .route-viewer { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; padding: 16px; }

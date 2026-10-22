@@ -78,7 +78,10 @@
           <div class="route-tabs" role="tablist" aria-label="이동 방법"></div>
           <div class="route-map" id="routeMap"></div>
           <div class="route-bar">
-            <p class="route-hint" hidden>사진 아이콘을 누르면 실제 길 사진을 볼 수 있습니다.</p>
+            <div class="route-photobar" hidden>
+              <p class="route-hint">번호를 누르면 실제 길 사진을 볼 수 있습니다.</p>
+              <button type="button" class="route-toggle" aria-pressed="true">사진 번호 표시</button>
+            </div>
             <button type="button" class="route-replay">경로 다시 보기</button>
           </div>
           <div class="route-viewer" hidden>
@@ -95,7 +98,8 @@
       document.body.appendChild(modal);
 
       el.tabs = modal.querySelector(".route-tabs");
-      el.hint = modal.querySelector(".route-hint");
+      el.photoBar = modal.querySelector(".route-photobar");
+      el.toggle = modal.querySelector(".route-toggle");
       el.replay = modal.querySelector(".route-replay");
       el.viewer = modal.querySelector(".route-viewer");
       el.vImg = el.viewer.querySelector("img");
@@ -119,6 +123,12 @@
         if (e.target.closest("[data-close]")) close();
       });
       el.replay.addEventListener("click", () => play());
+      el.toggle.addEventListener("click", () => {
+        const on = el.toggle.getAttribute("aria-pressed") !== "true";
+        el.toggle.setAttribute("aria-pressed", on ? "true" : "false");
+        spotGroup.style.display = on ? "" : "none";
+        if (!on) closeViewer();
+      });
       el.vPrev.addEventListener("click", () => showSpot(viewerIdx - 1));
       el.vNext.addEventListener("click", () => showSpot(viewerIdx + 1));
       modal.addEventListener("keydown", onKey);
@@ -214,18 +224,41 @@
       renderSpots(route);
     }
 
+    // 사진 점이 경로 선 위에 겹치지 않도록, 선에서 조금 떨어진 곳으로 옮긴다
+    function nudgeFromRoute(p, route) {
+      const MIN = 42;
+      let best = null;
+      route.segments.forEach((s) => {
+        if (s.kind === "jump") return;
+        for (let i = 0; i < s.points.length - 1; i++) {
+          const a = s.points[i], b = s.points[i + 1];
+          const dx = b[0] - a[0], dy = b[1] - a[1], len2 = dx * dx + dy * dy || 1;
+          const t = Math.max(0, Math.min(1, ((p.x - a[0]) * dx + (p.y - a[1]) * dy) / len2));
+          const qx = a[0] + t * dx, qy = a[1] + t * dy;
+          const d = Math.hypot(p.x - qx, p.y - qy);
+          if (!best || d < best.d) best = { d, qx, qy, nx: -dy, ny: dx };
+        }
+      });
+      if (!best || best.d >= MIN) return [p.x, p.y];
+      let vx = p.x - best.qx, vy = p.y - best.qy;
+      if (Math.hypot(vx, vy) < 1) { vx = best.nx; vy = best.ny; }
+      const k = MIN / Math.hypot(vx, vy);
+      return [best.qx + vx * k, best.qy + vy * k];
+    }
+
     function renderSpots(route) {
       // 이름(문자열)으로 적은 사진 버튼은 spotLib 에서 가져온다
       spots = (route.spots || [])
         .map((p) => (typeof p === "string" ? (cfg.spotLib || {})[p] : p))
         .filter((p) => p && p.photos && p.photos.length);
-      el.hint.hidden = !spots.length;
+      el.photoBar.hidden = !spots.length;
       spots.forEach((p, i) => {
-        const g = svgEl("g", { class: "route-spot", transform: `translate(${p.x} ${p.y})`, tabindex: "0", role: "button", "aria-label": (p.label || "사진 보기") + " 사진 보기" }, spotGroup);
-        svgEl("circle", { r: 31, class: "route-spot__bg" }, g);
-        // 카메라 모양
-        svgEl("path", { d: "M-14 -7h6l3.5-6h9l3.5 6h6a2.5 2.5 0 0 1 2.5 2.5v16a2.5 2.5 0 0 1-2.5 2.5h-28a2.5 2.5 0 0 1-2.5-2.5v-16a2.5 2.5 0 0 1 2.5-2.5z", class: "route-spot__cam" }, g);
-        svgEl("circle", { r: 7, class: "route-spot__lens" }, g);
+        const [x, y] = nudgeFromRoute(p, route);
+        const g = svgEl("g", { class: "route-spot", transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})`, tabindex: "0", role: "button", "aria-label": (p.label || "사진") + " 사진 보기" }, spotGroup);
+        svgEl("circle", { r: 34, class: "route-spot__hit" }, g);
+        svgEl("circle", { r: 19, class: "route-spot__bg" }, g);
+        const t = svgEl("text", { x: 0, y: 9, "text-anchor": "middle", "font-size": 24, class: "route-spot__num" }, g);
+        t.textContent = String(i + 1);
         const act = () => openViewer(i);
         g.addEventListener("click", act);
         g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } });
