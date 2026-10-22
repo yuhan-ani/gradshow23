@@ -103,5 +103,9 @@
     <rect x="487" y="1102" width="60" height="14" rx="3"/>
     <rect x="487" y="1126" width="60" height="14" rx="3"/>
     <rect x="487" y="1150" width="60" height="14" rx="3"/>
+    <rect x="984" y="1004" width="8" height="48" rx="2"/>
+    <rect x="996" y="1004" width="8" height="48" rx="2"/>
+    <rect x="1008" y="1004" width="8" height="48" rx="2"/>
+    <rect x="1020" y="1004" width="8" height="48" rx="2"/>
   </g>
 </svg>

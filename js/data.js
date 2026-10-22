@@ -67,8 +67,7 @@ window.SHOWCASE_DATA = {
         { x: 822, y: 1078, t: "버스정류장", s: 28, poi: true },
         { x: 904, y: 568, t: "돌계단", s: 28, poi: true },
         { x: 430, y: 966, t: "엘리베이터", s: 28, poi: true },
-        { x: 222, y: 1068, t: "계단", s: 28, poi: true },
-        { x: 640, y: 1098, t: "횡단보도", s: 28, poi: true }
+        { x: 222, y: 1068, t: "계단", s: 28, poi: true }
       ]
     },
     /* 약도 위 사진 버튼. 경로의 spots 에 이름(문자열)으로 넣으면 그 경로에서 보인다.
@@ -145,7 +144,7 @@ window.SHOWCASE_DATA = {
           "statue",
           { x: 897, y: 677, onRoute: true, label: "돌계단", photos: [
             { src: "assets/route/photos/stone-stairs.jpg", caption: "돌계단" } ] },
-          { x: 722, y: 812, label: "농구장", photos: [
+          { x: 865, y: 765, onRoute: true, label: "농구장", photos: [
             { src: "assets/route/photos/court.jpg", caption: "농구장" },
             { src: "assets/route/photos/to-elev.jpg", caption: "농구장을 지나 엘리베이터로 가는 길" } ] },
           { x: 548, y: 886, onRoute: true, label: "엘리베이터", photos: [
@@ -173,7 +172,7 @@ window.SHOWCASE_DATA = {
         ],
         spots: [
           { ref: "uphill", x: 999, y: 860, onRoute: true }, "statue",
-          { x: 772, y: 348, label: "주차장 입구", photos: [
+          { x: 790, y: 305, onRoute: true, label: "주차장 입구", photos: [
             { src: "assets/route/photos/parking.jpg", caption: "주차장 입구" } ] },
           { ref: "gardenEntry", x: 290, y: 327, onRoute: true },
           { ref: "fork1", x: 376, y: 247, onRoute: true },
