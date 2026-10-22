@@ -93,6 +93,9 @@ window.SHOWCASE_DATA = {
         { src: "assets/route/photos/h8-entrance.jpg", caption: "8호관 출입구" },
         { src: "assets/route/photos/h8-lobby.jpg", caption: "8호관 로비 — 엘리베이터는 오른쪽" },
         { src: "assets/route/photos/h8-elevator.jpg", caption: "엘리베이터 타는 곳 (6층 유한아트홀)" } ] },
+      uphill: { x: 990, y: 860, label: "오르막길", photos: [
+        { src: "assets/route/photos/uphill-start.jpg", caption: "오르막길 입구" },
+        { src: "assets/route/photos/uphill.jpg", caption: "오르막길" } ] },
       statue: { x: 935, y: 436, label: "동상", photos: [
         { src: "assets/route/photos/statue.jpg", caption: "유한 박사님 동상" } ] }
     },
@@ -132,9 +135,7 @@ window.SHOWCASE_DATA = {
         spots: [
           { x: 944, y: 1070, label: "버스정류장", photos: [
             { src: "assets/route/photos/busstop.jpg", caption: "유한대학교 버스정류장" } ] },
-          { x: 990, y: 860, label: "오르막길", photos: [
-            { src: "assets/route/photos/uphill-start.jpg", caption: "오르막길 입구" },
-            { src: "assets/route/photos/uphill.jpg", caption: "오르막길" } ] },
+          "uphill",
           "statue",
           { x: 992, y: 680, label: "돌계단", photos: [
             { src: "assets/route/photos/stone-stairs.jpg", caption: "돌계단" } ] },
@@ -159,9 +160,10 @@ window.SHOWCASE_DATA = {
           { kind: "walk", points: [[215, 352], [250, 364], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
         spots: [
+          "uphill", "statue",
           { x: 684, y: 228, label: "주차장 입구", photos: [
             { src: "assets/route/photos/parking.jpg", caption: "주차장 입구" } ] },
-          "statue", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+          "gardenEntry", "fork1", "fork2", "fork3", "h8"
         ]
       }
     ]
