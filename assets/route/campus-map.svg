@@ -37,6 +37,8 @@
   <polygon points="0,935 347,935 347,400 960,400 960,1040 0,1062" fill="#1a2f47"/>
   <!-- 오르막 차도 쪽 -->
   <path d="M690 335L990 655L1008 1060" stroke="#1c2d40" stroke-width="44" stroke-linejoin="round" stroke-linecap="butt" fill="none"/>
+  <!-- 동상 앞에서 주차장으로 가는 길 -->
+  <path d="M990 655L984 520L920 478L860 400L815 325L772 290L750 282" stroke="#1c2d40" stroke-width="40" stroke-linejoin="round" stroke-linecap="butt" fill="none"/>
   <!-- 안뜰 -->
   <rect x="470" y="490" width="415" height="390" rx="30" fill="#21405c"/>
   <!-- 언덕 위 -->
