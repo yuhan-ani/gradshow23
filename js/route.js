@@ -21,7 +21,7 @@
 
     let modal = null, svg = null, routeGroup = null, spotGroup = null;
     let routeIdx = 0, runToken = 0, lastFocus = null;
-    let segs = [], marker = null, spots = [], viewerIdx = -1;
+    let segs = [], marker = null, spots = [], viewerIdx = -1, viewerSpot = null;
     const el = {};
 
     /* ---------- helpers ---------- */
@@ -215,21 +215,17 @@
     }
 
     function renderSpots(route) {
-      spots = (route.spots || []).filter((p) => p.photo);
+      // 이름(문자열)으로 적은 사진 버튼은 spotLib 에서 가져온다
+      spots = (route.spots || [])
+        .map((p) => (typeof p === "string" ? (cfg.spotLib || {})[p] : p))
+        .filter((p) => p && p.photos && p.photos.length);
       el.hint.hidden = !spots.length;
       spots.forEach((p, i) => {
-        const g = svgEl("g", { class: "route-spot", transform: `translate(${p.x} ${p.y})`, tabindex: "0", role: "button", "aria-label": (p.label || "사진 보기") }, spotGroup);
-        svgEl("circle", { r: 26, class: "route-spot__bg" }, g);
+        const g = svgEl("g", { class: "route-spot", transform: `translate(${p.x} ${p.y})`, tabindex: "0", role: "button", "aria-label": (p.label || "사진 보기") + " 사진 보기" }, spotGroup);
+        svgEl("circle", { r: 31, class: "route-spot__bg" }, g);
         // 카메라 모양
-        svgEl("path", { d: "M-12 -6h5l3-5h8l3 5h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-24a2 2 0 0 1-2-2v-14a2 2 0 0 1 2-2z", class: "route-spot__cam" }, g);
-        svgEl("circle", { r: 6, class: "route-spot__lens" }, g);
-        if (p.label) {
-          const size = 24, w = textWidth(p.label, size) + 24;
-          const pill = svgEl("g", { class: "route-spot__label", transform: "translate(0 52)" }, g);
-          svgEl("rect", { x: -w / 2, y: -size * 0.95, width: w, height: size * 1.5, rx: size * 0.75 }, pill);
-          const t = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", "font-size": size }, pill);
-          t.textContent = p.label;
-        }
+        svgEl("path", { d: "M-14 -7h6l3.5-6h9l3.5 6h6a2.5 2.5 0 0 1 2.5 2.5v16a2.5 2.5 0 0 1-2.5 2.5h-28a2.5 2.5 0 0 1-2.5-2.5v-16a2.5 2.5 0 0 1 2.5-2.5z", class: "route-spot__cam" }, g);
+        svgEl("circle", { r: 7, class: "route-spot__lens" }, g);
         const act = () => openViewer(i);
         g.addEventListener("click", act);
         g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } });
@@ -325,18 +321,20 @@
 
     /* ---------- 사진 보기 ---------- */
     function openViewer(i) {
+      viewerSpot = spots[i];
       el.viewer.hidden = false;
-      showSpot(i);
+      showSpot(0);
       el.viewer.querySelector(".route-viewer__close").focus({ preventScroll: true });
     }
     function showSpot(i) {
-      if (!spots.length) return;
-      viewerIdx = (i + spots.length) % spots.length;
-      const p = spots[viewerIdx];
-      el.vImg.src = p.photo;
-      el.vImg.alt = p.caption || p.label || "";
-      el.vCap.textContent = p.caption || p.label || "";
-      const many = spots.length > 1;
+      if (!viewerSpot) return;
+      const list = viewerSpot.photos;
+      viewerIdx = (i + list.length) % list.length;
+      const p = list[viewerIdx];
+      el.vImg.src = p.src;
+      el.vImg.alt = p.caption || viewerSpot.label || "";
+      el.vCap.textContent = (p.caption || viewerSpot.label || "") + (list.length > 1 ? `  (${viewerIdx + 1}/${list.length})` : "");
+      const many = list.length > 1;
       el.vPrev.hidden = !many; el.vNext.hidden = !many;
     }
     function closeViewer() {
@@ -344,6 +342,7 @@
       el.viewer.hidden = true;
       el.vImg.removeAttribute("src");
       viewerIdx = -1;
+      viewerSpot = null;
     }
 
     /* ---------- open / close ---------- */

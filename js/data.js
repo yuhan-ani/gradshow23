@@ -67,9 +67,34 @@ window.SHOWCASE_DATA = {
         { x: 822, y: 1078, t: "버스정류장", s: 28, poi: true },
         { x: 904, y: 568, t: "돌계단", s: 28, poi: true },
         { x: 430, y: 966, t: "엘리베이터", s: 28, poi: true },
-        { x: 309, y: 1114, t: "계단", s: 28, poi: true },
+        { x: 222, y: 1068, t: "계단", s: 28, poi: true },
         { x: 640, y: 1098, t: "횡단보도", s: 28, poi: true }
       ]
+    },
+    /* 약도 위 사진 버튼. 경로의 spots 에 이름(문자열)으로 넣으면 그 경로에서 보인다.
+       photos: 누르면 차례로 넘겨 볼 사진들 (assets/route/photos/) */
+    spotLib: {
+      h5in: { x: 205, y: 925, label: "5호관 입구", photos: [
+        { src: "assets/route/photos/h5-in.jpg", caption: "5호관 입구" } ] },
+      h5out: { x: 205, y: 395, label: "5호관 출구", photos: [
+        { src: "assets/route/photos/h5-out.jpg", caption: "5호관 출구" },
+        { src: "assets/route/photos/h5-view7.jpg", caption: "5호관을 나오면 보이는 7호관" } ] },
+      gardenEntry: { x: 300, y: 296, label: "8호관 가는 길 입구", photos: [
+        { src: "assets/route/photos/garden-7ho-side.jpg", caption: "7호관 옆, 8호관으로 가는 길" },
+        { src: "assets/route/photos/garden-entry.jpg", caption: "8호관으로 들어가는 길 입구" } ] },
+      fork1: { x: 420, y: 272, label: "첫 번째 갈림길", photos: [
+        { src: "assets/route/photos/fork-1.jpg", caption: "첫 번째 갈림길 — 오른쪽은 공사 중이니 왼쪽으로" } ] },
+      fork2: { x: 300, y: 185, label: "두 번째 갈림길", photos: [
+        { src: "assets/route/photos/fork-2.jpg", caption: "두 번째 갈림길 — 오른쪽으로" } ] },
+      fork3: { x: 478, y: 66, label: "세 번째 갈림길", photos: [
+        { src: "assets/route/photos/fork-3.jpg", caption: "세 번째 갈림길 — 오른쪽 샛길로" } ] },
+      h8: { x: 594, y: 252, label: "8호관", photos: [
+        { src: "assets/route/photos/h8-near.jpg", caption: "8호관 가까이" },
+        { src: "assets/route/photos/h8-entrance.jpg", caption: "8호관 출입구" },
+        { src: "assets/route/photos/h8-lobby.jpg", caption: "8호관 로비 — 엘리베이터는 오른쪽" },
+        { src: "assets/route/photos/h8-elevator.jpg", caption: "엘리베이터 타는 곳 (6층 유한아트홀)" } ] },
+      statue: { x: 935, y: 436, label: "동상", photos: [
+        { src: "assets/route/photos/statue.jpg", caption: "유한 박사님 동상" } ] }
     },
     routes: [
       {
@@ -82,7 +107,15 @@ window.SHOWCASE_DATA = {
           { kind: "walk", points: [[309, 988], [309, 926], [256, 914], [250, 362]] },
           { kind: "walk", points: [[250, 362], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
-        spots: []
+        spots: [
+          { x: 436, y: 1112, label: "횡단보도", photos: [
+            { src: "assets/route/photos/crosswalk.jpg", caption: "횡단보도 건너편 신호등" } ] },
+          { x: 372, y: 1082, label: "계단 입구", photos: [
+            { src: "assets/route/photos/stair-in.jpg", caption: "계단 입구" } ] },
+          { x: 262, y: 960, label: "계단 출구", photos: [
+            { src: "assets/route/photos/stair-out.jpg", caption: "계단 출구" } ] },
+          "h5in", "h5out", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+        ]
       },
       {
         id: "elevator",
@@ -96,7 +129,25 @@ window.SHOWCASE_DATA = {
           { kind: "walk", points: [[414, 902], [309, 914], [256, 914], [250, 362]] },
           { kind: "walk", points: [[250, 362], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
-        spots: []
+        spots: [
+          { x: 944, y: 1070, label: "버스정류장", photos: [
+            { src: "assets/route/photos/busstop.jpg", caption: "유한대학교 버스정류장" } ] },
+          { x: 990, y: 860, label: "오르막길", photos: [
+            { src: "assets/route/photos/uphill-start.jpg", caption: "오르막길 입구" },
+            { src: "assets/route/photos/uphill.jpg", caption: "오르막길" } ] },
+          "statue",
+          { x: 992, y: 680, label: "돌계단", photos: [
+            { src: "assets/route/photos/stone-stairs.jpg", caption: "돌계단" } ] },
+          { x: 690, y: 845, label: "농구장", photos: [
+            { src: "assets/route/photos/court.jpg", caption: "농구장" },
+            { src: "assets/route/photos/to-elev.jpg", caption: "농구장을 지나 엘리베이터로 가는 길" } ] },
+          { x: 548, y: 944, label: "엘리베이터", photos: [
+            { src: "assets/route/photos/elev-view.jpg", caption: "엘리베이터가 보이는 곳" },
+            { src: "assets/route/photos/elev-l.jpg", caption: "엘리베이터 — L층에서 3층으로" } ] },
+          { x: 326, y: 850, label: "3층", photos: [
+            { src: "assets/route/photos/elev-3f.jpg", caption: "3층에서 내렸을 때" } ] },
+          "h5in", "h5out", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+        ]
       },
       {
         id: "car",
@@ -107,7 +158,11 @@ window.SHOWCASE_DATA = {
           { kind: "jump", points: [[748, 282], [215, 352]], label: { t: "엘리베이터 → 1층", dx: 160, dy: -42 } },
           { kind: "walk", points: [[215, 352], [250, 364], [376, 247], [351, 175], [436, 102], [479, 162], [556, 204]] }
         ],
-        spots: []
+        spots: [
+          { x: 684, y: 228, label: "주차장 입구", photos: [
+            { src: "assets/route/photos/parking.jpg", caption: "주차장 입구" } ] },
+          "statue", "gardenEntry", "fork1", "fork2", "fork3", "h8"
+        ]
       }
     ]
   },
