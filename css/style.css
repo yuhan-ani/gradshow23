@@ -1674,3 +1674,26 @@ html.route-open { overflow: hidden; }
 /* 길안내 창이 열려 있는 동안에는 뒤쪽 첫 화면의 움직임을 멈춰서 폰에서 버벅이지 않게 한다 */
 html.route-open .hero,
 html.route-open .hero * { animation-play-state: paused !important; }
+
+/* 폰·태블릿: 매 프레임 다시 계산되는 무거운 효과(화면 전체 블렌딩, 큰 블러, 반짝임 애니메이션의 그림자)를 줄여서 첫 화면이 끊기지 않게 한다 */
+@media (hover: none), (max-width: 820px) {
+  body::before { display: none; }
+  .hero__stars { mix-blend-mode: normal; }
+  .hero__spotlight::before,
+  .hero__spotlight::after { filter: none; }
+  .hero__text-scrim { filter: none; }
+  .hero__title {
+    filter:
+      drop-shadow(0.3px 0 0 var(--c-bg-raised))
+      drop-shadow(-0.3px 0 0 var(--c-bg-raised))
+      drop-shadow(0 0.3px 0 var(--c-bg-raised))
+      drop-shadow(0 -0.3px 0 var(--c-bg-raised))
+      drop-shadow(0 2px 6px rgba(7, 11, 16, 0.6));
+  }
+  .hero__frame-diamond {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    filter: drop-shadow(0 0 4px var(--c-gold-lighter));
+  }
+}

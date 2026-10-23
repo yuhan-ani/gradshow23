@@ -326,10 +326,10 @@
     let mouseX = 0; // -1 ~ 1
     let mouseY = 0; // -1 ~ 1
     let ticking = false;
+    let heroHeight = hero.offsetHeight; // 매 프레임 읽지 않고, 크기가 바뀔 때만 다시 잰다
 
     function render() {
       ticking = false;
-      const heroHeight = hero.offsetHeight;
       const progress = Math.min(1, Math.max(0, scrollY / (heroHeight * FADE_RANGE)));
 
       poster.style.transform = `scale(1.15) translateY(${scrollY * POSTER_SPEED}px)`;
@@ -367,7 +367,7 @@
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("resize", () => { heroHeight = hero.offsetHeight; onScroll(); }, { passive: true });
     render();
 
     // 마우스 패럴랙스는 정밀 포인터(데스크톱)에서만. 모바일/터치에는 적용하지 않음
