@@ -39,7 +39,7 @@ window.SHOWCASE_DATA = {
     notice: "현재 교내 공사로 길이 복잡합니다. 약도를 보시고 천천히 찾아와 주세요.",
     destination: "유재라관(8호관) 6층 유한아트홀",
     map: {
-      image: "assets/route/campus-map.svg?v=20261023d",
+      image: "assets/route/campus-map.svg?v=20261023e",
       width: 1044,
       height: 1200,
       labels: [
@@ -95,7 +95,7 @@ window.SHOWCASE_DATA = {
         { src: "assets/route/photos/uphill-start.jpg", caption: "오르막길 입구" },
         { src: "assets/route/photos/uphill.jpg", caption: "오르막길" } ] },
       statue: { x: 935, y: 436, label: "동상", photos: [
-        { src: "assets/route/photos/statue.jpg", caption: "유한 박사님 동상" } ] }
+        { src: "assets/route/photos/statue.jpg", caption: "유일한 박사님 동상" } ] }
     },
     routes: [
       {
